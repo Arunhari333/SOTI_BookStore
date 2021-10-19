@@ -1,0 +1,444 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BookStoreDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tbl_Book">
+          <Key>
+            <PropertyRef Name="bookId" />
+          </Key>
+          <Property Name="bookId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="booktitle" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ISBN" Type="bigint" Nullable="false" />
+          <Property Name="bookYear" Type="int" Nullable="false" />
+          <Property Name="bookDescription" Type="varchar" MaxLength="3000" Nullable="false" />
+          <Property Name="bookStatus" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="bookImage" Type="varchar" MaxLength="1028" Nullable="false" />
+          <Property Name="bookPrice" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Category">
+          <Key>
+            <PropertyRef Name="catId" />
+          </Key>
+          <Property Name="catId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="catName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="catdescripation" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="catImage" Type="varchar" MaxLength="1028" Nullable="false" />
+          <Property Name="catStatus" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="catPosition" Type="int" Nullable="false" />
+          <Property Name="catCreateAt" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Order">
+          <Key>
+            <PropertyRef Name="orderId" />
+          </Key>
+          <Property Name="orderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userNo" Type="int" Nullable="false" />
+          <Property Name="bookId" Type="int" Nullable="false" />
+          <Property Name="orderQty" Type="int" Nullable="false" />
+          <Property Name="orderAddress" Type="int" Nullable="false" />
+          <Property Name="orderDate" Type="date" />
+          <Property Name="orderEstimationDelivery" Type="date" />
+        </EntityType>
+        <EntityType Name="tbl_ShippingAddress">
+          <Key>
+            <PropertyRef Name="shipId" />
+          </Key>
+          <Property Name="shipId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userNo" Type="int" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="city" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="state" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="zipcode" Type="int" Nullable="false" />
+          <Property Name="date_added" Type="date" />
+        </EntityType>
+        <EntityType Name="tbl_User">
+          <Key>
+            <PropertyRef Name="userNo" />
+          </Key>
+          <Property Name="userNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="isAdmin" Type="varchar" MaxLength="4" Nullable="false" />
+        </EntityType>
+        <Association Name="fkt_orderAddress">
+          <End Role="tbl_ShippingAddress" Type="Self.tbl_ShippingAddress" Multiplicity="1" />
+          <End Role="tbl_Order" Type="Self.tbl_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ShippingAddress">
+              <PropertyRef Name="shipId" />
+            </Principal>
+            <Dependent Role="tbl_Order">
+              <PropertyRef Name="orderAddress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fky_categoryId">
+          <End Role="tbl_Category" Type="Self.tbl_Category" Multiplicity="1" />
+          <End Role="tbl_Book" Type="Self.tbl_Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Category">
+              <PropertyRef Name="catId" />
+            </Principal>
+            <Dependent Role="tbl_Book">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fky_OrbookId">
+          <End Role="tbl_Book" Type="Self.tbl_Book" Multiplicity="1" />
+          <End Role="tbl_Order" Type="Self.tbl_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Book">
+              <PropertyRef Name="bookId" />
+            </Principal>
+            <Dependent Role="tbl_Order">
+              <PropertyRef Name="bookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fky_Oruserno">
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="1" />
+          <End Role="tbl_Order" Type="Self.tbl_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="userNo" />
+            </Principal>
+            <Dependent Role="tbl_Order">
+              <PropertyRef Name="userNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fky_Sauserno">
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="1" />
+          <End Role="tbl_ShippingAddress" Type="Self.tbl_ShippingAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="userNo" />
+            </Principal>
+            <Dependent Role="tbl_ShippingAddress">
+              <PropertyRef Name="userNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BookStoreDBModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Book" EntityType="Self.tbl_Book" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Category" EntityType="Self.tbl_Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Order" EntityType="Self.tbl_Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ShippingAddress" EntityType="Self.tbl_ShippingAddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_User" EntityType="Self.tbl_User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fkt_orderAddress" Association="Self.fkt_orderAddress">
+            <End Role="tbl_ShippingAddress" EntitySet="tbl_ShippingAddress" />
+            <End Role="tbl_Order" EntitySet="tbl_Order" />
+          </AssociationSet>
+          <AssociationSet Name="fky_categoryId" Association="Self.fky_categoryId">
+            <End Role="tbl_Category" EntitySet="tbl_Category" />
+            <End Role="tbl_Book" EntitySet="tbl_Book" />
+          </AssociationSet>
+          <AssociationSet Name="fky_OrbookId" Association="Self.fky_OrbookId">
+            <End Role="tbl_Book" EntitySet="tbl_Book" />
+            <End Role="tbl_Order" EntitySet="tbl_Order" />
+          </AssociationSet>
+          <AssociationSet Name="fky_Oruserno" Association="Self.fky_Oruserno">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_Order" EntitySet="tbl_Order" />
+          </AssociationSet>
+          <AssociationSet Name="fky_Sauserno" Association="Self.fky_Sauserno">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_ShippingAddress" EntitySet="tbl_ShippingAddress" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BookStoreDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tbl_Book">
+          <Key>
+            <PropertyRef Name="bookId" />
+          </Key>
+          <Property Name="bookId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="booktitle" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ISBN" Type="Int64" Nullable="false" />
+          <Property Name="bookYear" Type="Int32" Nullable="false" />
+          <Property Name="bookDescription" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="bookStatus" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="bookImage" Type="String" MaxLength="1028" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="bookPrice" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbl_Category" Relationship="Self.fky_categoryId" FromRole="tbl_Book" ToRole="tbl_Category" />
+          <NavigationProperty Name="tbl_Order" Relationship="Self.fky_OrbookId" FromRole="tbl_Book" ToRole="tbl_Order" />
+        </EntityType>
+        <EntityType Name="tbl_Category">
+          <Key>
+            <PropertyRef Name="catId" />
+          </Key>
+          <Property Name="catId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="catName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="catdescripation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="catImage" Type="String" MaxLength="1028" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="catStatus" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="catPosition" Type="Int32" Nullable="false" />
+          <Property Name="catCreateAt" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="tbl_Book" Relationship="Self.fky_categoryId" FromRole="tbl_Category" ToRole="tbl_Book" />
+        </EntityType>
+        <EntityType Name="tbl_Order">
+          <Key>
+            <PropertyRef Name="orderId" />
+          </Key>
+          <Property Name="orderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userNo" Type="Int32" Nullable="false" />
+          <Property Name="bookId" Type="Int32" Nullable="false" />
+          <Property Name="orderQty" Type="Int32" Nullable="false" />
+          <Property Name="orderAddress" Type="Int32" Nullable="false" />
+          <Property Name="orderDate" Type="DateTime" Precision="0" />
+          <Property Name="orderEstimationDelivery" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tbl_Book" Relationship="Self.fky_OrbookId" FromRole="tbl_Order" ToRole="tbl_Book" />
+          <NavigationProperty Name="tbl_ShippingAddress" Relationship="Self.fkt_orderAddress" FromRole="tbl_Order" ToRole="tbl_ShippingAddress" />
+          <NavigationProperty Name="tbl_User" Relationship="Self.fky_Oruserno" FromRole="tbl_Order" ToRole="tbl_User" />
+        </EntityType>
+        <EntityType Name="tbl_ShippingAddress">
+          <Key>
+            <PropertyRef Name="shipId" />
+          </Key>
+          <Property Name="shipId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userNo" Type="Int32" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="zipcode" Type="Int32" Nullable="false" />
+          <Property Name="date_added" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tbl_Order" Relationship="Self.fkt_orderAddress" FromRole="tbl_ShippingAddress" ToRole="tbl_Order" />
+          <NavigationProperty Name="tbl_User" Relationship="Self.fky_Sauserno" FromRole="tbl_ShippingAddress" ToRole="tbl_User" />
+        </EntityType>
+        <EntityType Name="tbl_User">
+          <Key>
+            <PropertyRef Name="userNo" />
+          </Key>
+          <Property Name="userNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="isAdmin" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tbl_Order" Relationship="Self.fky_Oruserno" FromRole="tbl_User" ToRole="tbl_Order" />
+          <NavigationProperty Name="tbl_ShippingAddress" Relationship="Self.fky_Sauserno" FromRole="tbl_User" ToRole="tbl_ShippingAddress" />
+        </EntityType>
+        <Association Name="fky_categoryId">
+          <End Role="tbl_Category" Type="Self.tbl_Category" Multiplicity="1" />
+          <End Role="tbl_Book" Type="Self.tbl_Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Category">
+              <PropertyRef Name="catId" />
+            </Principal>
+            <Dependent Role="tbl_Book">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fky_OrbookId">
+          <End Role="tbl_Book" Type="Self.tbl_Book" Multiplicity="1" />
+          <End Role="tbl_Order" Type="Self.tbl_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Book">
+              <PropertyRef Name="bookId" />
+            </Principal>
+            <Dependent Role="tbl_Order">
+              <PropertyRef Name="bookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkt_orderAddress">
+          <End Role="tbl_ShippingAddress" Type="Self.tbl_ShippingAddress" Multiplicity="1" />
+          <End Role="tbl_Order" Type="Self.tbl_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ShippingAddress">
+              <PropertyRef Name="shipId" />
+            </Principal>
+            <Dependent Role="tbl_Order">
+              <PropertyRef Name="orderAddress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fky_Oruserno">
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="1" />
+          <End Role="tbl_Order" Type="Self.tbl_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="userNo" />
+            </Principal>
+            <Dependent Role="tbl_Order">
+              <PropertyRef Name="userNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fky_Sauserno">
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="1" />
+          <End Role="tbl_ShippingAddress" Type="Self.tbl_ShippingAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="userNo" />
+            </Principal>
+            <Dependent Role="tbl_ShippingAddress">
+              <PropertyRef Name="userNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BookStoreDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="tbl_Book" EntityType="Self.tbl_Book" />
+          <EntitySet Name="tbl_Category" EntityType="Self.tbl_Category" />
+          <EntitySet Name="tbl_Order" EntityType="Self.tbl_Order" />
+          <EntitySet Name="tbl_ShippingAddress" EntityType="Self.tbl_ShippingAddress" />
+          <EntitySet Name="tbl_User" EntityType="Self.tbl_User" />
+          <AssociationSet Name="fky_categoryId" Association="Self.fky_categoryId">
+            <End Role="tbl_Category" EntitySet="tbl_Category" />
+            <End Role="tbl_Book" EntitySet="tbl_Book" />
+          </AssociationSet>
+          <AssociationSet Name="fky_OrbookId" Association="Self.fky_OrbookId">
+            <End Role="tbl_Book" EntitySet="tbl_Book" />
+            <End Role="tbl_Order" EntitySet="tbl_Order" />
+          </AssociationSet>
+          <AssociationSet Name="fkt_orderAddress" Association="Self.fkt_orderAddress">
+            <End Role="tbl_ShippingAddress" EntitySet="tbl_ShippingAddress" />
+            <End Role="tbl_Order" EntitySet="tbl_Order" />
+          </AssociationSet>
+          <AssociationSet Name="fky_Oruserno" Association="Self.fky_Oruserno">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_Order" EntitySet="tbl_Order" />
+          </AssociationSet>
+          <AssociationSet Name="fky_Sauserno" Association="Self.fky_Sauserno">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_ShippingAddress" EntitySet="tbl_ShippingAddress" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BookStoreDBModelStoreContainer" CdmEntityContainer="BookStoreDBEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BookStoreDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Book">
+            <EntityTypeMapping TypeName="BookStoreDBModel.tbl_Book">
+              <MappingFragment StoreEntitySet="tbl_Book">
+                <ScalarProperty Name="bookId" ColumnName="bookId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="booktitle" ColumnName="booktitle" />
+                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+                <ScalarProperty Name="bookYear" ColumnName="bookYear" />
+                <ScalarProperty Name="bookDescription" ColumnName="bookDescription" />
+                <ScalarProperty Name="bookStatus" ColumnName="bookStatus" />
+                <ScalarProperty Name="bookImage" ColumnName="bookImage" />
+                <ScalarProperty Name="bookPrice" ColumnName="bookPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Category">
+            <EntityTypeMapping TypeName="BookStoreDBModel.tbl_Category">
+              <MappingFragment StoreEntitySet="tbl_Category">
+                <ScalarProperty Name="catId" ColumnName="catId" />
+                <ScalarProperty Name="catName" ColumnName="catName" />
+                <ScalarProperty Name="catdescripation" ColumnName="catdescripation" />
+                <ScalarProperty Name="catImage" ColumnName="catImage" />
+                <ScalarProperty Name="catStatus" ColumnName="catStatus" />
+                <ScalarProperty Name="catPosition" ColumnName="catPosition" />
+                <ScalarProperty Name="catCreateAt" ColumnName="catCreateAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Order">
+            <EntityTypeMapping TypeName="BookStoreDBModel.tbl_Order">
+              <MappingFragment StoreEntitySet="tbl_Order">
+                <ScalarProperty Name="orderId" ColumnName="orderId" />
+                <ScalarProperty Name="userNo" ColumnName="userNo" />
+                <ScalarProperty Name="bookId" ColumnName="bookId" />
+                <ScalarProperty Name="orderQty" ColumnName="orderQty" />
+                <ScalarProperty Name="orderAddress" ColumnName="orderAddress" />
+                <ScalarProperty Name="orderDate" ColumnName="orderDate" />
+                <ScalarProperty Name="orderEstimationDelivery" ColumnName="orderEstimationDelivery" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ShippingAddress">
+            <EntityTypeMapping TypeName="BookStoreDBModel.tbl_ShippingAddress">
+              <MappingFragment StoreEntitySet="tbl_ShippingAddress">
+                <ScalarProperty Name="shipId" ColumnName="shipId" />
+                <ScalarProperty Name="userNo" ColumnName="userNo" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="zipcode" ColumnName="zipcode" />
+                <ScalarProperty Name="date_added" ColumnName="date_added" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_User">
+            <EntityTypeMapping TypeName="BookStoreDBModel.tbl_User">
+              <MappingFragment StoreEntitySet="tbl_User">
+                <ScalarProperty Name="userNo" ColumnName="userNo" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
