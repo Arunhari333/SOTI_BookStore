@@ -44,3 +44,5 @@ C:\Users\ah\Desktop\.NetFullStack\BookShop_Backend\BookShop_Backend.Tests\bin\De
 C:\Users\ah\Desktop\.NetFullStack\BookShop_Backend\BookShop_Backend.Tests\obj\Debug\BookShop_Backend.Tests.csproj.CopyComplete
 C:\Users\ah\Desktop\.NetFullStack\BookShop_Backend\BookShop_Backend.Tests\obj\Debug\BookShop_Backend.Tests.dll
 C:\Users\ah\Desktop\.NetFullStack\BookShop_Backend\BookShop_Backend.Tests\obj\Debug\BookShop_Backend.Tests.pdb
+C:\Users\ah\Desktop\.NetFullStack\BookShop_Backend\BookShop_Backend.Tests\bin\Debug\EntityFramework.dll
+C:\Users\ah\Desktop\.NetFullStack\BookShop_Backend\BookShop_Backend.Tests\bin\Debug\EntityFramework.xml
