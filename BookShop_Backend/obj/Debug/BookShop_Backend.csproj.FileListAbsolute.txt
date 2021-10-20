@@ -1,0 +1,2 @@
+C:\Users\acer\Desktop\.NetFullStack\SOTI_Capstone\BookShop_Backend\obj\Debug\BookShop_Backend.csproj.AssemblyReference.cache
+C:\Users\acer\Desktop\.NetFullStack\SOTI_Capstone\BookShop_Backend\obj\Debug\BookShop_Backend.csproj.CoreCompileInputs.cache

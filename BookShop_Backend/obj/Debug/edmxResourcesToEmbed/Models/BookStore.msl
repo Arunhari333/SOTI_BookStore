@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BookStoreDBModelStoreContainer" CdmEntityContainer="BookStoreDBEntities">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="BookStoreDBModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Book">
+      <EntityTypeMapping TypeName="BookStoreDBModel.tbl_Book">
+        <MappingFragment StoreEntitySet="tbl_Book">
+          <ScalarProperty Name="bookId" ColumnName="bookId" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="booktitle" ColumnName="booktitle" />
+          <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+          <ScalarProperty Name="bookYear" ColumnName="bookYear" />
+          <ScalarProperty Name="bookDescription" ColumnName="bookDescription" />
+          <ScalarProperty Name="bookStatus" ColumnName="bookStatus" />
+          <ScalarProperty Name="bookImage" ColumnName="bookImage" />
+          <ScalarProperty Name="bookPrice" ColumnName="bookPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Category">
+      <EntityTypeMapping TypeName="BookStoreDBModel.tbl_Category">
+        <MappingFragment StoreEntitySet="tbl_Category">
+          <ScalarProperty Name="catId" ColumnName="catId" />
+          <ScalarProperty Name="catName" ColumnName="catName" />
+          <ScalarProperty Name="catdescripation" ColumnName="catdescripation" />
+          <ScalarProperty Name="catImage" ColumnName="catImage" />
+          <ScalarProperty Name="catStatus" ColumnName="catStatus" />
+          <ScalarProperty Name="catPosition" ColumnName="catPosition" />
+          <ScalarProperty Name="catCreateAt" ColumnName="catCreateAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Order">
+      <EntityTypeMapping TypeName="BookStoreDBModel.tbl_Order">
+        <MappingFragment StoreEntitySet="tbl_Order">
+          <ScalarProperty Name="orderId" ColumnName="orderId" />
+          <ScalarProperty Name="userNo" ColumnName="userNo" />
+          <ScalarProperty Name="bookId" ColumnName="bookId" />
+          <ScalarProperty Name="orderQty" ColumnName="orderQty" />
+          <ScalarProperty Name="orderAddress" ColumnName="orderAddress" />
+          <ScalarProperty Name="orderDate" ColumnName="orderDate" />
+          <ScalarProperty Name="orderEstimationDelivery" ColumnName="orderEstimationDelivery" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_ShippingAddress">
+      <EntityTypeMapping TypeName="BookStoreDBModel.tbl_ShippingAddress">
+        <MappingFragment StoreEntitySet="tbl_ShippingAddress">
+          <ScalarProperty Name="shipId" ColumnName="shipId" />
+          <ScalarProperty Name="userNo" ColumnName="userNo" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="zipcode" ColumnName="zipcode" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_User">
+      <EntityTypeMapping TypeName="BookStoreDBModel.tbl_User">
+        <MappingFragment StoreEntitySet="tbl_User">
+          <ScalarProperty Name="userNo" ColumnName="userNo" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
