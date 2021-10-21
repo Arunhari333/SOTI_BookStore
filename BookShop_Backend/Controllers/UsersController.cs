@@ -114,5 +114,27 @@ namespace BookShop_Backend.Controllers
         {
             return db.Users.Count(e => e.id == id) > 0;
         }
+        public IHttpActionResult ToggleUser(int id1)
+        {
+            List<User> query =
+             (from use in db.Users
+              where use.id == id1
+              select use).ToList();
+
+            foreach (var a in query)
+            {
+                if (a.isAdmin.Equals(true))
+                {
+                    a.isAdmin = false;
+                }
+                else
+                {
+                    a.isAdmin = true;
+                }
+            }
+
+            db.SaveChanges();
+            return Ok(query);
+        }
     }
 }
