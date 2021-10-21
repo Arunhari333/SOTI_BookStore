@@ -89,5 +89,5 @@ C:\Users\ah\Desktop\.NetFullStack\BookShop_Backend\BookShop_Backend\bin\Microsof
 C:\Users\ah\Desktop\.NetFullStack\BookShop_Backend\BookShop_Backend\obj\Debug\BookShop_Backend.csproj.CopyComplete
 C:\Users\ah\Desktop\.NetFullStack\BookShop_Backend\BookShop_Backend\obj\Debug\BookShop_Backend.dll
 C:\Users\ah\Desktop\.NetFullStack\BookShop_Backend\BookShop_Backend\obj\Debug\BookShop_Backend.pdb
-C:\Users\ah\Desktop\.NetFullStack\BookShop_Backend\BookShop_Backend\obj\Debug\BookShop_Backend.Migrations.createDatabase.resources
+C:\Users\ah\Desktop\.NetFullStack\BookShop_Backend\BookShop_Backend\obj\Debug\BookShop_Backend.Migrations.createdDB.resources
 C:\Users\ah\Desktop\.NetFullStack\BookShop_Backend\BookShop_Backend\obj\Debug\BookShop_Backend.csproj.GenerateResource.cache

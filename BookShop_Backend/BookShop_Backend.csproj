@@ -167,15 +167,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202110201836215_createDatabase.cs" />
-    <Compile Include="Migrations\202110201836215_createDatabase.designer.cs">
-      <DependentUpon>202110201836215_createDatabase.cs</DependentUpon>
+    <Compile Include="Migrations\202110211947269_createdDB.cs" />
+    <Compile Include="Migrations\202110211947269_createdDB.Designer.cs">
+      <DependentUpon>202110211947269_createdDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDBContext.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\ShippingAddress.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -267,8 +268,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202110201836215_createDatabase.resx">
-      <DependentUpon>202110201836215_createDatabase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202110211947269_createdDB.resx">
+      <DependentUpon>202110211947269_createdDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

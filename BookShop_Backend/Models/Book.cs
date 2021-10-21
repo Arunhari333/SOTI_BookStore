@@ -10,6 +10,7 @@ namespace BookShop_Backend.Models
     public class Book
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
         public string booktitle { get; set; }
         public long ISBN { get; set; }

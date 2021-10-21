@@ -10,6 +10,7 @@ namespace BookShop_Backend.Models
     public class ShippingAddress
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
         public string address { get; set; }
         public string city { get; set; }
