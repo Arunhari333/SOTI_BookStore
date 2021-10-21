@@ -1,3 +1,9 @@
 BookShop_Backend/.vs/
 BookShop_Backend/App_Data/
 BookShop_Backend/Migrations/
+BookShop_Backend/bin/
+BookShop_Backend/obj/
+BookShop_Backend.Tests/bin/
+BookShop_Backend.Tests/obj/
+BookShop_Backend/BookShop_Backend.csproj
+BookShop_Backend/BookShop_Backend.csproj.user
