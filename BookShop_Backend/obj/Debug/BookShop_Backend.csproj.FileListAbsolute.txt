@@ -179,6 +179,5 @@ C:\Users\vraghavendra\Desktop\Project\BookShop_Backend\BookShop_Backend\bin\Syst
 C:\Users\vraghavendra\Desktop\Project\BookShop_Backend\BookShop_Backend\bin\Antlr3.Runtime.pdb
 C:\Users\vraghavendra\Desktop\Project\BookShop_Backend\BookShop_Backend\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\vraghavendra\Desktop\Project\BookShop_Backend\BookShop_Backend\obj\Debug\BookShop_Backend.csproj.CoreCompileInputs.cache
-C:\Users\vraghavendra\Desktop\Project\BookShop_Backend\BookShop_Backend\obj\Debug\BookShop_Backend.csproj.CopyComplete
 C:\Users\vraghavendra\Desktop\Project\BookShop_Backend\BookShop_Backend\obj\Debug\BookShop_Backend.Migrations.createDB.resources
 C:\Users\vraghavendra\Desktop\Project\BookShop_Backend\BookShop_Backend\obj\Debug\BookShop_Backend.csproj.GenerateResource.cache
