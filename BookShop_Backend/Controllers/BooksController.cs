@@ -35,6 +35,42 @@ namespace BookShop_Backend.Controllers
             return Ok(book);
         }
 
+        //GET: api/Books/name=""
+        public IEnumerable<Book> GetBookByName(string name)
+        {
+            List<Book> books = (from book in db.Books
+                                where book.bookTitle == name
+                                select book).ToList();
+            return books;
+        }
+
+        //GET: api/Books/author=""
+        public IEnumerable<Book> GetBookByAuthor(string author)
+        {
+            List<Book> books = (from book in db.Books
+                                where book.bookAuthor == author
+                                select book).ToList();
+            return books;
+        }
+
+        //GET: api/Books/isbn=5
+        public IEnumerable<Book> GetBookByISBN(int isbn)
+        {
+            List<Book> books = (from book in db.Books
+                                where book.ISBN == isbn
+                                select book).ToList();
+            return books;
+        }
+
+        //GET: api/Books/cid=5
+        public IEnumerable<Book> GetBookByCategoryId(int cid)
+        {
+            List<Book> books = (from book in db.Books
+                                where book.CategoryId == cid
+                                select book).ToList();
+            return books;
+        }
+
         // PUT: api/Books/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutBook(int id, Book book)
