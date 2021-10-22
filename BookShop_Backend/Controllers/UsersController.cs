@@ -85,22 +85,6 @@ namespace BookShop_Backend.Controllers
             return CreatedAtRoute("DefaultApi", new { id = user.id }, user);
         }
 
-        // DELETE: api/Users/5
-        [ResponseType(typeof(User))]
-        public IHttpActionResult DeleteUser(int id)
-        {
-            User user = db.Users.Find(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            db.Users.Remove(user);
-            db.SaveChanges();
-
-            return Ok(user);
-        }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -116,25 +100,11 @@ namespace BookShop_Backend.Controllers
         }
         public IHttpActionResult ToggleUser(int id1)
         {
-            List<User> query =
-             (from use in db.Users
-              where use.id == id1
-              select use).ToList();
-
-            foreach (var a in query)
-            {
-                if (a.isAdmin.Equals(true))
-                {
-                    a.isAdmin = false;
-                }
-                else
-                {
-                    a.isAdmin = true;
-                }
-            }
+            User user = db.Users.Find(id1);
+            user.isAdmin = !user.isAdmin;
 
             db.SaveChanges();
-            return Ok(query);
+            return Ok(user);
         }
     }
 }
