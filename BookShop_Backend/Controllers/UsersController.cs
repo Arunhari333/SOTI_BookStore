@@ -106,5 +106,20 @@ namespace BookShop_Backend.Controllers
             db.SaveChanges();
             return Ok(user);
         }
+        
+        //public IHttpActionResult Login(string username, string password)
+        //{
+        //    User user =     (from u in db.Users
+        //                        where u.username == username 
+        //                        and u.password == password
+        //                        select u);
+        //    if (username==user.username && password== user.password)
+        //    {
+        //        return Ok(user);
+        //    }
+        //    return NotFound();
+        //}
+
+
     }
 }
