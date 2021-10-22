@@ -169,9 +169,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202110221040080_createDB.cs" />
-    <Compile Include="Migrations\202110221040080_createDB.Designer.cs">
-      <DependentUpon>202110221040080_createDB.cs</DependentUpon>
+    <Compile Include="Migrations\202110221905491_createDB.cs" />
+    <Compile Include="Migrations\202110221905491_createDB.Designer.cs">
+      <DependentUpon>202110221905491_createDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDBContext.cs" />
@@ -276,8 +276,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202110221040080_createDB.resx">
-      <DependentUpon>202110221040080_createDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202110221905491_createDB.resx">
+      <DependentUpon>202110221905491_createDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

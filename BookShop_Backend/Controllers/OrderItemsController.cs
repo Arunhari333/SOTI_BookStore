@@ -114,5 +114,41 @@ namespace BookShop_Backend.Controllers
         {
             return db.OrderItem.Count(e => e.id == id) > 0;
         }
+
+
+
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PutQty(int id, int qty)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            OrderItem item = db.OrderItem.Find(id);
+            if (item == null)
+            {
+                return BadRequest();
+            }
+            item.qty = qty;
+            db.Entry(item).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!OrderItemExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
     }
 }

@@ -98,15 +98,55 @@ namespace BookShop_Backend.Controllers
         {
             return db.Users.Count(e => e.id == id) > 0;
         }
-        public IHttpActionResult ToggleUser(int id1)
-        {
-            User user = db.Users.Find(id1);
-            user.isAdmin = !user.isAdmin;
+        //public IHttpActionResult ToggleUser(int id1)
+        //{
+        //    User user = db.Users.Find(id1);
+        //    user.isAdmin = !user.isAdmin;
 
-            db.SaveChanges();
-            return Ok(user);
+        //    db.SaveChanges();
+        //    return Ok(user);
+        //}
+
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PutToggle(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            User item = db.Users.Find(id);
+            if (item == null)
+            {
+                return BadRequest();
+            }
+            item.isAdmin = !item.isAdmin;
+            db.Entry(item).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!UserExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
         }
-        
+
+
+
+
+
+
+
         //public IHttpActionResult Login(string username, string password)
         //{
         //    User user =     (from u in db.Users
