@@ -13,8 +13,10 @@ namespace BookShop_Backend.Controllers
         private ApplicationDBContext db = new ApplicationDBContext();
 
         //To do: PlaceOrder() 
-        public IHttpActionResult PlaceOrder(Order order)
+        public IHttpActionResult PlaceOrder(int userId)
         {
+            //find order object using userId
+            Order order = db.Orders.Find(userId);
             // orderDate=currentDate
             order.orderDate = DateTime.Today;
             //estimatedDeliveryDat=Set After 1 week
