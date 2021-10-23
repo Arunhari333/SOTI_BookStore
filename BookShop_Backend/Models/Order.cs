@@ -16,6 +16,7 @@ namespace BookShop_Backend.Models
         public DateTime? orderEstimatedDelivery { get; set; }
         public string transactionId { get; set; }
         public bool complete { get; set; }
+        public double? totalPrice { get; set; }
         public int userId { get; set; }
         [ForeignKey("userId")]
         public virtual User User { get; set; }
@@ -23,5 +24,11 @@ namespace BookShop_Backend.Models
         //public int orderAddress { get; set; }
         //[ForeignKey("orderAddress")]
         //public virtual ShippingAddress ShippingAddress { get; set; }
+
+        public Order(int uId)
+        {
+            userId = uId;
+            complete = false;
+        }
     }
 }
