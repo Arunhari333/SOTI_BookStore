@@ -12,44 +12,44 @@ using BookShop_Backend.Models;
 
 namespace BookShop_Backend.Controllers
 {
-    public class UsersController : ApiController
+    public class OrderItemsController : ApiController
     {
         private ApplicationDBContext db = new ApplicationDBContext();
 
-        // GET: api/Users
-        public IQueryable<User> GetUsers()
+        // GET: api/OrderItems
+        public IQueryable<OrderItem> GetOrderItem()
         {
-            return db.Users;
+            return db.OrderItem;
         }
 
-        // GET: api/Users/5
-        [ResponseType(typeof(User))]
-        public IHttpActionResult GetUser(int id)
+        // GET: api/OrderItems/5
+        [ResponseType(typeof(OrderItem))]
+        public IHttpActionResult GetOrderItem(int id)
         {
-            User user = db.Users.Find(id);
-            if (user == null)
+            OrderItem orderItem = db.OrderItem.Find(id);
+            if (orderItem == null)
             {
                 return NotFound();
             }
 
-            return Ok(user);
+            return Ok(orderItem);
         }
 
-        // PUT: api/Users/5
+        // PUT: api/OrderItems/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutUser(int id, User user)
+        public IHttpActionResult PutOrderItem(int id, OrderItem orderItem)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != user.id)
+            if (id != orderItem.id)
             {
                 return BadRequest();
             }
 
-            db.Entry(user).State = EntityState.Modified;
+            db.Entry(orderItem).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +57,7 @@ namespace BookShop_Backend.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserExists(id))
+                if (!OrderItemExists(id))
                 {
                     return NotFound();
                 }
@@ -70,20 +70,35 @@ namespace BookShop_Backend.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Users
-        [ResponseType(typeof(User))]
-        public IHttpActionResult PostUser(User user)
+        // POST: api/OrderItems
+        [ResponseType(typeof(OrderItem))]
+        public IHttpActionResult PostOrderItem(OrderItem orderItem)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            new Order(user.id);
-            db.Users.Add(user);
+            db.OrderItem.Add(orderItem);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = user.id }, user);
+            return CreatedAtRoute("DefaultApi", new { id = orderItem.id }, orderItem);
+        }
+
+        // DELETE: api/OrderItems/5
+        [ResponseType(typeof(OrderItem))]
+        public IHttpActionResult DeleteOrderItem(int id)
+        {
+            OrderItem orderItem = db.OrderItem.Find(id);
+            if (orderItem == null)
+            {
+                return NotFound();
+            }
+
+            db.OrderItem.Remove(orderItem);
+            db.SaveChanges();
+
+            return Ok(orderItem);
         }
 
         protected override void Dispose(bool disposing)
@@ -95,32 +110,26 @@ namespace BookShop_Backend.Controllers
             base.Dispose(disposing);
         }
 
-        private bool UserExists(int id)
+        private bool OrderItemExists(int id)
         {
-            return db.Users.Count(e => e.id == id) > 0;
+            return db.OrderItem.Count(e => e.id == id) > 0;
         }
-        //public IHttpActionResult ToggleUser(int id1)
-        //{
-        //    User user = db.Users.Find(id1);
-        //    user.isAdmin = !user.isAdmin;
 
-        //    db.SaveChanges();
-        //    return Ok(user);
-        //}
+
 
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutToggle(int id)
+        public IHttpActionResult PutQty(int id, int qty)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            User item = db.Users.Find(id);
+            OrderItem item = db.OrderItem.Find(id);
             if (item == null)
             {
                 return BadRequest();
             }
-            item.isAdmin = !item.isAdmin;
+            item.qty = qty;
             db.Entry(item).State = EntityState.Modified;
 
             try
@@ -129,7 +138,7 @@ namespace BookShop_Backend.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserExists(id))
+                if (!OrderItemExists(id))
                 {
                     return NotFound();
                 }
@@ -141,26 +150,5 @@ namespace BookShop_Backend.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
-
-
-
-
-
-
-
-        //public IHttpActionResult Login(string username, string password)
-        //{
-        //    User user =     (from u in db.Users
-        //                        where u.username == username 
-        //                        and u.password == password
-        //                        select u);
-        //    if (username==user.username && password== user.password)
-        //    {
-        //        return Ok(user);
-        //    }
-        //    return NotFound();
-        //}
-
-
     }
 }
