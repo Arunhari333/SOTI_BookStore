@@ -72,6 +72,7 @@ namespace BookShop_Backend.Controllers
         }
 
         // PUT: api/Books/5
+        // update
         [ResponseType(typeof(void))]
         public IHttpActionResult PutBook(int id, Book book)
         {
@@ -107,6 +108,7 @@ namespace BookShop_Backend.Controllers
         }
 
         // POST: api/Books
+        // add
         [ResponseType(typeof(Book))]
         public IHttpActionResult PostBook(Book book)
         {
