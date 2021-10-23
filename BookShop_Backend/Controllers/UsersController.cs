@@ -109,7 +109,7 @@ namespace BookShop_Backend.Controllers
         //}
 
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutToggle(int id)
+        public IHttpActionResult ToggleUserStatus(int id)
         {
             if (!ModelState.IsValid)
             {

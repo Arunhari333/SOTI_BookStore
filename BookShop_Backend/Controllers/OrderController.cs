@@ -17,9 +17,9 @@ namespace BookShop_Backend.Controllers
         {
             //find order object using userId
             Order order = (Order)(from item in db.Orders
-                          where item.userId == userId
-                          select item);
-        
+                                  where item.userId == userId
+                                  select item);
+
             // orderDate=currentDate
             order.orderDate = DateTime.Today;
             //estimatedDeliveryDat=Set After 1 week
