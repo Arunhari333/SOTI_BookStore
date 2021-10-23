@@ -79,6 +79,7 @@ namespace BookShop_Backend.Controllers
                 return BadRequest(ModelState);
             }
 
+            new Order(user.id);
             db.Users.Add(user);
             db.SaveChanges();
 
