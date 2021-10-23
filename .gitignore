@@ -7,3 +7,4 @@ BookShop_Backend.Tests/bin/
 BookShop_Backend.Tests/obj/
 BookShop_Backend/BookShop_Backend.csproj
 BookShop_Backend/BookShop_Backend.csproj.user
+BookShop_Backend/Web.config
