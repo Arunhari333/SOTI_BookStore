@@ -16,6 +16,7 @@ namespace BookShop_Backend.Models
         public string bookAuthor { get; set; }
         public long ISBN { get; set; }
         public int bookYear { get; set; }
+        public int position { get; set; }
         public string bookDescription { get; set; }
         public bool bookStatus { get; set; }
         public string bookImage { get; set; }
