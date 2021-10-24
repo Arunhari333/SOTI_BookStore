@@ -17,5 +17,6 @@ namespace BookShop_Backend.Models
         [EmailAddress(ErrorMessage = "Enter a valid Email Address")]
         public string email { get; set; }
         public bool isAdmin { get; set; }
+        public bool status { get; set; }
     }
 }

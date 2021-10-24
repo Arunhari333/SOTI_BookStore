@@ -24,15 +24,10 @@ namespace BookShop_Backend.Controllers
 
         // GET: api/Users/5
         [ResponseType(typeof(User))]
-        public IHttpActionResult GetUser(int id)
+        public User GetUser(int id)
         {
             User user = db.Users.Find(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(user);
+            return user;
         }
 
         // PUT: api/Users/5
@@ -120,7 +115,7 @@ namespace BookShop_Backend.Controllers
             {
                 return BadRequest();
             }
-            item.isAdmin = !item.isAdmin;
+            item.status = !item.status;
             db.Entry(item).State = EntityState.Modified;
 
             try
