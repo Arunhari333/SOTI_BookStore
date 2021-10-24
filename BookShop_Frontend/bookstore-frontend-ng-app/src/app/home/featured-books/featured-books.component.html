@@ -1,0 +1,16 @@
+<div class="row">
+    <li *ngFor="let lbook of fbooks">
+     <a [routerLink]="['/books',lbook.id]">
+    <div class="col-lg-4">
+        <img class="thumbnail" src="/assets/images/{{lbook.url}}">
+        <div class="box-element product">
+            <h6><strong> {{lbook.name}}</strong></h6>
+
+            <h4 style="display: inline-block; float: right"><strong>{{lbook.price}}</strong></h4>
+        </div>
+    </div>
+</a>
+</li>
+</div>
+
+   
