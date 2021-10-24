@@ -15,6 +15,7 @@ import { SignupComponent } from './auth/components/signup/signup.component';
 import { ResetPwComponent } from './auth/components/reset-pw/reset-pw.component';
 import { CartComponent } from './shopping/components/cart/cart.component';
 import { CheckoutComponent } from './shopping/components/checkout/checkout.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { CheckoutComponent } from './shopping/components/checkout/checkout.compo
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
