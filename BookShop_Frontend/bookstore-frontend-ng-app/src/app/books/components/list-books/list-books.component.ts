@@ -13,7 +13,7 @@ export class ListBooksComponent implements OnInit {
   }
 
 
-  fbooks: any[] = [
+  books: any[] = [
     {
       "name": "Maths",
       "price" : 30,

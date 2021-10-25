@@ -4,7 +4,6 @@
 
         <a class="btn btn-outline-dark"  routerLinkActive="active"
                  [routerLinkActiveOptions]="{exact: true}" routerLink="/books">&#x2190; Continue Shopping</a>
-        <!-- removed href="{% url 'store' %}" as not working -->
         <br>
         <br>
         <table class="table">
@@ -32,14 +31,15 @@
             </div>
             
             <div class="cart-row" *ngFor="let order of torders">
-              <a routerLink routerLink="/books/{{order.id}}">  <div style="flex:2"><img class="row-image" src="/assets/images/{{order.url}}"></div></a>
+                <div style="flex:2">
+                  <a routerLink routerLink="/books/{{order.id}}">
+                    <img class="row-image" src="/assets/images/{{order.url}}">
+                  </a>
+                </div>
                 <div style="flex:2"><p>{{order.bookname}}</p></div>
                 <div style="flex:1"><p>{{order.price}}</p></div>
                 <div style="flex:1">
-                    <p class="quantity">{{order.qty}}</p>
-                    <div class="quantity">
-
-                    </div>
+                    <input type="number" [value]="order.qty" id="qty">
                 </div>
                 <div style="flex:1"><p>{{(order.price * order.qty)}}</p></div>
 

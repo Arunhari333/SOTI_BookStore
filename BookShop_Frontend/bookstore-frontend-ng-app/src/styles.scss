@@ -76,22 +76,8 @@ h1,h2,h3,h4,h5,h6{
 
 }
 
-.quantity{
-	display: inline-block;
-	font-weight: 700;
-	padding-right:10px;
-}
-
-.chg-quantity{
-	width: 12px;
-	cursor: pointer;
-	display: block;
-	margin-top: 5px;
-	transition:.1s;
-}
-
-.chg-quantity:hover{
-	opacity: .6;
+#qty{
+    width: 60px;
 }
 
 .hidden{
