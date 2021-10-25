@@ -8,16 +8,28 @@ using System.Web.Http;
 
 namespace BookShop_Backend.Controllers
 {
+    [RoutePrefix("api/Order")]
     public class OrderController : ApiController
     {
         private ApplicationDBContext db = new ApplicationDBContext();
 
+        [Route("UserOrders/{userId:int}")]
+        public IEnumerable<Order> GetOrdersByUser(int userId)
+        {
+            List<Order> orders = ((List<Order>)(from item in db.Orders
+                                  where item.userId == userId
+                                  select item));
+            return orders;
+        }
+
         //To do: PlaceOrder() 
+        [Route("PlaceOrder/{id:int}")]
+        [HttpPut]
         public IHttpActionResult PlaceOrder(int userId)
         {
             //find order object using userId
             Order order = (Order)(from item in db.Orders
-                                  where item.userId == userId
+                                  where item.userId == userId && item.complete == false
                                   select item);
 
             // orderDate=currentDate

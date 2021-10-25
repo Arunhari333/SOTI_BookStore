@@ -12,17 +12,20 @@ using BookShop_Backend.Models;
 
 namespace BookShop_Backend.Controllers
 {
+    [RoutePrefix("api/Users")]
     public class UsersController : ApiController
     {
         private ApplicationDBContext db = new ApplicationDBContext();
 
         // GET: api/Users
+        [Route("")]
         public IQueryable<User> GetUsers()
         {
             return db.Users;
         }
 
         // GET: api/Users/5
+        [Route("{id:int}")]
         [ResponseType(typeof(User))]
         public User GetUser(int id)
         {
@@ -31,6 +34,8 @@ namespace BookShop_Backend.Controllers
         }
 
         // PUT: api/Users/5
+        [Route("{id:int}")]
+        [HttpPut]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutUser(int id, User user)
         {
@@ -62,11 +67,13 @@ namespace BookShop_Backend.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return StatusCode(HttpStatusCode.OK);
         }
 
         // POST: api/Users
-        [ResponseType(typeof(User))]
+        [Route("")]
+        [HttpPost]
+        [ResponseType(typeof(void))]
         public IHttpActionResult PostUser(User user)
         {
             if (!ModelState.IsValid)
@@ -74,35 +81,19 @@ namespace BookShop_Backend.Controllers
                 return BadRequest(ModelState);
             }
 
-            new Order(user.id);
             db.Users.Add(user);
+
+            Order order = new Order(user.id);
+            db.Orders.Add(order);
+
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = user.id }, user);
+            //return CreatedAtRoute("DefaultApi", new { id = user.id }, user);
+            return StatusCode(HttpStatusCode.OK);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool UserExists(int id)
-        {
-            return db.Users.Count(e => e.id == id) > 0;
-        }
-        //public IHttpActionResult ToggleUser(int id1)
-        //{
-        //    User user = db.Users.Find(id1);
-        //    user.isAdmin = !user.isAdmin;
-
-        //    db.SaveChanges();
-        //    return Ok(user);
-        //}
-
+        [Route("ToggleStatus/{id:int}")]
+        [HttpPut]
         [ResponseType(typeof(void))]
         public IHttpActionResult ToggleUserStatus(int id)
         {
@@ -134,14 +125,22 @@ namespace BookShop_Backend.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return StatusCode(HttpStatusCode.OK);
         }
 
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
-
-
-
-
+        private bool UserExists(int id)
+        {
+            return db.Users.Count(e => e.id == id) > 0;
+        }
 
         //public IHttpActionResult Login(string username, string password)
         //{
@@ -155,7 +154,5 @@ namespace BookShop_Backend.Controllers
         //    }
         //    return NotFound();
         //}
-
-
     }
 }

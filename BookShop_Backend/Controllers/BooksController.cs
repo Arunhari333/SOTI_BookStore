@@ -12,17 +12,20 @@ using BookShop_Backend.Models;
 
 namespace BookShop_Backend.Controllers
 {
+    [RoutePrefix("api/Books")]
     public class BooksController : ApiController
     {
         private ApplicationDBContext db = new ApplicationDBContext();
 
         // GET: api/Books
+        [Route("")]
         public IQueryable<Book> GetBooks()
         {
             return db.Books;
         }
 
         // GET: api/Books/5
+        [Route("{id:int}")]
         [ResponseType(typeof(Book))]
         public IHttpActionResult GetBook(int id)
         {
@@ -36,25 +39,28 @@ namespace BookShop_Backend.Controllers
         }
 
         //GET: api/Books/name=""
+        [Route("SearchByName/{name}")]
         public IEnumerable<Book> GetBookByName(string name)
         {
             List<Book> books = (from book in db.Books
-                                where book.bookTitle == name
+                                where book.bookTitle.Contains(name)
                                 select book).ToList();
             return books;
         }
 
         //GET: api/Books/author=""
+        [Route("SearchByAuthor/{author}")]
         public IEnumerable<Book> GetBookByAuthor(string author)
         {
             List<Book> books = (from book in db.Books
-                                where book.bookAuthor == author
+                                where book.bookAuthor.Contains(author)
                                 select book).ToList();
             return books;
         }
 
         //GET: api/Books/isbn=5
-        public IEnumerable<Book> GetBookByISBN(int isbn)
+        [Route("SearchByISBN/{isbn}")]
+        public IEnumerable<Book> GetBookByISBN(long isbn)
         {
             List<Book> books = (from book in db.Books
                                 where book.ISBN == isbn
@@ -63,6 +69,7 @@ namespace BookShop_Backend.Controllers
         }
 
         //GET: api/Books/cid=5
+        [Route("SearchByCategoryId/{cid}")]
         public IEnumerable<Book> GetBookByCategoryId(int cid)
         {
             List<Book> books = (from book in db.Books
@@ -73,6 +80,8 @@ namespace BookShop_Backend.Controllers
 
         // PUT: api/Books/5
         // update
+        [Route("{id:int}")]
+        [HttpPut]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutBook(int id, Book book)
         {
@@ -109,6 +118,8 @@ namespace BookShop_Backend.Controllers
 
         // POST: api/Books
         // add
+        [Route("")]
+        [HttpPost]
         [ResponseType(typeof(Book))]
         public IHttpActionResult PostBook(Book book)
         {
@@ -124,6 +135,8 @@ namespace BookShop_Backend.Controllers
         }
 
         // DELETE: api/Books/5
+        [Route("{id:int}")]
+        [HttpDelete]
         [ResponseType(typeof(Book))]
         public IHttpActionResult DeleteBook(int id)
         {

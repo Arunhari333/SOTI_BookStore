@@ -10,9 +10,9 @@ namespace BookShop_Backend.Models
     {
         [Key]
         public int id { get; set; }
-        [Range(3, 20, ErrorMessage = "Username must be between 6 and 20 characters")]
+        [MinLength(3, ErrorMessage = "Username must be between 3 and 20 characters")]
         public string username { get; set; }
-        [Range(6, 25, ErrorMessage = "Password must be at least 6 characters")]
+        [MinLength(6, ErrorMessage = "Password must be at least 6 characters")]
         public string password { get; set; }
         [EmailAddress(ErrorMessage = "Enter a valid Email Address")]
         public string email { get; set; }

@@ -12,17 +12,20 @@ using BookShop_Backend.Models;
 
 namespace BookShop_Backend.Controllers
 {
+    [RoutePrefix("api/Shipping")]
     public class ShippingController : ApiController
     {
         private ApplicationDBContext db = new ApplicationDBContext();
 
         // GET: api/Shipping
+        [Route("")]
         public IQueryable<ShippingAddress> GetShippingAddress()
         {
             return db.ShippingAddress;
         }
 
         // GET: api/Shipping/5
+        [Route("{id:int}")]
         [ResponseType(typeof(ShippingAddress))]
         public IHttpActionResult GetShippingAddress(int id)
         {
@@ -36,6 +39,8 @@ namespace BookShop_Backend.Controllers
         }
 
         // POST: api/Shipping
+        [Route("{id:int}")]
+        [HttpPost]
         [ResponseType(typeof(ShippingAddress))]
         public IHttpActionResult PostShippingAddress(ShippingAddress shippingAddress)
         {
@@ -51,6 +56,8 @@ namespace BookShop_Backend.Controllers
         }
 
         // DELETE: api/Shipping/5
+        [Route("{id:int}")]
+        [HttpDelete]
         [ResponseType(typeof(ShippingAddress))]
         public IHttpActionResult DeleteShippingAddress(int id)
         {

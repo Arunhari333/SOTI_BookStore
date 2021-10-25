@@ -12,17 +12,20 @@ using BookShop_Backend.Models;
 
 namespace BookShop_Backend.Controllers
 {
+    [RoutePrefix("api/Categories")]
     public class CategoriesController : ApiController
     {
         private ApplicationDBContext db = new ApplicationDBContext();
 
         // GET: api/Categories
+        [Route("")]
         public IQueryable<Category> GetCategories()
         {
             return db.Categories;
         }
 
         // GET: api/Categories/5
+        [Route("{id:int}")]
         [ResponseType(typeof(Category))]
         public IHttpActionResult GetCategory(int id)
         {
@@ -36,6 +39,8 @@ namespace BookShop_Backend.Controllers
         }
 
         // PUT: api/Categories/5
+        [Route("{id:int}")]
+        [HttpPut]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutCategory(int id, Category category)
         {
@@ -71,6 +76,8 @@ namespace BookShop_Backend.Controllers
         }
 
         // POST: api/Categories
+        [Route("")]
+        [HttpPost]
         [ResponseType(typeof(Category))]
         public IHttpActionResult PostCategory(Category category)
         {
@@ -86,6 +93,8 @@ namespace BookShop_Backend.Controllers
         }
 
         // DELETE: api/Categories/5
+        [Route("{id:int}")]
+        [HttpDelete]
         [ResponseType(typeof(Category))]
         public IHttpActionResult DeleteCategory(int id)
         {

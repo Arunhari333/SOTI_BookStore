@@ -12,17 +12,20 @@ using BookShop_Backend.Models;
 
 namespace BookShop_Backend.Controllers
 {
+    [RoutePrefix("api/OrderItems")]
     public class OrderItemsController : ApiController
     {
         private ApplicationDBContext db = new ApplicationDBContext();
 
         // GET: api/OrderItems
+        [Route("")]
         public IQueryable<OrderItem> GetOrderItem()
         {
             return db.OrderItem;
         }
 
         // GET: api/OrderItems/5
+        [Route("{id:int}")]
         [ResponseType(typeof(OrderItem))]
         public IHttpActionResult GetOrderItem(int id)
         {
@@ -36,6 +39,8 @@ namespace BookShop_Backend.Controllers
         }
 
         // PUT: api/OrderItems/5
+        [Route("{id:int}")]
+        [HttpPut]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutOrderItem(int id, OrderItem orderItem)
         {
@@ -71,6 +76,8 @@ namespace BookShop_Backend.Controllers
         }
 
         // POST: api/OrderItems
+        [Route("")]
+        [HttpPost]
         [ResponseType(typeof(OrderItem))]
         public IHttpActionResult PostOrderItem(OrderItem orderItem)
         {
@@ -86,6 +93,8 @@ namespace BookShop_Backend.Controllers
         }
 
         // DELETE: api/OrderItems/5
+        [Route("{id:int}")]
+        [HttpDelete]
         [ResponseType(typeof(OrderItem))]
         public IHttpActionResult DeleteOrderItem(int id)
         {
@@ -101,6 +110,42 @@ namespace BookShop_Backend.Controllers
             return Ok(orderItem);
         }
 
+        //[ResponseType(typeof(void))]
+        //[Route("UpdateQty/{id:int}")]
+        //[HttpPut]
+        //public IHttpActionResult PutQty(int id, int qty)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
+        //    OrderItem item = db.OrderItem.Find(id);
+        //    if (item == null)
+        //    {
+        //        return BadRequest();
+        //    }
+        //    item.qty = qty;
+        //    db.Entry(item).State = EntityState.Modified;
+
+        //    try
+        //    {
+        //        db.SaveChanges();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!OrderItemExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
+
+        //    return StatusCode(HttpStatusCode.NoContent);
+        //}
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -113,42 +158,6 @@ namespace BookShop_Backend.Controllers
         private bool OrderItemExists(int id)
         {
             return db.OrderItem.Count(e => e.id == id) > 0;
-        }
-
-
-
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutQty(int id, int qty)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            OrderItem item = db.OrderItem.Find(id);
-            if (item == null)
-            {
-                return BadRequest();
-            }
-            item.qty = qty;
-            db.Entry(item).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!OrderItemExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
         }
     }
 }
