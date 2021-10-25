@@ -16,6 +16,8 @@ import { CheckoutComponent } from './shopping/components/checkout/checkout.compo
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FeaturedBooksComponent } from './home/featured-books/featured-books.component';
 import { ListBooksComponent } from './books/components/list-books/list-books.component';
+import { SearchBooksComponent } from './books/components/list-books/components/search-books/search-books.component';
+
 
 
 @NgModule({
@@ -33,6 +35,7 @@ import { ListBooksComponent } from './books/components/list-books/list-books.com
     CheckoutComponent,
     FeaturedBooksComponent,
     ListBooksComponent,
+    SearchBooksComponent
   ],
   imports: [
     BrowserModule,
