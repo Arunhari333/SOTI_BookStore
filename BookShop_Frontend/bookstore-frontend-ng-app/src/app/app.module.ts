@@ -15,6 +15,7 @@ import { CartComponent } from './shopping/components/cart/cart.component';
 import { CheckoutComponent } from './shopping/components/checkout/checkout.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FeaturedBooksComponent } from './home/featured-books/featured-books.component';
+import { ListBooksComponent } from './books/components/list-books/list-books.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { FeaturedBooksComponent } from './home/featured-books/featured-books.com
     CartComponent,
     CheckoutComponent,
     FeaturedBooksComponent,
+    ListBooksComponent,
   ],
   imports: [
     BrowserModule,
