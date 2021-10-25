@@ -6,6 +6,7 @@ import { BookDetailsComponent } from './books/components/book-details/book-detai
 import { HomeComponent } from './home/home.component';
 import { CartComponent } from './shopping/components/cart/cart.component';
 import { ListBooksComponent } from './books/components/list-books/list-books.component';
+import { CheckoutComponent } from './shopping/components/checkout/checkout.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,7 +15,7 @@ const routes: Routes = [
   { path: 'books/:bookid' ,component:BookDetailsComponent},
   { path: 'cart', component: CartComponent },
   { path: 'books', component: ListBooksComponent },
-
+  { path: 'checkout', component: CheckoutComponent }
 ];
 
 @NgModule({
