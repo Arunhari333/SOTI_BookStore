@@ -1,0 +1,43 @@
+<p>search-books works!</p>
+<div class="container-fluid">
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" data-bs-toggle="tab" data-bs-target="#search-by-name" role="tab"
+         aria-controls="search-by-name" aria-selected="true">Search By Name</a>
+      <a class="nav-item nav-link" data-bs-toggle="tab" data-bs-target="#search-by-category" role="tab" aria-controls="search-by-category"
+         aria-selected="false">Search by Category</a>
+      <a class="nav-item nav-link" data-bs-toggle="tab" data-bs-target="#search-by-author" role="tab" aria-controls="search-by-author"
+         aria-selected="false">Search By Author</a>
+      <a class="nav-item nav-link" data-bs-toggle="tab" data-bs-target="#search-by-isbn" role="tab"
+         aria-controls="search-by-isbn" aria-selected="false">Search By ISBN</a>
+    </div>
+  </nav>
+  <form>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="search-by-name" role="tabpanel"
+           aria-labelledby="search-by-name-tab">
+        <h2>Search By Name</h2>
+        <input type="text" placeholder="Enter name of book">
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+
+      <div class="tab-pane fade" id="search-by-category" role="tabpanel" aria-labelledby="search-by-category-tab">
+        <h2>Search by Category</h2>
+        <input type="text" placeholder="Enter name of book">
+        <button type="submit" class="btn btn-primary" >Search</button>
+      </div>
+
+      <div class="tab-pane fade" id="search-by-author" role="tabpanel" aria-labelledby="search-by-author-tab">
+        <h2>Search By Author</h2>
+        <input type="text" placeholder="Enter name of book">
+        <button type="submit" class="btn btn-primary" >Search</button>
+      </div>
+
+      <div class="tab-pane fade" id="search-by-isbn" role="tabpanel" aria-labelledby="search-by-isbn-tab">
+        <h2>Search By ISBN</h2>
+        <input type="text" placeholder="Enter name of book">
+        <button type="submit" class="btn btn-primary" >Search</button>
+      </div>
+    </div>
+  </form>
+</div>

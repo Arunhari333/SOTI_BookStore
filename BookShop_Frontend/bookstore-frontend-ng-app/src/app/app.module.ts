@@ -14,8 +14,12 @@ import { ResetPwComponent } from './auth/components/reset-pw/reset-pw.component'
 import { CartComponent } from './shopping/components/cart/cart.component';
 import { CheckoutComponent } from './shopping/components/checkout/checkout.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+<<<<<<< Updated upstream
 import { FeaturedBooksComponent } from './home/featured-books/featured-books.component';
 import { ListBooksComponent } from './books/components/list-books/list-books.component';
+=======
+import { SearchBooksComponent } from './books/components/list-books/components/search-books/search-books.component';
+>>>>>>> Stashed changes
 
 
 @NgModule({
@@ -31,8 +35,12 @@ import { ListBooksComponent } from './books/components/list-books/list-books.com
     ResetPwComponent,
     CartComponent,
     CheckoutComponent,
+<<<<<<< Updated upstream
     FeaturedBooksComponent,
     ListBooksComponent,
+=======
+    SearchBooksComponent,
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
