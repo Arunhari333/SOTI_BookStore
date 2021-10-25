@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  torders :any = [
+  orders :any = [
     {
       "bookname": "maths",
       "url": "images.jfif",
@@ -22,18 +22,21 @@ export class CartComponent implements OnInit {
       "id": 5
     }
   ]
-   total!: number;
+
+  total!: number;
   constructor() {}
 
   ngOnInit() {
-    this.total =0;
-    for(let i=0; i< this.torders.length;i++){
-      this.total = this.total + (this.torders[i].price * this.torders[i].qty)
+    this.calculateTotal();
+  }
+  
+  calculateTotal() {
+    this.total = 0;
+    for(let i=0; i< this.orders.length;i++){
+      this.total = this.total + (this.orders[i].price * this.orders[i].qty)
     }
     console.log(this.total);
   }
-  
-  
 }
 
 

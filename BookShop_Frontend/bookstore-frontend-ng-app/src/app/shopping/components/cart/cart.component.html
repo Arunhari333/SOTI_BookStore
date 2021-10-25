@@ -1,50 +1,57 @@
 <div class="row">
-    <div class="col-lg-12">
-      <div class="box-element">
+  <div class="col-lg-12">
+    <div class="box-element">
+      <a class="btn btn-outline-dark" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+        routerLink="/books">&#x2190; Continue Shopping</a>
+      <br>
+      <br>
+      <table class="table">
+        <tr>
+          <th>
+            <h5>Items: <strong>{{orders.length}}</strong></h5>
+          </th>
+          <th>
+            <h5>Grand Total:<strong> {{total}}</strong></h5>
+          </th>
+          <th>
+            <a style="float:right; margin:5px;" class="btn btn-outline-dark" routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact: true}" routerLink="/checkout">Checkout</a>
+          </th>
+        </tr>
+      </table>
+    </div>
 
-        <a class="btn btn-outline-dark"  routerLinkActive="active"
-                 [routerLinkActiveOptions]="{exact: true}" routerLink="/books">&#x2190; Continue Shopping</a>
-        <br>
-        <br>
-        <table class="table">
-          <tr>
-            <th><h5>Items: <strong>{{torders.length}}</strong></h5></th>
-            <th><h5>Total:<strong> {{total}}</strong></h5></th>
-            <th>
-              <a style="float:right; margin:5px;" class="btn btn-outline-dark" routerLinkActive="active"
-                 [routerLinkActiveOptions]="{exact: true}" routerLink="/checkout">Checkout</a>
-            </th>
-          </tr>
-        </table>
+    <br>
+    <div class="box-element">
 
+      <div class="cart-row">
+        <div style="flex:2"></div>
+        <div style="flex:2"><strong>Item</strong></div>
+        <div style="flex:1"><strong>Price</strong></div>
+        <div style="flex:1"><strong>Quantity</strong></div>
+        <div style="flex:1"><strong>Total</strong></div>
       </div>
 
-        <br>
-        <div class="box-element">
-
-            <div class="cart-row">
-                <div style="flex:2"></div>
-                <div style="flex:2"><strong>Item</strong></div>
-                <div style="flex:1"><strong>Price</strong></div>
-                <div style="flex:1"><strong>Quantity</strong></div>
-                <div style="flex:1"><strong>Total</strong></div>
-            </div>
-            
-            <div class="cart-row" *ngFor="let order of torders">
-                <div style="flex:2">
-                  <a routerLink routerLink="/books/{{order.id}}">
-                    <img class="row-image" src="/assets/images/{{order.url}}">
-                  </a>
-                </div>
-                <div style="flex:2"><p>{{order.bookname}}</p></div>
-                <div style="flex:1"><p>{{order.price}}</p></div>
-                <div style="flex:1">
-                    <input type="number" [value]="order.qty" id="qty">
-                </div>
-                <div style="flex:1"><p>{{(order.price * order.qty)}}</p></div>
-
-            </div>
-
+      <div class="cart-row" *ngFor="let order of orders">
+        <div style="flex:2">
+          <a routerLink routerLink="/books/{{order.id}}">
+            <img class="row-image" src="/assets/images/{{order.url}}">
+          </a>
         </div>
+        <div style="flex:2">
+          <p>{{order.bookname}}</p>
+        </div>
+        <div style="flex:1">
+          <p>{{order.price}}</p>
+        </div>
+        <div style="flex:1">
+          <input type="number" [(ngModel)]="order.qty" id="qty" (change)="calculateTotal()">
+        </div>
+        <div style="flex:1">
+          <p>{{(order.price * order.qty)}}</p>
+        </div>
+      </div>
+
     </div>
+  </div>
 </div>
