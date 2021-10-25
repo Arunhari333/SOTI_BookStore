@@ -33,7 +33,7 @@
                 </div>
 
                 <hr>
-                <input id="form-button" class="btn btn-success btn-block" type="submit" value="Continue">
+                <input id="form-button" class="btn btn-outline-dark" type="submit" value="Continue">
             </form>
         </div>
 
@@ -52,14 +52,14 @@
             <hr>
             <h3>Order Summary</h3>
             <hr>
-            <div class="cart-row">
-                <div style="flex:2"><img class="row-image" src="../../../../assets/images/placeholder.png"></div>
-                <div style="flex:2"><p>Product 1</p></div>
-                <div style="flex:1"><p>$20.00</p></div>
-                <div style="flex:1"><p>x2</p></div>
+            <div class="cart-row" *ngFor="let item of orders">
+                <div style="flex:2"><img class="row-image" src="/assets/images/{{item.url}}"></div>
+                <div style="flex:2"><p>{{item.name}}</p></div>
+                <div style="flex:1"><p>{{item.price}}</p></div>
+                <div style="flex:1"><p>x{{item.qty}}</p></div>
             </div>
-            <h5>Items:   2</h5>
-            <h5>Total:   $4</h5>
+            <h5>Items:   {{totalOrders}}</h5>
+            <h5>Total:   {{totalCost}}</h5>
         </div>
     </div>
 </div>
