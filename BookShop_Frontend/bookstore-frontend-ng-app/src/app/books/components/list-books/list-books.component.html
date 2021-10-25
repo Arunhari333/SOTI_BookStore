@@ -1,14 +1,11 @@
-<app-search-books></app-search-books>
 <div class="row">
-  <a [routerLink]="['/books',lbook.id]" *ngFor="let lbook of fbooks">
-    <div class="col-lg-4">
-      <img class="thumbnail" src="/assets/images/{{lbook.url}}">
-      <div class="box-element product">
-        <h6><strong> {{lbook.name}}</strong></h6>
-
-        <h4 style="display: inline-block;"><strong>{{lbook.price}}</strong></h4>
-      </div>
-    </div>
-  </a>
+  <div class="col-lg-4" *ngFor="let lbook of fbooks">
+      <a [routerLink]="['/books',lbook.id]">
+          <img class="thumbnail" src="/assets/images/{{lbook.url}}">
+          <div class="box-element product">
+              <h6><strong> {{lbook.name}}</strong></h6>
+              <h4 style="display: inline-block;"><strong>{{lbook.price}}</strong></h4>
+          </div>
+      </a>
+  </div>
 </div>
-

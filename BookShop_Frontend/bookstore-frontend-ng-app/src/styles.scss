@@ -1,3 +1,6 @@
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
 body{
 	background-color: hsl(0, 0%, 98%);
 }
@@ -77,8 +80,6 @@ h1,h2,h3,h4,h5,h6{
 	display: inline-block;
 	font-weight: 700;
 	padding-right:10px;
-	
-
 }
 
 .chg-quantity{
@@ -93,9 +94,6 @@ h1,h2,h3,h4,h5,h6{
 	opacity: .6;
 }
 
-
 .hidden{
 	display: none!important;
 }
-/* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
