@@ -1,4 +1,4 @@
-<p>search-books works!</p>
+
 <div class="container-fluid">
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -17,26 +17,38 @@
       <div class="tab-pane fade show active" id="search-by-name" role="tabpanel"
            aria-labelledby="search-by-name-tab">
         <h2>Search By Name</h2>
-        <input type="text" placeholder="Enter name of book">
-        <button type="submit" class="btn btn-primary">Search</button>
+        <div class="input-group">
+          <input type="search" class="form-control rounded" placeholder="Enter name of book" aria-label="Search"
+                 aria-describedby="search-addon" />
+          <button type="button" class="btn btn-outline-primary">Search</button>
+        </div>
       </div>
 
       <div class="tab-pane fade" id="search-by-category" role="tabpanel" aria-labelledby="search-by-category-tab">
         <h2>Search by Category</h2>
-        <input type="text" placeholder="Enter name of book">
-        <button type="submit" class="btn btn-primary" >Search</button>
+        <div class="input-group">
+          <input type="search" class="form-control rounded" placeholder="Enter category of book" aria-label="Search"
+                 aria-describedby="search-addon" />
+          <button type="button" class="btn btn-outline-primary">Search</button>
+        </div>
       </div>
 
       <div class="tab-pane fade" id="search-by-author" role="tabpanel" aria-labelledby="search-by-author-tab">
         <h2>Search By Author</h2>
-        <input type="text" placeholder="Enter name of book">
-        <button type="submit" class="btn btn-primary" >Search</button>
+        <div class="input-group">
+          <input type="search" class="form-control rounded" placeholder="Enter author of book" aria-label="Search"
+                 aria-describedby="search-addon" />
+          <button type="button" class="btn btn-outline-primary">Search</button>
+        </div>
       </div>
 
       <div class="tab-pane fade" id="search-by-isbn" role="tabpanel" aria-labelledby="search-by-isbn-tab">
         <h2>Search By ISBN</h2>
-        <input type="text" placeholder="Enter name of book">
-        <button type="submit" class="btn btn-primary" >Search</button>
+        <div class="input-group">
+          <input type="search" class="form-control rounded" placeholder="Enter ISBN of book" aria-label="Search"
+                 aria-describedby="search-addon" />
+          <button type="button" class="btn btn-outline-primary">Search</button>
+        </div>
       </div>
     </div>
   </form>
