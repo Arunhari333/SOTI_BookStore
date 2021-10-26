@@ -17,7 +17,7 @@ export class BookDetailsComponent implements OnInit {
 
     let id=this.route.snapshot.paramMap.get('id');
 
-    this.bookService.getUserById(id)
+    this.bookService.getBookById(id)
     .subscribe((res:any)=>{
       console.log(res);
       this.bookData=res;

@@ -21,10 +21,10 @@ export class BookService {
 
 
 
-  getUserById(BookId:string |null):any{
+  getBookById(BookId:string |null):any{
     console.log(BookId);
-    let userIdURL = `https://localhost:44374/api/Books/${BookId}`;
-    return this.http.get(userIdURL)
+    let bookIdURL = `https://localhost:44374/api/Books/${BookId}`;
+    return this.http.get(bookIdURL)
     .pipe(map((res:any)=>{
       console.log(res);
       return res;
