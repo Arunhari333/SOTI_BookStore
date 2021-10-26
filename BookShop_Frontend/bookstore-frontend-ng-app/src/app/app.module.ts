@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
-import { FooterComponent } from './shared/footer/footer.component';
+
 import { MenuComponent } from './shared/menu/menu.component';
 import { HomeComponent } from './home/home.component';
 import { BookDetailsComponent } from './books/components/book-details/book-details.component';
@@ -18,6 +18,7 @@ import { FeaturedBooksComponent } from './home/featured-books/featured-books.com
 import { ListBooksComponent } from './books/components/list-books/list-books.component';
 import { SearchBooksComponent } from './books/components/list-books/components/search-books/search-books.component';
 import { FormsModule } from '@angular/forms';
+import { FooterComponent } from './shared/footer/footer.component';
 
 
 

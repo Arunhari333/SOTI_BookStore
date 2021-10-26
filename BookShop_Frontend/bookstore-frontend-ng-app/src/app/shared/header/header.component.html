@@ -1,47 +1,110 @@
-<nav class="navbar fixed-top navbar-expand-md flex-nowrap navbar-new-top">
-    <a href="/" class="navbar-brand"><img src="#" alt=""/>SOTI Book Store</a>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center justify-content-lg-between">
+
+      <h1 class="logo me-auto me-lg-0"><a href="index.html">SOTI Book Store <span>.</span></a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link active" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/">Home</a></li>
+          <li><a class="nav-link" routerLinkActive="active" routerLink="/about">About</a></li>
+          <li><a class="nav-link" href="#contact">Contact</a></li>
+          <li><a class="nav-link" routerLinkActive="active" routerLink="/books">Books</a></li>
+          <li><a class="nav-link" href="#team">Team</a></li>
+          <li class="dropdown">
+            <a href="#">
+              <span>Categories</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+              </svg>
+            </a>
+            <ul>
+              <li><a href="#">Maths</a></li>
+              <li class="dropdown">
+                <a href="#">
+                  <span>Science</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                  </svg>
+                </a>
+                <ul>
+                  <li><a href="#">Chemistry</a></li>
+                  <li><a href="#">Biology</a></li>
+                  <li><a href="#">Zoology</a></li>
+                  <li><a href="#">Physics</a></li>
+                  <!--<li><a href="#">Deep Drop Down 5</a></li>-->
+                </ul>
+              </li>
+              <li><a href="#">English Grammar</a></li>
+              <li><a href="#">Fiction</a></li>
+              <li><a href="#">Non-Fiction</a></li>
+            </ul>
+          </li>
+
+          <li><a class="nav-link scrollto" routerLinkActive="active" routerLink="/login">Login</a></li>
+          <li><a class="nav-link" routerLinkActive="active" routerLink="/signup">SignUp</a></li>
+          <li><a class="nav-link " routerLinkActive="active" routerLink="/cart">Go to Cart<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+  <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+</svg>
+
+            </a>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <!--<a href="#about" class="get-started-btn scrollto">Get Started</a>-->
+
+    </div>
+  </header>
+  <!-- End Header -->
+
+
+  <!--<nav class="navbar fixed-top navbar-expand-md flex-nowrap navbar-new-top">
+    <a href="/" class="navbar-brand"><img src="#" alt="" />SOTI Book Store</a>
     <ul class="nav navbar-nav mr-auto"></ul>
     <ul class="navbar-nav flex-row">
-    
-        <app-menu>
-            <li class="nav-item">
-                <a class="nav-link " routerLinkActive="active" routerLink="/cart">
-                    <img src="\assets\images\book (2).png" class="img-responsive">
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLinkActive="active" routerLink="/login">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLinkActive="active" routerLink="/signup">SignUp</a>
-            </li>
-        </app-menu>
-        
+
+      <app-menu>
+        <li class="nav-item">
+          <a class="nav-link " routerLinkActive="active" routerLink="/cart">
+            <img src="\assets\images\book (2).png" class="img-responsive">
+          </a>
+
+          <a class="nav-link" routerLinkActive="active" routerLink="/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/signup">SignUp</a>
+        </li>
+      </app-menu>
+
     </ul>
-    
-</nav>
-<nav class="navbar fixed-top navbar-expand-md navbar-new-bottom">
+
+  </nav>
+  <nav class="navbar fixed-top navbar-expand-md navbar-new-bottom">
     <div class="navbar-collapse collapse pt-2 pt-md-0" id="navbar2">
 
-        <ul class="navbar-nav w-100 justify-content-center px-3">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link">Link</a>
-            </li>
-        </ul>
+      <ul class="navbar-nav w-100 justify-content-center px-3">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Link</a>
+        </li>
+      </ul>
     </div>
-</nav>
+  </nav>-->
