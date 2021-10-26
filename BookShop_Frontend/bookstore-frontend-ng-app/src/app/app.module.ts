@@ -19,6 +19,7 @@ import { ListBooksComponent } from './books/components/list-books/list-books.com
 import { SearchBooksComponent } from './books/components/list-books/components/search-books/search-books.component';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './shared/footer/footer.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -43,7 +44,8 @@ import { FooterComponent } from './shared/footer/footer.component';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
