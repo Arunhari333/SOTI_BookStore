@@ -7,11 +7,13 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using BookShop_Backend.Models;
 
 namespace BookShop_Backend.Controllers
 {
+    [EnableCors(origins: "http://localhost:4200/", headers:"*", methods:"*")]
     [RoutePrefix("api/Books")]
     public class BooksController : ApiController
     {

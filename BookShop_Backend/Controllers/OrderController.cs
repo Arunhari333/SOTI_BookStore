@@ -5,9 +5,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace BookShop_Backend.Controllers
 {
+    [EnableCors(origins: "http://localhost:4200/", headers:"*", methods:"*")]
     [RoutePrefix("api/Order")]
     public class OrderController : ApiController
     {
