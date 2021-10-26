@@ -1,11 +1,22 @@
 <nav class="navbar fixed-top navbar-expand-md flex-nowrap navbar-new-top">
-    <a href="/" class="navbar-brand"><img src="#" alt=""/>Some Book Store</a>
+    <a href="/" class="navbar-brand"><img src="#" alt=""/>SOTI Book Store</a>
     <ul class="nav navbar-nav mr-auto"></ul>
     <ul class="navbar-nav flex-row">
     
-        <app-menu></app-menu>
-
-        <li><a href="/cart"><img src="\assets\images\book (2).png" class="img-responsive"></a></li>
+        <app-menu>
+            <li class="nav-item">
+                <a class="nav-link " routerLinkActive="active" routerLink="/cart">
+                    <img src="\assets\images\book (2).png" class="img-responsive">
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" routerLink="/login">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" routerLink="/signup">SignUp</a>
+            </li>
+        </app-menu>
+        
     </ul>
     
 </nav>
