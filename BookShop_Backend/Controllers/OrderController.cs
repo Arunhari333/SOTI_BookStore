@@ -17,9 +17,9 @@ namespace BookShop_Backend.Controllers
         [Route("UserOrders/{userId:int}")]
         public IEnumerable<Order> GetOrdersByUser(int userId)
         {
-            List<Order> orders = ((List<Order>)(from item in db.Orders
-                                  where item.userId == userId
-                                  select item));
+            var orders = (from item in db.Orders
+                          where item.userId == userId
+                          select item).ToList();
             return orders;
         }
 
@@ -29,9 +29,9 @@ namespace BookShop_Backend.Controllers
         public IHttpActionResult PlaceOrder(int userId)
         {
             //find order object using userId
-            Order order = (Order)(from item in db.Orders
-                                  where item.userId == userId && item.complete == false
-                                  select item);
+            Order order = (from item in db.Orders
+                         where item.userId == userId && item.complete == false
+                         select item).SingleOrDefault();
 
             // orderDate=currentDate
             order.orderDate = DateTime.Today;
