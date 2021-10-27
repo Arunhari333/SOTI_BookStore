@@ -39,6 +39,27 @@ namespace BookShop_Backend.Controllers
             return Ok(orderItem);
         }
 
+        // GET: api/OrderItems/5
+        [Route("GetByUser/{uid:int}")]
+        [ResponseType(typeof(OrderItem))]
+        public IEnumerable<OrderItem> GetOrderItemsByUser(int uid)
+        {
+            Order order = (from item in db.Orders
+                           where item.userId == uid && item.complete == false
+                           select item).SingleOrDefault();
+
+            if (order == null)
+            {
+                return null;
+            }
+
+            var orderItems = (from item in db.OrderItem
+                              where item.orderId == order.id
+                              select item).ToList();
+
+            return orderItems;
+        }
+
         // PUT: api/OrderItems
         [Route("")]
         [HttpPatch]

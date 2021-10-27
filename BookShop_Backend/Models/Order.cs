@@ -25,6 +25,11 @@ namespace BookShop_Backend.Models
         //[ForeignKey("orderAddress")]
         //public virtual ShippingAddress ShippingAddress { get; set; }
 
+        public Order()
+        {
+
+        }
+
         public Order(int uId)
         {
             userId = uId;
