@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -9,6 +10,7 @@ namespace BookShop_Backend.Models
     public class User
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
         [MinLength(3, ErrorMessage = "Username must be between 3 and 20 characters")]
         public string username { get; set; }
@@ -18,5 +20,11 @@ namespace BookShop_Backend.Models
         public string email { get; set; }
         public bool isAdmin { get; set; }
         public bool status { get; set; }
+
+        public User()
+        {
+            isAdmin = false;
+            status = true;
+        }
     }
 }

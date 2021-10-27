@@ -41,16 +41,16 @@
           </a>
         </div>
         <div style="flex:2">
-          <p>{{order.bookname}}</p>
+          <p>{{order.Book.bookTitle}}</p>
         </div>
         <div style="flex:1">
-          <p>{{order.price}}</p>
+          <p>{{order.Book.bookPrice}}</p>
         </div>
         <div style="flex:1">
           <input type="number" min="0" [(ngModel)]="order.qty" id="qty" (change)="calculateTotal()">
         </div>
         <div style="flex:1">
-          <p>{{(order.price * order.qty)}}</p>
+          <p>{{(order.Book.bookPrice * order.qty)}}</p>
         </div>
         
         <div style="flex:1;">

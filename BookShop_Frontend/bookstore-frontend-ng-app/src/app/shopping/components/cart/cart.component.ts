@@ -7,45 +7,40 @@ import { ShoppingService } from '../../services/shopping.service';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  orders :any = [
-    {
-      "bookname": "maths",
-      "url": "images.jfif",
-      "price": 250,
-      "qty": 2,
-      "id": 4
-    },
-    {
-      "bookname": "Science",
-      "url": "images.jfif",
-      "price": 400,
-      "qty": 1,
-      "id": 5
-    }
-  ]
+  // orders :any = [
+  //   {
+  //     "bookname": "maths",
+  //     "url": "images.jfif",
+  //     "price": 250,
+  //     "qty": 2,
+  //     "id": 4
+  //   },
+  //   {
+  //     "bookname": "Science",
+  //     "url": "images.jfif",
+  //     "price": 400,
+  //     "qty": 1,
+  //     "id": 5
+  //   }
+  // ]
+  orders: any[] = []
 
   total!: number;
   constructor(private shoppingService: ShoppingService) {}
 
   ngOnInit() {
-    this.calculateTotal();
-    
     this.shoppingService.getOrderItems()
       .subscribe((res: any) => {
         console.log(res);
-        //this.users = res;
-      });
-
-    this.shoppingService.deleteOrderItem()
-      .subscribe((res: any) => {
-        console.log(res);
+        this.orders = res;
+        this.calculateTotal();
       });
   }
   
   calculateTotal() {
     this.total = 0;
     for(let i=0; i< this.orders.length;i++){
-      this.total = this.total + (this.orders[i].price * this.orders[i].qty)
+      this.total = this.total + (this.orders[i].Book.bookPrice * this.orders[i].qty)
     }
     console.log(this.total);
   }
@@ -62,13 +57,12 @@ export class CartComponent implements OnInit {
   //     })
   // }
 
-  //confirmdeleteitem(orderItem: any[]) {
-
-  //  this.shoppingService.deleteOrderItem(orderItem)
-  //    .subscribe((res: any) => {
-  //      console.log(res);
-  //  });
-  //}
+  deleteitem(orderItem: any[]) {
+    this.shoppingService.deleteOrderItem()
+        .subscribe((res: any) => {
+          console.log(res);
+        });
+  }
 }
 
 
