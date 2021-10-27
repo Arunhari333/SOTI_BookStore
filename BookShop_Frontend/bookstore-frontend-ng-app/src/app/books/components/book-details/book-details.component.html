@@ -1,4 +1,4 @@
-<p>book-details works!</p>
+
 <!--Book details when a book is pressed
   1. Name
   2. Price
@@ -17,12 +17,12 @@
       <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src={{bookData.bookImage}} alt="..." /></div>
       <div class="col-md-6">
 
-        <h1 class="display-5 fw-bolder">{{bookData.bookAuthor}}</h1>
+        <h1 class="display-5 fw-bolder">{{bookData.bookTitle}}</h1>
         <div class="fs-5 mb-5">
           <span class="text-decoration-line-through">Rs.{{bookData.bookPrice}}</span>
           <span>Rs.{{bookData.bookPrice}}</span>
         </div>
-        <div class="small mb-1">Author: {{bookData.bookTitle}}</div>
+        <div class="small mb-1">Author: {{bookData.bookAuthor}}</div>
         <div class="small mb-1">Publisher: {{bookData.bookYear}}</div>
         <div class="small mb-1">Year of Publication: {{bookData.bookYear}}</div>
         <p class="lead">Description: {{bookData.bookDescription}}</p>
