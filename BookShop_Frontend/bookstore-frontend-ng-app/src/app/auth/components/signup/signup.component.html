@@ -1,11 +1,27 @@
 <div class="card">
-  <form onsubmit="event.preventDefault()" class="box">
+  <form class="box" [formGroup]="addUserForm" (ngSubmit)="handleAddUser()">
     <h1>Sign Up</h1>
     <p class="text-muted"> Please enter the details</p>
-    <input type="text" id="username" placeholder="Username">
-    <input type="email" id="email" placeholder="Email">
-    <input type="password" id="password" placeholder="Password">
-    <input type="submit" name="signup_btn" value="Signup">
+    <input type="text" class="form-control" 
+          [ngClass]="{ 'is-invalid': addUserForm.get('userName')?.touched && addUserForm.get('userName')?.invalid }" 
+          placeholder="Enter Name" formControlName="userName"/>
+          <div class="invalid-feedback">
+            <div>Name is required</div>
+        </div>
+    <input type="email" formControlName="eMail" placeholder="Email" [ngClass]="{'is-invalid':addUserForm.get('eMail')?.touched && addUserForm.get('eMail')?.invalid}" />
+    <div class="invalid-feedback">
+      <div *ngIf="addUserForm.get('eMail')?.errors?.required">Email is required</div>
+      <div *ngIf="addUserForm.get('eMail')?.errors?.email">Email seems to be not valid</div>
+  </div>
+    <input type="password" formControlName="passWord" placeholder="Password" [ngClass]="{'is-invalid':addUserForm.get('passWord')?.touched && addUserForm.get('passWord')?.invalid}" required minlength="6" />
+    <div class="invalid-feedback">
+      <div *ngIf="addUserForm.get('passWord')?.errors?.required">Password is required</div>
+      <div *ngIf="addUserForm.get('passWord')?.errors?.minlength">Password length should be more than 6</div>
+  </div>
+    <div class="alert alert-success" *ngIf="isSaved">
+      SignUp Successfully!! Please Login 
+  </div>
+    <input type="submit" [disabled]="addUserForm.invalid" value="Signup"> 
   </form>
 </div>
 
