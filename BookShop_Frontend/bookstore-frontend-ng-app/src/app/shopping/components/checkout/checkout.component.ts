@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ShoppingService } from '../../services/shopping.service';
 
 @Component({
   selector: 'app-checkout',
@@ -26,13 +27,20 @@ export class CheckoutComponent implements OnInit {
 
   totalOrders=this.orders.length;
   totalCost=0;
-  constructor() { }
+
+  constructor(private shoppingService: ShoppingService) { }
 
   ngOnInit(): void {
     for(let i=0;i<this.orders.length;i++)
     {
       this.totalCost +=(this.orders[i].qty * this.orders[i].price) 
     }
+
+    this.shoppingService.getOrderItems()
+      .subscribe((res: any) => {
+        console.log(res);
+        //this.users = res;
+      })
   }
 
 }
