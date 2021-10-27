@@ -13,7 +13,6 @@ using BookShop_Backend.Models;
 
 namespace BookShop_Backend.Controllers
 {
-    [EnableCors(origins: "http://localhost:4200/", headers:"*", methods:"*")]
     [RoutePrefix("api/OrderItems")]
     public class OrderItemsController : ApiController
     {
@@ -40,23 +39,21 @@ namespace BookShop_Backend.Controllers
             return Ok(orderItem);
         }
 
-        // PUT: api/OrderItems/5
-        [Route("{id:int}")]
+        // PUT: api/OrderItems
+        [Route("")]
         [HttpPatch]
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutOrderItem(int id, OrderItem orderItem)
+        public IHttpActionResult PatchOrderItems(OrderItem[] orderItems)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != orderItem.id)
+            foreach (var orderItem in orderItems)
             {
-                return BadRequest();
+                db.Entry(orderItem).State = EntityState.Modified;
             }
-
-            db.Entry(orderItem).State = EntityState.Modified;
 
             try
             {
@@ -64,14 +61,14 @@ namespace BookShop_Backend.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!OrderItemExists(id))
+                foreach (var orderItem in orderItems)
                 {
-                    return NotFound();
+                    if (!OrderItemExists(orderItem.id))
+                    {
+                        return NotFound();
+                    }
                 }
-                else
-                {
-                    throw;
-                }
+                throw;
             }
 
             return StatusCode(HttpStatusCode.NoContent);

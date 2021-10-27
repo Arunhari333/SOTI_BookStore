@@ -12,9 +12,9 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent},
   { path: 'signup' ,component:SignupComponent},
+  { path: 'books', component: ListBooksComponent },
   { path: 'books/:bookid' ,component:BookDetailsComponent},
   { path: 'cart', component: CartComponent },
-  { path: 'books', component: ListBooksComponent },
   { path: 'checkout', component: CheckoutComponent }
 ];
 
