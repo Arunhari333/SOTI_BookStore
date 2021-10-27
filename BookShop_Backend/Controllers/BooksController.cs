@@ -13,7 +13,7 @@ using BookShop_Backend.Models;
 
 namespace BookShop_Backend.Controllers
 {
-    [EnableCors(origins: "http://localhost:4200/", headers:"*", methods:"*")]
+    //[EnableCors(origins: "http://localhost:4200", headers:"*", methods:"*")]
     [RoutePrefix("api/Books")]
     public class BooksController : ApiController
     {
