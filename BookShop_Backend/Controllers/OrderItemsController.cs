@@ -109,7 +109,7 @@ namespace BookShop_Backend.Controllers
             db.OrderItem.Add(orderItem);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = orderItem.id }, orderItem);
+            return Ok(orderItem);
         }
 
         // DELETE: api/OrderItems/5

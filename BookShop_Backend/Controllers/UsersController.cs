@@ -28,10 +28,14 @@ namespace BookShop_Backend.Controllers
         // GET: api/Users/5
         [Route("{id:int}")]
         [ResponseType(typeof(User))]
-        public User GetUser(int id)
+        public IHttpActionResult GetUser(int id)
         {
             User user = db.Users.Find(id);
-            return user;
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return Ok(user);
         }
 
         // PUT: api/Users/5
@@ -74,7 +78,7 @@ namespace BookShop_Backend.Controllers
         // POST: api/Users
         [Route("")]
         [HttpPost]
-        [ResponseType(typeof(void))]
+        [ResponseType(typeof(User))]
         public IHttpActionResult PostUser(User user)
         {
             if (!ModelState.IsValid)
@@ -89,8 +93,7 @@ namespace BookShop_Backend.Controllers
 
             db.SaveChanges();
 
-            //return CreatedAtRoute("DefaultApi", new { id = user.id }, user);
-            return StatusCode(HttpStatusCode.OK);
+            return Ok(user);
         }
 
         [Route("ToggleStatus/{id:int}")]

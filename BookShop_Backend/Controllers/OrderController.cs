@@ -1,6 +1,7 @@
 ﻿using BookShop_Backend.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -40,9 +41,9 @@ namespace BookShop_Backend.Controllers
             //TransactionId = TR+current time
             order.transactionId = "TR" + DateTime.Now;
             //save to db -> LINQ
-            db.Orders.Add(order); //do we have to add order to order table?
+            db.Entry(order).State = EntityState.Modified;
             db.SaveChanges();
-            return Ok(order.transactionId); //or return order?
+            return Ok(order.transactionId);
         }
     }
 }

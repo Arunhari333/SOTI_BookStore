@@ -28,8 +28,9 @@ export class SignupComponent implements OnInit {
     this.userService.createUser(this.addUserForm.value)
       .subscribe((res: any) => {
         console.log(res);
-        if(res && res.id == 11){
+        if(res.id){
           this.isSaved = true;
+          this.addUserForm.reset();
         }
       })
   }

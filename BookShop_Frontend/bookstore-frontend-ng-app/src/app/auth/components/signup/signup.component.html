@@ -18,8 +18,8 @@
       <div *ngIf="addUserForm.get('passWord')?.errors?.required">Password is required</div>
       <div *ngIf="addUserForm.get('passWord')?.errors?.minlength">Password length should be more than 6</div>
   </div>
-    <div class="alert alert-success" *ngIf="isSaved">
-      SignUp Successfully!! Please Login 
+    <div class="alert alert-success">
+      SignUp Successful! Please <a routerLink="../login" style="color: blue;">Login</a>
   </div>
     <input type="submit" [disabled]="addUserForm.invalid" value="Signup"> 
   </form>
