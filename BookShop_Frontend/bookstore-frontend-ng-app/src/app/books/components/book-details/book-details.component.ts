@@ -21,7 +21,7 @@ export class BookDetailsComponent implements OnInit {
     .subscribe((res:any)=>{
       console.log(res);
       this.bookData=res;
-    })
+    });
   }
 
 }
