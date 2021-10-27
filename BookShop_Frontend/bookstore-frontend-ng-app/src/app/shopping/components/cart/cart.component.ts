@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ShoppingService } from '../../services/shopping.service';
 
 @Component({
   selector: 'app-cart',
@@ -24,10 +25,16 @@ export class CartComponent implements OnInit {
   ]
 
   total!: number;
-  constructor() {}
+  constructor(private shoppingService: ShoppingService) {}
 
   ngOnInit() {
     this.calculateTotal();
+    
+    this.shoppingService.getOrderItems()
+      .subscribe((res: any) => {
+        console.log(res);
+        //this.users = res;
+      })
   }
   
   calculateTotal() {
@@ -37,6 +44,18 @@ export class CartComponent implements OnInit {
     }
     console.log(this.total);
   }
+
+  // handleCartSave(): void {
+  //   console.log('Submitting');
+  //   console.log(this.editCartForm.value)
+  //   this.shoppingService.saveOrderItems(this.editCartForm.value)
+  //     .subscribe((res: any) => {
+  //       console.log(res);
+  //       if(res && res.id == 11){
+  //         this.isSaved = true;
+  //       }
+  //     })
+  // }
 }
 
 
