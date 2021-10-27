@@ -27,4 +27,16 @@ export class ShoppingService {
         return res;
       }));
   }
-}
+
+  //To delete an item from cart
+  deleteOrderItem() {
+    let userId: number = 1;
+    let url: string = `https://jsonplaceholder.typicode.com/users/${userId}`;
+    return this.http.post(url, userId)
+      .pipe(map((res: any) => {
+        console.log(res);
+        return res;
+      }));
+  }
+  }
+
