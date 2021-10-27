@@ -34,7 +34,12 @@ export class CartComponent implements OnInit {
       .subscribe((res: any) => {
         console.log(res);
         //this.users = res;
-      })
+      });
+
+    this.shoppingService.deleteOrderItem()
+      .subscribe((res: any) => {
+        console.log(res);
+      });
   }
   
   calculateTotal() {
@@ -56,6 +61,14 @@ export class CartComponent implements OnInit {
   //       }
   //     })
   // }
+
+  //confirmdeleteitem(orderItem: any[]) {
+
+  //  this.shoppingService.deleteOrderItem(orderItem)
+  //    .subscribe((res: any) => {
+  //      console.log(res);
+  //  });
+  //}
 }
 
 
