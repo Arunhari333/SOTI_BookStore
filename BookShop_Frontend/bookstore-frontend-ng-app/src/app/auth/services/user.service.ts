@@ -10,7 +10,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   createUser(formData: any){
-    let url: string = 'https://jsonplaceholder.typicode.com/users';
+    let url: string = 'https://localhost:44374/api/Users';
     console.log(formData);
     return this.http.post(url, formData)
       .pipe(map((res: any) => {
