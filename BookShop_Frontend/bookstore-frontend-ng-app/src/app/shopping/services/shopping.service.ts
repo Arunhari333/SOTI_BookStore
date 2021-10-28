@@ -39,7 +39,8 @@ export class ShoppingService {
       }));
   }
 
-  createShippingAddress(formData: any){
+
+  createShippingAddress(formData: any) {
     let url: string = 'https://jsonplaceholder.typicode.com/users';
     console.log(formData);
     return this.http.post(url, formData)
@@ -48,5 +49,6 @@ export class ShoppingService {
         return res;
       }));
   }
+  
 }
 
