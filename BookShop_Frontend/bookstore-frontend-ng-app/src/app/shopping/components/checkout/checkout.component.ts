@@ -27,6 +27,7 @@ export class CheckoutComponent implements OnInit {
 
   totalOrders=this.orders.length;
   totalCost=0;
+  isSaved: boolean = false;
 
   constructor(private shoppingService: ShoppingService) { }
 
@@ -43,4 +44,16 @@ export class CheckoutComponent implements OnInit {
       })
   }
 
+  // handleAddAddress(): void {
+  //   console.log('Submitting');
+  //   console.log(this.addAddressForm.value)
+  //   this.shoppingService.createShippingAddress(this.addAddressForm.value)
+  //     .subscribe((res: any) => {
+  //       console.log(res);
+  //       if(res.id){
+  //         this.isSaved = true;
+  //         this.addAddressForm.reset();
+  //       }
+  //     })
+  // }
 }

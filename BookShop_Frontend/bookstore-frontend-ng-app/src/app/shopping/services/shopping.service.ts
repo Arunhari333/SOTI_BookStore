@@ -38,5 +38,15 @@ export class ShoppingService {
         return res;
       }));
   }
+
+  createShippingAddress(formData: any){
+    let url: string = 'https://jsonplaceholder.typicode.com/users';
+    console.log(formData);
+    return this.http.post(url, formData)
+      .pipe(map((res: any) => {
+        console.log(res);
+        return res;
+      }));
   }
+}
 
