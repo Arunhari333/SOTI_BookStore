@@ -29,6 +29,22 @@ export class CheckoutComponent implements OnInit {
   totalCost=0;
   isSaved: boolean = false;
 
+  shippingAddresses: any = [
+    {
+      "address": "Poorna Lane",
+      "city": "Tripunithura",
+      "state": "Kerala",
+      "zipcode": "682301",
+      "country": "India"
+    },
+    {
+      "address": "Martha Halli",
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "zipcode": "782602",
+      "country": "India"
+    }
+  ]
   constructor(private shoppingService: ShoppingService) { }
 
   ngOnInit(): void {
@@ -42,6 +58,7 @@ export class CheckoutComponent implements OnInit {
         console.log(res);
         //this.users = res;
       })
+
   }
 
   // handleAddAddress(): void {

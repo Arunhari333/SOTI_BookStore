@@ -3,12 +3,17 @@
         <div class="box-element" id="form-wrapper">
             <form id="form">
                 <div id="user-info">
-                    <div class="form-field">
-                        <input required class="form-control" type="text" name="name" placeholder="Name..">
-                    </div>
-                    <div class="form-field">
+                  <h2>Saved Addresses</h2>
+                  <div *ngFor="let item of shippingAddresses">
+                    <div>Address: {{item.address}}</div>
+                    <div>City: {{item.city}}</div>
+                    <div>State: {{item.state}}</div>
+                    <div>Zip Code: {{item.zipcode}}</div>
+                    <div>Country: {{item.zipcode}}</div><br />
+                  </div>
+                    <!--<div class="form-field">
                         <input required class="form-control" type="email" name="email" placeholder="Email..">
-                    </div>
+                    </div>-->
                 </div>
                 
                 <div id="shipping-info">
@@ -28,7 +33,7 @@
                         <input class="form-control" type="text" name="zipcode" placeholder="Zip code..">
                     </div>
                     <div class="form-field">
-                        <input class="form-control" type="text" name="country" placeholder="Zip code..">
+                        <input class="form-control" type="text" name="country" placeholder="Country..">
                     </div>
                 </div>
 
