@@ -49,6 +49,14 @@ export class ShoppingService {
         return res;
       }));
   }
-  
+  //to get shipping addresses
+  getShippingAddress() {
+    let url: string = 'https://jsonplaceholder.typicode.com/users';
+    return this.http.get(url)
+      .pipe(map((res: any) => {
+        console.log(res);
+        return res;
+      }));
+  }
 }
 
