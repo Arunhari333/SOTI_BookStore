@@ -53,7 +53,7 @@ namespace BookShop_Backend.Controllers
             db.ShippingAddress.Add(shippingAddress);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = shippingAddress.id }, shippingAddress);
+            return Ok(shippingAddress);
         }
 
         // DELETE: api/Shipping/5
