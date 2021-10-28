@@ -90,7 +90,7 @@ namespace BookShop_Backend.Controllers
             db.Categories.Add(category);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = category.id }, category);
+            return Ok(category);
         }
 
         // DELETE: api/Categories/5

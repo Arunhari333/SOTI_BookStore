@@ -133,7 +133,7 @@ namespace BookShop_Backend.Controllers
             db.Books.Add(book);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = book.id }, book);
+            return Ok(book);
         }
 
         // DELETE: api/Books/5

@@ -60,6 +60,42 @@ namespace BookShop_Backend.Controllers
             return orderItems;
         }
 
+        [Route("{id:int}")]
+        [HttpPatch]
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PatchOrderItem(int id, OrderItem orderItem)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != orderItem.id)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(orderItem).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!OrderItemExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
         // PUT: api/OrderItems
         [Route("")]
         [HttpPatch]

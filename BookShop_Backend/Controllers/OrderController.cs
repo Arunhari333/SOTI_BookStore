@@ -43,7 +43,7 @@ namespace BookShop_Backend.Controllers
             //save to db -> LINQ
             db.Entry(order).State = EntityState.Modified;
             db.SaveChanges();
-            return Ok(order.transactionId);
+            return Ok(order);
         }
     }
 }
