@@ -26,7 +26,7 @@ namespace BookShop_Backend.Controllers
         }
 
         // GET: api/Shipping/5
-        [Route("")]
+        [Route("{id:int}")]
         [HttpGet]
         [ResponseType(typeof(ShippingAddress))]
         public IHttpActionResult GetShippingAddress(int id)
