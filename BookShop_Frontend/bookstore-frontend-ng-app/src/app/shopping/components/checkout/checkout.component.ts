@@ -59,6 +59,11 @@ export class CheckoutComponent implements OnInit {
         //this.users = res;
       })
 
+    this.shoppingService.getShippingAddress()
+      .subscribe((res: any) => {
+        console.log(res);
+        //this.users = res;
+      })
   }
 
   // handleAddAddress(): void {
