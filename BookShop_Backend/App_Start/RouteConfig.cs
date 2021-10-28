@@ -18,6 +18,10 @@ namespace BookShop_Backend
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            //routes.MapRoute(
+            //    name: "GET",
+            //    url: "{controller}/{action}/{id}",
+            //    defaults: new { controller = "Shipping", action = "GetShippingAddress", id = UrlParameter.Optional });
         }
     }
 }

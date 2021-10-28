@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { ShoppingService } from '../../services/shopping.service';
 
 @Component({
@@ -25,6 +27,13 @@ export class CheckoutComponent implements OnInit {
     }
   ]
 
+  addAddressForm = new FormGroup({
+    address: new FormControl(''),
+    city:new FormControl(''),
+    state:new FormControl(''),
+    zipcode : new FormControl('',[Validators.required,Validators.minLength(6)])
+  });
+
   totalOrders=this.orders.length;
   totalCost=0;
   isSaved: boolean = false;
@@ -45,6 +54,7 @@ export class CheckoutComponent implements OnInit {
       "country": "India"
     }
   ]
+
   constructor(private shoppingService: ShoppingService) { }
 
   ngOnInit(): void {
@@ -58,19 +68,18 @@ export class CheckoutComponent implements OnInit {
         console.log(res);
         //this.users = res;
       })
-
   }
 
-  // handleAddAddress(): void {
-  //   console.log('Submitting');
-  //   console.log(this.addAddressForm.value)
-  //   this.shoppingService.createShippingAddress(this.addAddressForm.value)
-  //     .subscribe((res: any) => {
-  //       console.log(res);
-  //       if(res.id){
-  //         this.isSaved = true;
-  //         this.addAddressForm.reset();
-  //       }
-  //     })
-  // }
+  handleAddAddress(): void {
+    console.log('Submitting');
+    console.log(this.addAddressForm.value)
+    this.shoppingService.createShippingAddress(this.addAddressForm.value)
+      .subscribe((res: any) => {
+        console.log(res);
+        if(res.id){
+          this.isSaved = true;
+          this.addAddressForm.reset();
+        }
+      })
+  }
 }

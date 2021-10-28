@@ -26,7 +26,8 @@ namespace BookShop_Backend.Controllers
         }
 
         // GET: api/Shipping/5
-        [Route("{id:int}")]
+        [Route("")]
+        [HttpGet]
         [ResponseType(typeof(ShippingAddress))]
         public IHttpActionResult GetShippingAddress(int id)
         {
@@ -40,9 +41,11 @@ namespace BookShop_Backend.Controllers
         }
 
         // POST: api/Shipping
-        [Route("{id:int}")]
+        //[Route("{id:int}")]
+        [Route("")]
+        //[Route("api/PostShippingAddress")]
         [HttpPost]
-        [ResponseType(typeof(ShippingAddress))]
+        //[ResponseType(typeof(ShippingAddress))]
         public IHttpActionResult PostShippingAddress(ShippingAddress shippingAddress)
         {
             if (!ModelState.IsValid)
