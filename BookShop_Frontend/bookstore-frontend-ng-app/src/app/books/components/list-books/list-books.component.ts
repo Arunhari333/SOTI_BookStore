@@ -10,7 +10,7 @@ export class ListBooksComponent implements OnInit {
 
   constructor(private bookService:BookService) { }
 
-  books :any[] =[];
+  books: any[] = [];
   
   ngOnInit(): void {
     this.bookService.getBooks()
@@ -20,4 +20,35 @@ export class ListBooksComponent implements OnInit {
     });
   }
 
+
+  searchBookByName(BookName: string) {
+    this.bookService.getBookByName(BookName)
+      .subscribe((res: any) => {
+        console.log(res);
+        this.books = res;
+      });
+  }
+  searchBookByAuthor(BookAuthor: string)
+  {
+    this.bookService.getBookByAuthor(BookAuthor)
+    .subscribe((res: any) => {
+      console.log(res);
+      this.books = res;
+    });
+  }
+  searchBookByISBN(BookISBN: number) {
+    this.bookService.getBookByISBN(BookISBN)
+      .subscribe((res: any) => {
+        console.log(res);
+        this.books = res;
+      });
+  }
+  searchBookByCategory(BookCategory: number) {
+    this.bookService.getBookByCategory(BookCategory)
+      .subscribe((res: any) => {
+        console.log(res);
+        this.books = res;
+      });
+  }
+ 
 }

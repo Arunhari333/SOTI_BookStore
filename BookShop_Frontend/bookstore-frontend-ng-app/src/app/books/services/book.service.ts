@@ -30,4 +30,44 @@ export class BookService {
       return res;
     }));
   }
+
+  getBookByName(BookName: string | null): any {
+    console.log(BookName);
+    let bookNameURL = `https://localhost:44374/api/Books/SearchByName/${BookName}`;
+    return this.http.get(bookNameURL)
+      .pipe(map((res: any) => {
+        console.log(res);
+        return res;
+      }));
+  }
+
+  getBookByAuthor(BookAuthor: string | null): any {
+    console.log(BookAuthor);
+    let bookAuthorURL = `https://localhost:44374/api/Books/SearchByAuthor/${BookAuthor}`;
+    return this.http.get(bookAuthorURL)
+      .pipe(map((res: any) => {
+        console.log(res);
+        return res;
+      }));
+  }
+
+  getBookByISBN(BookISBN: number | null): any {
+    console.log(BookISBN);
+    let bookISBNURL = `https://localhost:44374/api/Books/SearchByISBN/${BookISBN}`;
+    return this.http.get(bookISBNURL)
+      .pipe(map((res: any) => {
+        console.log(res);
+        return res;
+      }));
+  }
+
+  getBookByCategory(BookCategory: number | null): any {
+    console.log(BookCategory);
+    let bookCategoryURL = `https://localhost:44374/api/Books/SearchByCategoryId/${BookCategory}`;
+    return this.http.get(bookCategoryURL)
+      .pipe(map((res: any) => {
+        console.log(res);
+        return res;
+      }));
+  }
 }
