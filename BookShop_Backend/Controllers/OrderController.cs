@@ -15,6 +15,7 @@ namespace BookShop_Backend.Controllers
     {
         private ApplicationDBContext db = new ApplicationDBContext();
 
+        // GET: api/Order/UserOrders/5
         [Route("UserOrders/{userId:int}")]
         public IEnumerable<Order> GetOrdersByUser(int userId)
         {
@@ -24,8 +25,8 @@ namespace BookShop_Backend.Controllers
             return orders;
         }
 
-        //To do: PlaceOrder() 
-        [Route("PlaceOrder/{id:int}")]
+        // PUT: api/Order/PlaceOrder/5
+        [Route("PlaceOrder/{userId:int}")]
         [HttpPut]
         public IHttpActionResult PlaceOrder(int userId)
         {

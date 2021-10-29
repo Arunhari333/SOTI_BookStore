@@ -96,6 +96,7 @@ namespace BookShop_Backend.Controllers
             return Ok(user);
         }
 
+        // PUT: api/Users/ToggleStatus/5
         [Route("ToggleStatus/{id:int}")]
         [HttpPut]
         [ResponseType(typeof(void))]

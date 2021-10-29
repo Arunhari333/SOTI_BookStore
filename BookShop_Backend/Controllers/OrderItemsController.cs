@@ -13,6 +13,12 @@ using BookShop_Backend.Models;
 
 namespace BookShop_Backend.Controllers
 {
+    public class PartialOrders
+    {
+        public int id { get; set; }
+        public int qty { get; set; }
+    }
+    
     [RoutePrefix("api/OrderItems")]
     public class OrderItemsController : ApiController
     {
@@ -39,7 +45,7 @@ namespace BookShop_Backend.Controllers
             return Ok(orderItem);
         }
 
-        // GET: api/OrderItems/5
+        // GET: api/OrderItems/GetByUser/5
         [Route("GetByUser/{uid:int}")]
         [ResponseType(typeof(OrderItem))]
         public IEnumerable<OrderItem> GetOrderItemsByUser(int uid)
@@ -60,55 +66,25 @@ namespace BookShop_Backend.Controllers
             return orderItems;
         }
 
-        [Route("{id:int}")]
-        [HttpPatch]
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PatchOrderItem(int id, OrderItem orderItem)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != orderItem.id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(orderItem).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!OrderItemExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        // PUT: api/OrderItems
+        //PUT: api/OrderItems
         [Route("")]
-        [HttpPatch]
+        [HttpPut]
         [ResponseType(typeof(void))]
-        public IHttpActionResult PatchOrderItems(OrderItem[] orderItems)
+        public IHttpActionResult PutOrderItems(PartialOrders[] items)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            foreach (var orderItem in orderItems)
+            OrderItem orderItem;
+            foreach (var item in items)
             {
+                orderItem = db.OrderItem.Find(item.id);
+                if (orderItem == null)
+                {
+                    return BadRequest();
+                }
+                orderItem.qty = item.qty;
                 db.Entry(orderItem).State = EntityState.Modified;
             }
 
@@ -118,9 +94,9 @@ namespace BookShop_Backend.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                foreach (var orderItem in orderItems)
+                foreach (var item in items)
                 {
-                    if (!OrderItemExists(orderItem.id))
+                    if (!OrderItemExists(item.id))
                     {
                         return NotFound();
                     }
@@ -131,7 +107,7 @@ namespace BookShop_Backend.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/OrderItems
+        //POST: api/OrderItems
         [Route("")]
         [HttpPost]
         [ResponseType(typeof(OrderItem))]
@@ -165,42 +141,6 @@ namespace BookShop_Backend.Controllers
 
             return Ok(orderItem);
         }
-
-        //[ResponseType(typeof(void))]
-        //[Route("UpdateQty/{id:int}")]
-        //[HttpPut]
-        //public IHttpActionResult PutQty(int id, int qty)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-        //    OrderItem item = db.OrderItem.Find(id);
-        //    if (item == null)
-        //    {
-        //        return BadRequest();
-        //    }
-        //    item.qty = qty;
-        //    db.Entry(item).State = EntityState.Modified;
-
-        //    try
-        //    {
-        //        db.SaveChanges();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!OrderItemExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return StatusCode(HttpStatusCode.NoContent);
-        //}
 
         protected override void Dispose(bool disposing)
         {

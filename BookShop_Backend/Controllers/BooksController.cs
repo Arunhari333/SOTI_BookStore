@@ -40,7 +40,7 @@ namespace BookShop_Backend.Controllers
             return Ok(book);
         }
 
-        //GET: api/Books/name=""
+        //GET: api/Books/SearchByName/Harry Potter
         [Route("SearchByName/{name}")]
         public IEnumerable<Book> GetBookByName(string name)
         {
@@ -50,7 +50,7 @@ namespace BookShop_Backend.Controllers
             return books;
         }
 
-        //GET: api/Books/author=""
+        //GET: api/Books/SearchByAuthor/JK Rowling
         [Route("SearchByAuthor/{author}")]
         public IEnumerable<Book> GetBookByAuthor(string author)
         {
@@ -60,17 +60,17 @@ namespace BookShop_Backend.Controllers
             return books;
         }
 
-        //GET: api/Books/isbn=5
+        //GET: api/Books/SearchByISBN/26734682
         [Route("SearchByISBN/{isbn}")]
-        public IEnumerable<Book> GetBookByISBN(long isbn)
+        public IHttpActionResult GetBookByISBN(long isbn)
         {
-            List<Book> books = (from book in db.Books
-                                where book.ISBN == isbn
-                                select book).ToList();
-            return books;
+            Book book = (from b in db.Books
+                         where b.ISBN == isbn
+                         select b).SingleOrDefault();
+            return Ok(book);
         }
 
-        //GET: api/Books/cid=5
+        //GET: api/Books/SearchByCategoryId/2
         [Route("SearchByCategoryId/{cid}")]
         public IEnumerable<Book> GetBookByCategoryId(int cid)
         {
@@ -81,7 +81,6 @@ namespace BookShop_Backend.Controllers
         }
 
         // PUT: api/Books/5
-        // update
         [Route("{id:int}")]
         [HttpPut]
         [ResponseType(typeof(void))]
@@ -115,11 +114,10 @@ namespace BookShop_Backend.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(book);
         }
 
         // POST: api/Books
-        // add
         [Route("")]
         [HttpPost]
         [ResponseType(typeof(Book))]
