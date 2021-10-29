@@ -16,7 +16,7 @@
           <th>
             <a style="float:right; margin:5px;" class="btn btn-outline-success" routerLinkActive="active"
               [routerLinkActiveOptions]="{exact: true}" routerLink="/checkout">Checkout</a>
-            <button style="float:right; margin:5px;" class="btn btn-outline-primary">Save Cart</button>
+            <button style="float:right; margin:5px;" class="btn btn-outline-primary" (click)="handleCartSave()">Save Cart</button>
           </th>
         </tr>
       </table>
@@ -47,7 +47,8 @@
           <p>{{order.Book.bookPrice}}</p>
         </div>
         <div style="flex:1">
-          <input type="number" min="0" [(ngModel)]="order.qty" id="qty" (change)="calculateTotal()">
+          <input type="number" min="0" [(ngModel)]="order.qty" class="qty" id="qty{{order.id}}" 
+                  (change)="calculateTotal()">
         </div>
         <div style="flex:1">
           <p>{{(order.Book.bookPrice * order.qty)}}</p>

@@ -42,20 +42,23 @@ export class CartComponent implements OnInit {
     for(let i=0; i< this.orders.length;i++){
       this.total = this.total + (this.orders[i].Book.bookPrice * this.orders[i].qty)
     }
-    console.log(this.total);
   }
 
-  // handleCartSave(): void {
-  //   console.log('Submitting');
-  //   console.log(this.editCartForm.value)
-  //   this.shoppingService.saveOrderItems(this.editCartForm.value)
-  //     .subscribe((res: any) => {
-  //       console.log(res);
-  //       if(res && res.id == 11){
-  //         this.isSaved = true;
-  //       }
-  //     })
-  // }
+  handleCartSave(): void {
+    let orderItem: any[] = [];
+    let qty: number;
+    this.orders.forEach(order => {
+      qty = +(<HTMLInputElement>document.getElementById(`qty${order.id}`)).value;
+      orderItem.push({'id': order.id, 'qty': qty});
+    });
+    console.log(orderItem);
+    this.shoppingService.saveOrderItems(orderItem)
+      .subscribe((res: any) => {
+        if(res && res.id){
+          console.log(res);
+        }
+      })
+  }
 
   deleteitem(orderItem: any[]) {
     this.shoppingService.deleteOrderItem()

@@ -20,7 +20,7 @@ export class ShoppingService {
   }
 
   saveOrderItems(orderItems: any[]){
-    let url: string = `https://jsonplaceholder.typicode.com/users`;
+    let url: string = `https://localhost:44374/api/OrderItems`;
     return this.http.put(url, orderItems)
       .pipe(map((res: any) => {
         console.log(res);

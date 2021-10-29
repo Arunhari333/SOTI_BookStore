@@ -104,7 +104,7 @@ namespace BookShop_Backend.Controllers
                 throw;
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return StatusCode(HttpStatusCode.OK);
         }
 
         //POST: api/OrderItems
