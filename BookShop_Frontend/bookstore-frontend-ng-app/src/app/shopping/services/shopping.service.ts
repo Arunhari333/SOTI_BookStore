@@ -30,7 +30,7 @@ export class ShoppingService {
 
   //To delete an item from cart
   deleteOrderItem() {
-    let userId: number = 2;
+    let userId: number = 4;
     let url: string = `https://jsonplaceholder.typicode.com/users/${userId}`;
     return this.http.post(url, userId)
       .pipe(map((res: any) => {
@@ -41,7 +41,7 @@ export class ShoppingService {
 
 
   createShippingAddress(formData: any) {
-    let url: string = 'https://jsonplaceholder.typicode.com/users';
+    let url: string = 'https://localhost:44374/api/Shipping';
     console.log(formData);
     return this.http.post(url, formData)
       .pipe(map((res: any) => {

@@ -21,5 +21,11 @@ namespace BookShop_Backend.Models
         public int userId { get; set; }
         [ForeignKey("userId")]
         public virtual User User { get; set; }
+
+        public ShippingAddress()
+        {
+            date_added = DateTime.Today;
+            userId = 5;
+        }
     }
 }
