@@ -19,8 +19,8 @@
         <h2>Search By Name</h2>
         <div class="input-group">
           <input type="search" class="form-control rounded" placeholder="Enter name of book" aria-label="Search"
-                 aria-describedby="search-addon" name="name" id="name" />
-          <button type="button" class="btn btn-outline-primary" >Search</button>
+                 aria-describedby="search-addon" id="bookname" />
+          <button type="button" class="btn btn-outline-primary" (click)="searchBookByName()">Search</button>
         </div>
       </div>
 
@@ -28,8 +28,8 @@
         <h2>Search by Category</h2>
         <div class="input-group">
           <input type="search" class="form-control rounded" placeholder="Enter category of book" aria-label="Search"
-                 aria-describedby="search-addon" />
-          <button type="button" class="btn btn-outline-primary">Search</button>
+                 aria-describedby="search-addon" id="bookauthor" />
+          <button type="button" class="btn btn-outline-primary" (click)="searchBookByAuthor()">Search</button>
         </div>
       </div>
 
@@ -37,8 +37,8 @@
         <h2>Search By Author</h2>
         <div class="input-group">
           <input type="search" class="form-control rounded" placeholder="Enter author of book" aria-label="Search"
-                 aria-describedby="search-addon" />
-          <button type="button" class="btn btn-outline-primary">Search</button>
+                 aria-describedby="search-addon" id="bookcategory"/>
+          <button type="button" class="btn btn-outline-primary" (click)="searchBookByCategory()">Search</button>
         </div>
       </div>
 
@@ -46,8 +46,8 @@
         <h2>Search By ISBN</h2>
         <div class="input-group">
           <input type="search" class="form-control rounded" placeholder="Enter ISBN of book" aria-label="Search"
-                 aria-describedby="search-addon" />
-          <button type="button" class="btn btn-outline-primary">Search</button>
+                 aria-describedby="search-addon" id="bookISBN"/>
+          <button type="button" class="btn btn-outline-primary" (click)="searchBookByISBN()">Search</button>
         </div>
       </div>
     </div>
