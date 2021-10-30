@@ -58,5 +58,13 @@ export class ShoppingService {
         return res;
       }));
   }
+  //url change to wishlist
+  getWishlistItems() {
+    return this.http.get('https://localhost:44374/api/Books')
+      .pipe(map((res: any) => {
+        console.log(res);
+        return res;
+      }));
+  }
 }
 

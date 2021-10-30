@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-lg-4" *ngFor="let item of items">
+    <a routerLink="/books/{{item.id}}">
+      <img class="thumbnail" src="/assets/images/{{item.bookImage}}">
+      <div class="box-element product">
+        <h6><strong> {{item.bookTitle}}</strong></h6>
+        <h4 style="display: inline-block;"><strong>{{item.bookPrice}}</strong></h4>
+      </div>
+    </a>
+  </div>
+</div>

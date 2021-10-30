@@ -19,6 +19,7 @@ import { ListBooksComponent } from './books/components/list-books/list-books.com
 import { SearchBooksComponent } from './books/components/list-books/components/search-books/search-books.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './shared/footer/footer.component';
+import { WishlistComponent } from './shopping/components/wishlist/wishlist.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 
@@ -40,6 +41,7 @@ import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
     FeaturedBooksComponent,
     ListBooksComponent,
     SearchBooksComponent,
+    WishlistComponent
     // AuthInterceptor
   ],
   imports: [
