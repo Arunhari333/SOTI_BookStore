@@ -10,9 +10,16 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using BookShop_Backend.Models;
+using WebApi.Jwt;
 
 namespace BookShop_Backend.Controllers
-{ 
+{
+    public class LoginData
+    {
+        public string username { get; set; }
+        public string password { get; set; }
+    }
+
     [RoutePrefix("api/Users")]
     public class UsersController : ApiController
     {
@@ -147,17 +154,29 @@ namespace BookShop_Backend.Controllers
             return db.Users.Count(e => e.id == id) > 0;
         }
 
-        //public IHttpActionResult Login(string username, string password)
-        //{
-        //    User user =     (from u in db.Users
-        //                        where u.username == username 
-        //                        and u.password == password
-        //                        select u);
-        //    if (username==user.username && password== user.password)
-        //    {
-        //        return Ok(user);
-        //    }
-        //    return NotFound();
-        //}
+        [AllowAnonymous]
+        [Route("login")]
+        [HttpPost]
+        public string Login(LoginData credentials)
+        {
+            if (CheckUser(credentials.username, credentials.password))
+            {
+                return JwtManager.GenerateToken(credentials.username);
+            }
+
+            throw new HttpResponseException(HttpStatusCode.Unauthorized);
+        }
+
+        private bool CheckUser(string username, string password)
+        {
+            User user = (from u in db.Users
+                         where u.username == username && u.password == password
+                         select u).SingleOrDefault();
+            if(user == null)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }
