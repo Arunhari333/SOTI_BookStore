@@ -19,7 +19,8 @@ import { ListBooksComponent } from './books/components/list-books/list-books.com
 import { SearchBooksComponent } from './books/components/list-books/components/search-books/search-books.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './shared/footer/footer.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 
 
 
@@ -38,7 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
     CheckoutComponent,
     FeaturedBooksComponent,
     ListBooksComponent,
-    SearchBooksComponent
+    SearchBooksComponent,
+    // AuthInterceptor
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,10 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [{
+    provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor,multi:true
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
