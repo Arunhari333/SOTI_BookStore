@@ -27,15 +27,22 @@
         <div class="small mb-1">Year of Publication: {{bookData.bookYear}}</div>
         <p class="lead">Description: {{bookData.bookDescription}}</p>
         <div class="d-flex">
-          <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-          <button class="btn btn-outline-dark flex-shrink-0" type="button"  routerLinkActive="active"
-                 [routerLinkActiveOptions]="{exact: true}" routerLink="/cart">
+          <input class="form-control text-center me-3" id="inputQuantity" type="number" value="1" style="max-width: 3rem" />
+          <button class="btn btn-outline-dark flex-shrink-0" type="button" routerLinkActive="active"
+                  [routerLinkActiveOptions]="{exact: true}" routerLink="/cart">
             <i class="bi-cart-fill me-1"></i>
             Add to cart
           </button>
+          <button class="btn btn-outline-dark flex-shrink-0" type="button" routerLinkActive="active"
+                  [routerLinkActiveOptions]="{exact: true}" routerLink="/wishlist" (click)="handleAddToWishlist(bookData.id)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+              <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+            </svg>
+            Add to Wishlist
+          </button>
+        </div>
         </div>
       </div>
-    </div>
   </div>
 </section>
 <!-- Related items section-->

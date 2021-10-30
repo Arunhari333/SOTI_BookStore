@@ -68,4 +68,14 @@ export class BookService {
         return res;
       }));
   }
+
+  createWishlistItems(item: any) {
+   
+    let wishlistURL = `https://localhost:44374/api/Wishlist`;
+    return this.http.get(wishlistURL, item)
+      .pipe(map((res: any) => {
+        console.log(res);
+        return res;
+      }));
+  }
 }
