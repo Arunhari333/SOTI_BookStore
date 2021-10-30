@@ -28,7 +28,7 @@ namespace BookShop_Backend.Controllers
             return wishlist;
         }
 
-        // POST: api/Wishlists
+        // POST: api/Wishlist
         [Route("")]
         [ResponseType(typeof(Wishlist))]
         public IHttpActionResult PostWishlist(Wishlist wishlist)
@@ -44,7 +44,7 @@ namespace BookShop_Backend.Controllers
             return Ok(wishlist);
         }
 
-        // DELETE: api/Wishlists/5
+        // DELETE: api/Wishlist/5
         [Route("{id:int}")]
         [ResponseType(typeof(Wishlist))]
         public IHttpActionResult DeleteWishlist(int id)

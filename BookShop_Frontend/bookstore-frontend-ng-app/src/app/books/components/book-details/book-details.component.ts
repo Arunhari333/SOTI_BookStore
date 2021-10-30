@@ -24,4 +24,18 @@ export class BookDetailsComponent implements OnInit {
     });
   }
 
+  handleAddToWishlist(bookId: number): void {
+    let item = {
+      "userId": 2,
+      "bookId": bookId
+    };
+    console.log('Submitting');
+    console.log(item);
+    this.bookService.createWishlistItems(item)
+      .subscribe((res: any) => {
+        if (res && res.id) {
+          console.log(res);
+        }
+      })
+  }
 }
