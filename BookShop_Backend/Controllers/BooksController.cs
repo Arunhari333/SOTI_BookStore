@@ -62,12 +62,12 @@ namespace BookShop_Backend.Controllers
 
         //GET: api/Books/SearchByISBN/26734682
         [Route("SearchByISBN/{isbn}")]
-        public IHttpActionResult GetBookByISBN(long isbn)
+        public IEnumerable<Book> GetBookByISBN(long isbn)
         {
-            Book book = (from b in db.Books
-                         where b.ISBN == isbn
-                         select b).SingleOrDefault();
-            return Ok(book);
+            List<Book> books = (from b in db.Books
+                                where b.ISBN == isbn
+                                select b).ToList();
+            return books;
         }
 
         //GET: api/Books/SearchByCategoryId/2

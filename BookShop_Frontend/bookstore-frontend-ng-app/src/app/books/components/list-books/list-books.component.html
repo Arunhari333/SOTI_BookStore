@@ -1,4 +1,4 @@
-<app-search-books style="margin-top: 70px ;"></app-search-books>
+<app-search-books style="margin-top: 70px ;" (searchResult)="handleSearchResult($event)"></app-search-books>
 <div class="row">
   <div class="col-lg-4" *ngFor="let book of books">
       <a routerLink="/books/{{book.id}}">

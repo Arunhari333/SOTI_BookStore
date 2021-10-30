@@ -19,8 +19,6 @@ export class BookService {
     }));
   }
 
-
-
   getBookById(BookId:string |null):any{
     console.log(BookId);
     let bookIdURL = `https://localhost:44374/api/Books/${BookId}`;
