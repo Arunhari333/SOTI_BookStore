@@ -20,6 +20,7 @@ import { SearchBooksComponent } from './books/components/list-books/components/s
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
+import { WishlistComponent } from './shopping/components/wishlist/wishlist.component';
 
 
 
@@ -38,7 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
     CheckoutComponent,
     FeaturedBooksComponent,
     ListBooksComponent,
-    SearchBooksComponent
+    SearchBooksComponent,
+    WishlistComponent
   ],
   imports: [
     BrowserModule,
