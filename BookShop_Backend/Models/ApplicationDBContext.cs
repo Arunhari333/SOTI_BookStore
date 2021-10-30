@@ -17,5 +17,7 @@ namespace BookShop_Backend.Models
         public DbSet<OrderItem> OrderItem { get; set; }
         public DbSet<ShippingAddress> ShippingAddress { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Wishlist> Wishlist { get; set; }
+        public DbSet<DiscountCoupon> DiscountCoupons { get; set; }
     }
 }
