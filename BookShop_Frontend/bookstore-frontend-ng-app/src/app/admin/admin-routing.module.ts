@@ -5,8 +5,8 @@ import { RouterModule } from '@angular/router';
 
 //configuring routes
 const adminRoutes = [
-  { path: '', component:  },
-  { path: '/books', component: BooksComponent }
+  //{ path: '', component:  },
+  { path: 'books', component: BooksComponent } // admin/books
 ]
 //register routes
 @NgModule({
