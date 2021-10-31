@@ -8,7 +8,7 @@ namespace BookShop_Backend.Models
 {
     public class ApplicationDBContext:DbContext
     {
-        public ApplicationDBContext():base("BookShopDB")
+        public ApplicationDBContext():base("BookShopDatabase")
         {
         }
         public DbSet<Book> Books { get; set; }

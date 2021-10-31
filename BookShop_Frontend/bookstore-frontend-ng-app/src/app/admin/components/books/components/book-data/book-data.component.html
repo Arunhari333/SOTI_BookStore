@@ -1,5 +1,5 @@
 <section class="py-5">
-    <div class="container px-4 px-lg-5 my-5" *ngIf="bookData">
+    <div class="container px-4 px-lg-5 my-5" *ngIf="isPresent">
       <div class="row gx-4 gx-lg-5 align-items-center">
         <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" routerLink={{bookData.bookImage}} alt="..." /></div>
         <div class="col-md-6">
@@ -10,11 +10,12 @@
             <span>Rs.{{bookData.bookPrice}}</span>
           </div>
           <div class="small mb-1">Author: {{bookData.bookAuthor}}</div>
-          <div class="small mb-1">Publisher: {{bookData.bookYear}}</div>
+          <div class="small mb-1">ISBN: {{bookData.ISBN}}</div>
           <div class="small mb-1">Year of Publication: {{bookData.bookYear}}</div>
           <p class="lead">Description: {{bookData.bookDescription}}</p>
           <div class="d-flex">
-            <button class="btn btn-outline-warning flex-shrink-0" type="button">Edit</button>
+            <button class="btn btn-outline-warning flex-shrink-0" type="button" data-bs-toggle="modal"
+            data-bs-target="#editBookModal" style="margin-right: 5px;">Edit</button>
             <button class="btn btn-outline-danger flex-shrink-0" type="button">Delete</button>
           </div>
           </div>
@@ -22,7 +23,7 @@
     </div>
   </section>
   <section>
-    <div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="editBookModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -34,27 +35,27 @@
           <form #ngForm="ngForm" (ngSubmit)="handleUpdateBook(ngForm)">
             <h1>Add Book</h1>
             <p class="text-muted">Update</p>
-            <input type="text" id="title" name="bookTitle" placeholder="Title" class="form-control" value="aa" ngModel>
-            <input type="text" id="author" name="bookAuthor" placeholder="Author" class="form-control" ngModel>
-            <input type="number" id="price" name="bookPrice" placeholder="Price" class="form-control" ngModel>
-            <input type="number" id="position" name="position" placeholder="Position" class="form-control" ngModel>
-            <input type="number" id="isbn" name="ISBN" placeholder="ISBN" class="form-control" ngModel>
-            <input type="number" id="year" name="bookYear" placeholder="Year" class="form-control" ngModel>
-            <textarea rows="4" id="description" name="bookDescription" placeholder="Description..." class="form-control" ngModel></textarea>
+            <input type="number" id="bookid" name="id" placeholder="Id" class="form-control" [ngModel]="bookData.id" readonly>
+            <input type="text" id="title" name="bookTitle" placeholder="Title" class="form-control" [ngModel]="bookData.bookTitle">
+            <input type="text" id="author" name="bookAuthor" placeholder="Author" class="form-control" [ngModel]="bookData.bookAuthor">
+            <input type="number" id="price" name="bookPrice" placeholder="Price" class="form-control" [ngModel]="bookData.bookPrice">
+            <input type="number" id="position" name="position" placeholder="Position" class="form-control" [ngModel]="bookData.position">
+            <input type="number" id="isbn" name="ISBN" placeholder="ISBN" class="form-control" [ngModel]="bookData.ISBN">
+            <input type="number" id="year" name="bookYear" placeholder="Year" class="form-control" [ngModel]="bookData.bookYear">
+            <textarea rows="4" id="description" name="bookDescription" placeholder="Description..." class="form-control" [ngModel]="bookData.bookDescription"></textarea>
             Status:
-            <input type="radio" id="status" name="bookStatus" value="true" ngModel> True
+            <input type="radio" id="status" name="bookStatus" value="true" [ngModel]="bookData.bookStatus"> True
             <input type="radio" id="status" name="bookStatus" value="false" ngModel> False
-            <input type="text" id="image" name="bookImage" placeholder="ImageURL" class="form-control" ngModel>
-            <input type="number" id="categoryId" name="CategoryId" placeholder="Category Id" class="form-control" ngModel>
-            <input type="submit" name="submit_btn" class="btn btn-primary" value="Add Book">
+            <input type="text" id="image" name="bookImage" placeholder="ImageURL" class="form-control" [ngModel]="bookData.bookImage">
+            <input type="number" id="categoryId" name="CategoryId" placeholder="Category Id" class="form-control" [ngModel]="bookData.CategoryId">
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
             <div class="alert alert-success" *ngIf="isSaved">
               Updated successfully!
             </div>
           </form>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
