@@ -1,0 +1,63 @@
+<section class="py-5">
+    <div class="container px-4 px-lg-5 my-5" *ngIf="bookData">
+      <div class="row gx-4 gx-lg-5 align-items-center">
+        <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" routerLink={{bookData.bookImage}} alt="..." /></div>
+        <div class="col-md-6">
+  
+          <h1 class="display-5 fw-bolder">{{bookData.bookTitle}}</h1>
+          <div class="fs-5 mb-5">
+            <span class="text-decoration-line-through">Rs.{{bookData.bookPrice}}</span>
+            <span>Rs.{{bookData.bookPrice}}</span>
+          </div>
+          <div class="small mb-1">Author: {{bookData.bookAuthor}}</div>
+          <div class="small mb-1">Publisher: {{bookData.bookYear}}</div>
+          <div class="small mb-1">Year of Publication: {{bookData.bookYear}}</div>
+          <p class="lead">Description: {{bookData.bookDescription}}</p>
+          <div class="d-flex">
+            <button class="btn btn-outline-warning flex-shrink-0" type="button">Edit</button>
+            <button class="btn btn-outline-danger flex-shrink-0" type="button">Delete</button>
+          </div>
+          </div>
+        </div>
+    </div>
+  </section>
+  <section>
+    <div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update User</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form #ngForm="ngForm" (ngSubmit)="handleUpdateBook(ngForm)">
+            <h1>Add Book</h1>
+            <p class="text-muted">Update</p>
+            <input type="text" id="title" name="bookTitle" placeholder="Title" class="form-control" value="aa" ngModel>
+            <input type="text" id="author" name="bookAuthor" placeholder="Author" class="form-control" ngModel>
+            <input type="number" id="price" name="bookPrice" placeholder="Price" class="form-control" ngModel>
+            <input type="number" id="position" name="position" placeholder="Position" class="form-control" ngModel>
+            <input type="number" id="isbn" name="ISBN" placeholder="ISBN" class="form-control" ngModel>
+            <input type="number" id="year" name="bookYear" placeholder="Year" class="form-control" ngModel>
+            <textarea rows="4" id="description" name="bookDescription" placeholder="Description..." class="form-control" ngModel></textarea>
+            Status:
+            <input type="radio" id="status" name="bookStatus" value="true" ngModel> True
+            <input type="radio" id="status" name="bookStatus" value="false" ngModel> False
+            <input type="text" id="image" name="bookImage" placeholder="ImageURL" class="form-control" ngModel>
+            <input type="number" id="categoryId" name="CategoryId" placeholder="Category Id" class="form-control" ngModel>
+            <input type="submit" name="submit_btn" class="btn btn-primary" value="Add Book">
+            <div class="alert alert-success" *ngIf="isSaved">
+              Updated successfully!
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+  

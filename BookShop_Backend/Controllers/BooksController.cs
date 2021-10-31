@@ -20,6 +20,7 @@ namespace BookShop_Backend.Controllers
         private ApplicationDBContext db = new ApplicationDBContext();
 
         // GET: api/Books
+        [AllowAnonymous]
         [Route("")]
         public IQueryable<Book> GetBooks()
         {
@@ -76,6 +77,16 @@ namespace BookShop_Backend.Controllers
         {
             List<Book> books = (from book in db.Books
                                 where book.CategoryId == cid
+                                select book).ToList();
+            return books;
+        }
+
+        //GET: api/Books/SearchByCategory/2
+        [Route("SearchByCategory/{category}")]
+        public IEnumerable<Book> GetBookByCategory(string category)
+        {
+            List<Book> books = (from book in db.Books
+                                where book.Category.catName.Contains(category)
                                 select book).ToList();
             return books;
         }
