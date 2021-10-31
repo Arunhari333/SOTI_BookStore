@@ -37,23 +37,12 @@ export class CheckoutComponent implements OnInit {
   totalOrders=this.orders.length;
   totalCost=0;
   isSaved: boolean = false;
+  isPresent: boolean = false;
+  isnewAddress : boolean = false;
 
-  shippingAddresses: any = [
-    {
-      "address": "Poorna Lane",
-      "city": "Tripunithura",
-      "state": "Kerala",
-      "zipcode": "682301",
-      "country": "India"
-    },
-    {
-      "address": "Martha Halli",
-      "city": "Bangalore",
-      "state": "Karnataka",
-      "zipcode": "782602",
-      "country": "India"
-    }
-  ]
+
+  shippingAddresses : any[] =[];
+
 
   constructor(private shoppingService: ShoppingService) { }
 
@@ -72,7 +61,16 @@ export class CheckoutComponent implements OnInit {
     this.shoppingService.getShippingAddress()
       .subscribe((res: any) => {
         console.log(res);
-        //this.users = res;
+        if(res.length==0)
+        {
+          console.log('Empty');
+          this.isPresent=false;
+        }
+        else{
+          this.isPresent=true
+          this.shippingAddresses = res;
+        }
+        
       })
   }
 
@@ -81,11 +79,28 @@ export class CheckoutComponent implements OnInit {
     console.log(this.addAddressForm.value)
     this.shoppingService.createShippingAddress(this.addAddressForm.value)
       .subscribe((res: any) => {
+        this.shoppingService.createOrder(res.id,this.totalCost)
+        .subscribe((res1:any)=>{
+          console.log(res1);
+        });
         console.log(res);
         if(res.id){
           this.isSaved = true;
           this.addAddressForm.reset();
         }
-      })
+      });
+  }
+
+  GetId(id:any):void{
+    console.log(id);
+    this.shoppingService.createOrder(id,this.totalCost)
+    .subscribe((res:any)=>{
+      console.log(res);
+    })
+  }
+
+  DisplayNewAddressForm() : any{
+    this.isnewAddress = true;
+    this.isPresent=false;
   }
 }

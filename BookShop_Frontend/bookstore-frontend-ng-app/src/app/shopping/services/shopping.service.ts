@@ -51,7 +51,8 @@ export class ShoppingService {
   }
   //to get shipping addresses
   getShippingAddress() {
-    let url: string = 'https://jsonplaceholder.typicode.com/users';
+    let userId: number = 5;
+    let url: string = `https://localhost:44374/api/Shipping/SearchByUserId/${userId}`;
     return this.http.get(url)
       .pipe(map((res: any) => {
         console.log(res);
@@ -65,6 +66,16 @@ export class ShoppingService {
         console.log(res);
         return res;
       }));
+  }
+
+  createOrder(id: any,totalCost: number){
+    let userId: number = 5;
+    let url:string = `https://localhost:44374/api/Order/PlaceOrder/${userId}/${id}/${totalCost}`;
+    return this.http.put(url,{'userId':userId,'shippingAddressId':id,'totalPrice':totalCost})
+    .pipe(map((res:any)=>{
+      console.log(res);
+      return res;
+    }));
   }
 }
 

@@ -26,9 +26,9 @@ namespace BookShop_Backend.Controllers
         }
 
         // PUT: api/Order/PlaceOrder/5
-        [Route("PlaceOrder/{userId:int}")]
+        [Route("PlaceOrder/{userId:int}/{shipId:int}/{totalPrice:int}")]
         [HttpPut]
-        public IHttpActionResult PlaceOrder(int userId)
+        public IHttpActionResult PlaceOrder(int userId, int shipId, int totalPrice)
         {
             //find order object using userId
             Order order = (from item in db.Orders
@@ -41,6 +41,8 @@ namespace BookShop_Backend.Controllers
             order.orderEstimatedDelivery = DateTime.Now.AddDays(7);
             //TransactionId = TR+current time
             order.transactionId = "TR" + DateTime.Now;
+            order.shippingAddressId = shipId;
+            order.totalPrice = totalPrice;
             //save to db -> LINQ
             db.Entry(order).State = EntityState.Modified;
             db.SaveChanges();

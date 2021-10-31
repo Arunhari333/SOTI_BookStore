@@ -27,9 +27,9 @@
         <div class="small mb-1">Year of Publication: {{bookData.bookYear}}</div>
         <p class="lead">Description: {{bookData.bookDescription}}</p>
         <div class="d-flex">
-          <input class="form-control text-center me-3" id="inputQuantity" type="number" value="1" style="max-width: 3rem" />
+          <input class="form-control text-center me-3" [(ngModel)]="qty" id="inputQuantity" type="number" value="1" style="max-width: 3rem" />
           <button class="btn btn-outline-dark flex-shrink-0" type="button" routerLinkActive="active"
-                  [routerLinkActiveOptions]="{exact: true}" routerLink="/cart">
+                  [routerLinkActiveOptions]="{exact: true}" (click)="addToCartSubmit()" routerLink="/cart">
             <i class="bi-cart-fill me-1"></i>
             Add to cart
           </button>

@@ -77,5 +77,13 @@ export class BookService {
         console.log(res);
         return res;
       }));
+    }
+  addToCart(qty :any,bookId:any):any{
+    //console.log(formData);
+    return this.http.post('https://localhost:44374/api/OrderItems',{'bookId':bookId,'qty':qty})
+    .pipe(map((res:any)=>{
+      console.log(res);
+      return res;
+    }));
   }
 }
