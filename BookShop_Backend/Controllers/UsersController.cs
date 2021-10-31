@@ -157,7 +157,7 @@ namespace BookShop_Backend.Controllers
         [AllowAnonymous]
         [Route("login")]
         [HttpPost]
-        public string Login(LoginData credentials)
+        public Token Login(LoginData credentials)
         {
             if (CheckUser(credentials.username, credentials.password))
             {

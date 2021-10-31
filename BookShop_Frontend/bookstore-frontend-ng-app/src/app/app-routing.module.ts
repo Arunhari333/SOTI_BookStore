@@ -16,18 +16,17 @@ const routes: Routes = [
   { path: 'signup' ,component:SignupComponent},
   { 
     path: 'books', component: ListBooksComponent,
-   //canActivate: [AuthGuard]
    },
   { 
     path: 'books/:id' ,component:BookDetailsComponent,
-    //canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   { 
     path: 'cart', component: CartComponent,
-    //canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   { path: 'checkout', component: CheckoutComponent,
-    //canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   { path: 'wishlist', component: WishlistComponent }
 ];

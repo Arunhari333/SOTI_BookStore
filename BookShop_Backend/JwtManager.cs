@@ -5,6 +5,10 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace WebApi.Jwt
 {
+    public class Token
+    {
+        public string token { get; set; }
+    }
     public static class JwtManager
     {
         /// <summary>
@@ -14,7 +18,7 @@ namespace WebApi.Jwt
         /// </summary>
         private const string Secret = "db3OIsj+BXE9NZDy0t8W3TcNekrF+2d/1sFnWG4HnV8TZY30iTOdtVWJG8abWvB1GlOgJuQZdcF2Luqm/hccMw==";
 
-        public static string GenerateToken(string username, int expireMinutes = 20)
+        public static Token GenerateToken(string username, int expireMinutes = 20)
         {
             var symmetricKey = Convert.FromBase64String(Secret);
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -34,8 +38,9 @@ namespace WebApi.Jwt
 
             SecurityToken securityToken = tokenHandler.CreateToken(tokenDescriptor);
             var token = tokenHandler.WriteToken(securityToken);
+            Token tokenObj = new Token() { token = token };
 
-            return token;
+            return tokenObj;
         }
 
         public static ClaimsPrincipal GetPrincipal(string token)

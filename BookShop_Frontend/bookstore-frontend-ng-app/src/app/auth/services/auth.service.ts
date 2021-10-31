@@ -9,7 +9,7 @@ export class AuthService {
 
   constructor(private http:HttpClient) { }
   login(formData:any):any{
-    return this.http.post('https://localhost:44374/api/Users',formData)
+    return this.http.post('https://localhost:44374/api/Users/login',formData)
     .pipe(map((res:any)=>{
       console.log(res);
       return res;

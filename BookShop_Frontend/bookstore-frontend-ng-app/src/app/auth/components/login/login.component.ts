@@ -13,17 +13,17 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   handleLoginSubmit(formData:any):any{
     console.log('Logging in...');
     console.log(formData.value);
     this.authService.login(formData.value)
     .subscribe((res:any)=>{
       console.log(res);
-      alert('Logged In');
       if(res&&res.token)
       {
         console.log(res.token);
-        localStorage.setItem('authToken',res.token);
+        localStorage.setItem('authToken', res.token);
         this.router.navigateByUrl(this.activatedRoute.snapshot.queryParams['returnURL']);
       }
     });

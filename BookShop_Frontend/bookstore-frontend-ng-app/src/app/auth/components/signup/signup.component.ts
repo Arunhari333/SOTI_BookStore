@@ -34,8 +34,8 @@ export class SignupComponent implements OnInit {
         console.log(this.consoleid);
         if(res && res.id){
           this.isSaved = true;
-          this.route.navigate(['login']);
           this.addUserForm.reset();
+          this.route.navigate(['login']);
         }
       })
   }
