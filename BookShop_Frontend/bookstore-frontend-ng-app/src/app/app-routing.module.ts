@@ -28,7 +28,12 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent,
     canActivate: [AuthGuard]
   },
-  { path: 'wishlist', component: WishlistComponent }
+  { path: 'wishlist', component: WishlistComponent },
+  //Lazy loading
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+  }
 ];
 
 @NgModule({
