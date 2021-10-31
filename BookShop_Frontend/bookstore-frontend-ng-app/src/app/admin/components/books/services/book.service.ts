@@ -20,12 +20,18 @@ export class AdminBookService {
   }
 
   updateBook(id: string|null, formData: any){
-    if(id == null){
-      return null;
-    }
     let url: string = `https://localhost:44374/api/Books/${id}`;
     console.log(formData);
     return this.http.put(url, formData)
+      .pipe(map((res: any) => {
+        console.log(res);
+        return res;
+      }));
+  }
+
+  deleteBook(id: string|null){
+    let url: string = `https://localhost:44374/api/Books/${id}`;
+    return this.http.delete(url)
       .pipe(map((res: any) => {
         console.log(res);
         return res;
