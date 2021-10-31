@@ -39,6 +39,15 @@ namespace BookShop_Backend.Controllers
             return Ok(shippingAddress);
         }
 
+        [Route("SearchByUserId/{userId}")]
+        public IEnumerable<ShippingAddress> GetBookByCategoryId(int userId)
+        {
+            List<ShippingAddress> books = (from shipAdd in db.ShippingAddress
+                                where shipAdd.userId == userId
+                                select shipAdd).ToList();
+            return books;
+        }
+
         // POST: api/Shipping
         [Route("")]
         [HttpPost]

@@ -1,22 +1,31 @@
 <div class="row">
     <div class="col-lg-6">
         <div class="box-element" id="form-wrapper">
-            <form id="form" [formGroup]="addAddressForm" (ngSubmit)="handleAddAddress()">
-                <div id="user-info">
+            
+                <div id="user-info"  style="overflow: scroll;" *ngIf="isPresent">
                   <h2>Saved Addresses</h2>
-                  <div *ngFor="let item of shippingAddresses">
-                    <div>Address: {{item.address}}</div>
-                    <div>City: {{item.city}}</div>
-                    <div>State: {{item.state}}</div>
-                    <div>Zip Code: {{item.zipcode}}</div>
-                    <div>Country: {{item.country}}</div><br />
+                  
+                  <div *ngFor="let item of shippingAddresses" class="zoom">
+                    <button class="btn btn-three" style="width: 98%; padding: 14px 28px;" (click)="GetId(item.id)">
+                    Address: {{item.address}}
+                    ,{{item.city}}
+                    ,{{item.state}}
+                    Zip Code: {{item.zipcode}}
+                   <br />
+                </button>
+                <br />
                   </div>
+               
                     <!--<div class="form-field">
                         <input required class="form-control" type="email" name="email" placeholder="Email..">
                     </div>-->
                 </div>
-                
-                <div id="shipping-info">
+                <br>
+                <div>
+                    <button class="btn btn-outline-dark" (click) = "DisplayNewAddressForm()"> Add New Address </button>
+                </div>
+                <form id="form" [formGroup]="addAddressForm" (ngSubmit)="handleAddAddress()">
+                <div id="shipping-info" *ngIf="isnewAddress">
                     <hr>
                     <p>Shipping Information:</p>
                     <hr>

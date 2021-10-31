@@ -19,14 +19,14 @@ const routes: Routes = [
    },
   { 
     path: 'books/:id' ,component:BookDetailsComponent,
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
   },
   { 
     path: 'cart', component: CartComponent,
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
   },
   { path: 'checkout', component: CheckoutComponent,
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
   },
   { path: 'wishlist', component: WishlistComponent }
 ];
