@@ -1,0 +1,22 @@
+<div class="container">
+    <form #ngForm="ngForm" (ngSubmit)="handleAddBook(ngForm)">
+      <h1>Add Book</h1>
+      <p class="text-muted">Enter Book Details</p>
+      <input type="text" id="title" name="bookTitle" placeholder="Title" class="form-control" ngModel>
+      <input type="text" id="author" name="bookAuthor" placeholder="Author" class="form-control" ngModel>
+      <input type="number" id="price" name="bookPrice" placeholder="Price" class="form-control" ngModel>
+      <input type="number" id="position" name="position" placeholder="Position" class="form-control" ngModel>
+      <input type="number" id="isbn" name="ISBN" placeholder="ISBN" class="form-control" ngModel>
+      <input type="number" id="year" name="bookYear" placeholder="Year" class="form-control" ngModel>
+      <textarea rows="4" id="description" name="bookDescription" placeholder="Description..." class="form-control" ngModel></textarea>
+      Status:
+      <input type="radio" id="status" name="bookStatus" value="true" ngModel> True
+      <input type="radio" id="status" name="bookStatus" value="false" ngModel> False
+      <input type="text" id="image" name="bookImage" placeholder="ImageURL" class="form-control" ngModel>
+      <input type="number" id="categoryId" name="CategoryId" placeholder="Category Id" class="form-control" ngModel>
+      <input type="submit" name="submit_btn" class="btn btn-primary" value="Add Book">
+      <div class="alert alert-success" *ngIf="isSaved">
+        Added successfully!
+      </div>
+    </form>
+</div>
