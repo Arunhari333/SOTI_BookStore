@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { HeaderService } from '../services/header.service';
 
@@ -10,7 +11,9 @@ import { HeaderService } from '../services/header.service';
 export class HeaderComponent implements OnInit {
   categories: any[]=[];
 
-  constructor(private headerService: HeaderService) { }
+  isloggedIn: any;
+
+  constructor(private headerService: HeaderService, private router: Router) { }
 
   ngOnInit(): void {
     this.headerService.getCategories()
@@ -18,10 +21,13 @@ export class HeaderComponent implements OnInit {
         console.log(res);
         this.categories = res;
       });
+      this.isloggedIn = localStorage.getItem('authToken');
   }
 
   logout(){
-    localStorage.removeItem('authtoken');
+    localStorage.removeItem('authToken');
+    this.router.navigate(['login']);
+    window.location.reload();
   }
   // login(){
   //   localStorage.getItem('authtoken');

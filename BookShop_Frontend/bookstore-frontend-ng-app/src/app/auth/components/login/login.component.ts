@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
         console.log(res.token);
         localStorage.setItem('authToken', res.token);
         this.router.navigateByUrl(this.activatedRoute.snapshot.queryParams['returnURL']);
+        window.location.reload();
       }
     });
 

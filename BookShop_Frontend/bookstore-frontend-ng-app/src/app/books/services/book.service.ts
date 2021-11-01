@@ -6,6 +6,7 @@ import {map} from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
+
 export class BookService {
   
   constructor(private http:HttpClient) { }
@@ -59,9 +60,9 @@ export class BookService {
       }));
   }
 
-  getBookByCategory(BookCategory: number | null): any {
+  getBookByCategory(BookCategory: string | null): any {
     console.log(BookCategory);
-    let bookCategoryURL = `https://localhost:44374/api/Books/SearchByCategoryId/${BookCategory}`;
+    let bookCategoryURL = `https://localhost:44374/api/Books/SearchByCategory/${BookCategory}`;
     return this.http.get(bookCategoryURL)
       .pipe(map((res: any) => {
         console.log(res);
