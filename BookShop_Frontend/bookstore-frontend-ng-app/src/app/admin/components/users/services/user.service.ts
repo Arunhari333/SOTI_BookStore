@@ -54,4 +54,12 @@ export class UserService {
         return res;
       }));
   }
+
+  addCoupon(formData:any):any{
+    return this.http.post('https://localhost:44374/api/DiscountCoupons',formData)
+    .pipe(map((res: any) => {
+      console.log(res);
+      return res;
+    }));
+  }
 }

@@ -1,0 +1,58 @@
+
+<div>
+    <div class="box-element">
+   
+ <div class="cart-row" *ngFor="let coupon of coupons">
+   
+    <div style="flex:2">
+      <p> Coupon Code - {{coupon.couponCode}}</p>
+    </div>
+    <div style="flex:1">
+      <p> Discount Percentage- {{coupon.discount}}</p>
+    </div>
+    
+    <div style="flex:1;">
+      <button class="btn-danger" (click)="DeleteById(coupon.id)"> 
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+          <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+        </svg>
+      </button>
+    </div>
+    
+    
+    
+  </div>
+
+</div>
+
+
+
+
+<div class="row">
+    <br /><br /><br /><br /><br /><br />
+    <div class="card col-md-12">
+      <div class="card-body">
+        <h5 class="card-title">Add Discount Coupon</h5>
+        <button class="btn btn-outline-dark" (click)="ShowCouponForm()">Add Coupon</button>
+        <form id="form" [formGroup]="addCouponCodeForm" (ngSubmit)="handleAddCoupon()">
+          <div id="shipping-info" *ngIf="showForm">
+              <hr>
+              <p>Coupon Information:</p>
+              <hr>
+              <div class="form-field">
+                <input class="form-control" type="text" formControlName="couponCode" placeholder="Coupon Code Name">
+
+              </div>
+              <div class="form-field">
+                  <input class="form-control" type="number" formControlName="discount" placeholder="Enter Percentage of Discount">
+              </div>
+
+              <hr>
+          <input id="form-button" class="btn btn-outline-success" type="submit" value="Continue">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
