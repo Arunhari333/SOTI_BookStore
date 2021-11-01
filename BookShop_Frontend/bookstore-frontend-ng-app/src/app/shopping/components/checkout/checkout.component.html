@@ -25,23 +25,26 @@
                     <button class="btn btn-outline-dark" (click) = "DisplayNewAddressForm()"> Add New Address </button>
                 </div>
                 <form id="form" [formGroup]="addAddressForm" (ngSubmit)="handleAddAddress()">
-                <div id="shipping-info" *ngIf="isnewAddress">
+                  <div id="shipping-info" *ngIf="isnewAddress">
                     <hr>
                     <p>Shipping Information:</p>
                     <hr>
                     <div class="form-field">
-                        <input class="form-control" type="text" formControlName="address" placeholder="Address..">
+                      <input class="form-control" type="text" formControlName="address" placeholder="Address..">
                     </div>
                     <div class="form-field">
-                        <input class="form-control" type="text" formControlName="city" placeholder="City..">
+                      <input class="form-control" type="text" formControlName="city" placeholder="City..">
                     </div>
                     <div class="form-field">
-                        <input class="form-control" type="text" formControlName="state" placeholder="State..">
+                      <input class="form-control" type="text" formControlName="state" placeholder="State..">
                     </div>
                     <div class="form-field">
-                        <input class="form-control" type="text" formControlName="zipcode" placeholder="Zip code..">
+                      <input class="form-control" type="text" formControlName="zipcode" placeholder="Zip code..">
                     </div>
-                </div>
+                    <div class="form-field">
+                      <input class="form-control" type="text" formControlName="discountcode" placeholder="Discount code..">
+                    </div>
+                  </div>
 
                 <hr>
                 <input id="form-button" class="btn btn-outline-success" type="submit" value="Continue">
