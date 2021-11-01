@@ -1,21 +1,21 @@
 <!-- ======= Header ======= -->
 
 <header>
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" routerLink="/">SOTI Book Store</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul>
-          <li><a class="nav-link active" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/">Home</a></li>
-          <li><a class="nav-link" routerLinkActive="active" routerLink="/about">About</a></li>
-          <li><a class="nav-link" href="#contact">Contact</a></li>
-          <li><a class="nav-link" routerLinkActive="active" routerLink="/books">Books</a></li>
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item"><a class="nav-link active" routerLink="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/books">Books</a></li>
 
-          <li class="dropdown">
-            <a href="#">
+          <li class="nav-item">
+            <a href="#" class="nav-link ">
               <span>Categories</span>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
@@ -23,7 +23,7 @@
             </a>
             <ul>
               <li *ngFor="let category of categories">
-                <a routerLink="/Categories/{{category.id}}">{{category.catName}}</a>
+                <a class="nav-link " routerLink="/Categories/{{category.id}}">{{category.catName}}</a>
               </li>
             </ul>
           </li>
@@ -31,18 +31,20 @@
           <li class="nav-item"><a class="nav-link" routerLink="/login">Login</a></li>
           <li class="nav-item"><a class="nav-link" routerLink="/signup">Signup</a></li>
 
-          <li>
-            <a class="nav-link" routerLinkActive="active" routerLink="/wishlist">
-              Wishlist<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/wishlist">
+              Wishlist
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
                 <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-              </svg>
+              </svg> -->
             </a>
           </li>
-          <li>
-            <a class="nav-link " routerLinkActive="active" routerLink="/cart">
-              Go to Cart<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/cart">
+              Go to Cart
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
                 <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-              </svg>
+              </svg> -->
 
             </a>
           </li>
