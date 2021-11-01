@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../services/user.service';
 
@@ -11,6 +12,10 @@ export class UserDetailsComponent implements OnInit {
 
   user:any;
   userOrders:any;
+  
+
+  
+
 
   constructor(private userService: UserService, private route: ActivatedRoute) { }
 
@@ -46,4 +51,6 @@ export class UserDetailsComponent implements OnInit {
         this.userOrders = res;
       })
   }
+
+  
 }

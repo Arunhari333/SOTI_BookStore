@@ -25,7 +25,6 @@ namespace BookShop_Backend.Models
         public ShippingAddress()
         {
             date_added = DateTime.Today;
-            userId = 1;
         }
     }
 }

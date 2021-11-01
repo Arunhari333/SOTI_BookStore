@@ -1,7 +1,7 @@
 <section class="py-5">
     <div class="container px-4 px-lg-5 my-5" *ngIf="isPresent">
       <div class="row gx-4 gx-lg-5 align-items-center">
-        <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" routerLink={{bookData.bookImage}} alt="..." /></div>
+        <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src={{bookData.bookImage}} alt="..." /></div>
         <div class="col-md-6">
   
           <h1 class="display-5 fw-bolder">{{bookData.bookTitle}}</h1>
@@ -28,12 +28,11 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Update User</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Update Book</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <form #ngForm="ngForm" (ngSubmit)="handleUpdateBook(ngForm)">
-            <h1>Add Book</h1>
             <p class="text-muted">Update</p>
             <input type="number" id="bookid" name="id" placeholder="Id" class="form-control" [ngModel]="bookData.id" readonly>
             <input type="text" id="title" name="bookTitle" placeholder="Title" class="form-control" [ngModel]="bookData.bookTitle">

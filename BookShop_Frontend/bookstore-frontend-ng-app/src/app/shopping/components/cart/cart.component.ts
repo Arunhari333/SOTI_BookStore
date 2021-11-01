@@ -66,13 +66,12 @@ export class CartComponent implements OnInit {
       })
   }
 
-  DeleteById(did:any):void
-  {
+  DeleteById(did:any):void{
     this.shoppingService.deleteOrderItem(did)
-          .subscribe((res: any) => {
-            console.log(res);
-            this.getOrdersI();
-          });
+      .subscribe((res: any) => {
+        console.log(res);
+        this.getOrdersI();
+      });
   }
   
 }

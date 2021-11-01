@@ -10,8 +10,7 @@ export class ShoppingService {
   constructor(private http: HttpClient) { }
 
   getOrderItems(){
-    let userId: number = 1;
-    let url: string = `https://localhost:44374/api/OrderItems/GetByUser/${userId}`;
+    let url: string = `https://localhost:44374/api/OrderItems/GetByUser`;
     return this.http.get(url)
       .pipe(map((res: any) => {
         console.log(res);
@@ -51,8 +50,7 @@ export class ShoppingService {
   }
   //to get shipping addresses
   getShippingAddress() {
-    let userId: number = 5;
-    let url: string = `https://localhost:44374/api/Shipping/SearchByUserId/${userId}`;
+    let url: string = `https://localhost:44374/api/Shipping/SearchByUserId`;
     return this.http.get(url)
       .pipe(map((res: any) => {
         console.log(res);
@@ -69,9 +67,8 @@ export class ShoppingService {
   }
 
   createOrder(id: any,totalCost: number){
-    let userId: number = 5;
-    let url:string = `https://localhost:44374/api/Order/PlaceOrder/${userId}/${id}/${totalCost}`;
-    return this.http.put(url,{'userId':userId,'shippingAddressId':id,'totalPrice':totalCost})
+    let url:string = `https://localhost:44374/api/Order/PlaceOrder/${id}/${totalCost}`;
+    return this.http.put(url, {'shippingAddressId':id,'totalPrice':totalCost})
     .pipe(map((res:any)=>{
       console.log(res);
       return res;
