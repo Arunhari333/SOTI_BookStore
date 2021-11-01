@@ -1,0 +1,59 @@
+<section class="py-5">
+    <div class="container px-4 px-lg-5 my-5" *ngIf="isPresent">
+      <div class="row gx-4 gx-lg-5 align-items-center">
+        <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" routerLink={{CategoryData.catImage}} alt="..." /></div>
+        <div class="col-md-6">
+  
+          <h1 class="display-5 fw-bolder">{{CategoryData.catName}}</h1>
+          <div class="fs-5 mb-5">
+
+          </div>
+          <div class="small mb-1">Author: {{CategoryData.bookAuthor}}</div>
+
+          <p class="lead">Description: {{CategoryData.catdescripation}}</p>
+          <div class="d-flex">
+            <button class="btn btn-outline-warning flex-shrink-0" type="button" data-bs-toggle="modal"
+            data-bs-target="#editBookModal" style="margin-right: 5px;">Edit</button>
+            <button class="btn btn-outline-danger flex-shrink-0" type="button">Delete</button>
+          </div>
+          </div>
+        </div>
+    </div>
+  </section>
+  <section>
+    <div class="modal fade" id="editBookModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update Category</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form #ngForm="ngForm" (ngSubmit)="handleUpdateBook(ngForm)">
+            <h1>Add Book</h1>
+            <p class="text-muted">Update</p>
+            <input type="number" id="catid" name="id" placeholder="Id" class="form-control" [ngModel]="CategoryData.id" readonly>
+            <input type="text" id="title" name="catName" placeholder="Title" class="form-control" [ngModel]="CategoryData.catName">
+
+            <input type="number" id="position" name="catPosition" placeholder="Position" class="form-control" [ngModel]="CategoryData.catPosition">
+
+            <textarea rows="4" id="description" name="catdescripation" placeholder="Description..." class="form-control" [ngModel]="CategoryData.catdescripation"></textarea>
+            Status:
+            <input type="radio" id="status" name="catStatus" value="true" [ngModel]="CategoryData.catStatus"> True
+            <input type="radio" id="status" name="catStatus" value="false" ngModel> False
+            <input type="text" id="image" name="catImage" placeholder="ImageURL" class="form-control" [ngModel]="CategoryData.catImage">
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+            <div class="alert alert-success" *ngIf="isSaved">
+              Updated successfully!
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+  

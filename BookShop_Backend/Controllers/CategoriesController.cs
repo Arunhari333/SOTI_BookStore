@@ -86,7 +86,7 @@ namespace BookShop_Backend.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            category.catCreateAt = DateTime.Today;
             db.Categories.Add(category);
             db.SaveChanges();
 
