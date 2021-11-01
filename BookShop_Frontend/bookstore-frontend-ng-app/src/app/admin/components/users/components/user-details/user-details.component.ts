@@ -12,13 +12,7 @@ export class UserDetailsComponent implements OnInit {
 
   user:any;
   userOrders:any;
-  showForm:boolean = false;
-
-  addCouponCodeForm= new FormGroup({
-    couponCode : new FormControl(''),
-    discount : new FormControl(''),
-    isPercentage : new FormControl('')
-  });
+  
 
   
 
@@ -58,30 +52,5 @@ export class UserDetailsComponent implements OnInit {
       })
   }
 
-  ShowCouponForm() : any{
-    this.showForm = true;
-    this.getRandomString()
-  }
-
-  handleAddCoupon():any{
-    this.addCouponCodeForm.patchValue({
-      couponCode: this.couponCode, 
-      isPercentage:1
-    });
-    this.userService.addCoupon(this.addCouponCodeForm.value)
-      .subscribe((res: any) => {
-        console.log(res);
-        alert("Coupon Code Added!!");
-      })
-  }
-
-  couponCode:any="";
-  getRandomString() {
-    var randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    for ( var i = 0; i < 6; i++ ) {
-      this.couponCode += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
-    }
-    console.log(this.couponCode);
-    return this.couponCode;
-}
+  
 }
