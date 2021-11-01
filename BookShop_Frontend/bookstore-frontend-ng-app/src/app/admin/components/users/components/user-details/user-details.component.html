@@ -1,0 +1,33 @@
+<div class="container" style="margin-bottom: 30px; margin-top: 30px">
+  <a routerLink="/admin/users" class="btn btn-dark mb-3">Go back</a>
+  <div class="row">
+    <div class="card col-md-12">
+      <div class="card-body" *ngIf="user">
+        <h5 class="card-title">{{user.username}}</h5>
+        <p>Email: {{user.email}}</p>
+        <p>Status: {{user.status}}</p>
+        <button class="btn btn-primary" (click)="handleToggleUserStatus()">Toggle Status</button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="card col-md-12">
+      <div class="card-body" *ngIf="user">
+        <h5 class="card-title">Orders</h5>
+        <div class="row" *ngFor="let order of userOrders">
+          <div class="card col-md-12">
+            <div class="card-body" *ngIf="order">
+              <h5 class="card-title">{{order.username}}</h5>
+              <p>Transaction Id: {{order.transactionId}}</p>
+              <p>Order Date: {{order.orderDate}}</p>
+              <p>Delivery Date: {{order.orderEstimatedDelivery}}</p>
+              <p>Total Price: {{order.totalPrice}}</p>
+              <p>Completed: {{order.complete}}</p>
+              <a routerLink="/admin/users/orders/{{order.id}}" class="btn btn-success">More Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

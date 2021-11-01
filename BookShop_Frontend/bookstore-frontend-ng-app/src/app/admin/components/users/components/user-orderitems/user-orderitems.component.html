@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="col-lg-12">
+      <div class="box-element">
+        <div class="cart-row">
+          <div style="flex:2"></div>
+          <div style="flex:2"><strong>Item</strong></div>
+          <div style="flex:1"><strong>Price</strong></div>
+          <div style="flex:1"><strong>Quantity</strong></div>
+          <div style="flex:1"><strong>Total</strong></div>
+        </div>
+  
+        <div class="cart-row" *ngFor="let orderItem of orderItems">
+          <div style="flex:2">
+            <a routerLink="admin/books/{{orderItem.Book.id}}">
+              <img class="row-image" src="/assets/images/{{orderItem.Book.bookImage}}">
+            </a>
+          </div>
+          <div style="flex:2">
+            <p>{{orderItem.Book.bookTitle}}</p>
+          </div>
+          <div style="flex:1">
+            <p>{{orderItem.Book.bookPrice}}</p>
+          </div>
+          <div style="flex:1">
+            <p>{{orderItem.qty}}</p>
+          </div>
+          <div style="flex:1">
+            <p>{{(orderItem.Book.bookPrice * orderItem.qty)}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

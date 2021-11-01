@@ -10,8 +10,8 @@ export class ShoppingService {
   constructor(private http: HttpClient) { }
 
   getOrderItems(){
-    let userId: number = 2;
-    let url: string = `https://localhost:44374/api/OrderItems/GetByUser/${userId}`;
+    let orderId: number = 2;
+    let url: string = `https://localhost:44374/api/OrderItems/GetByOrder/${orderId}`;
     return this.http.get(url)
       .pipe(map((res: any) => {
         console.log(res);

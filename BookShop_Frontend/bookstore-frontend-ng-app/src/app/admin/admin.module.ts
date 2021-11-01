@@ -8,6 +8,9 @@ import { FormsModule } from '@angular/forms';
 import { CategoryComponent } from './components/category/category.component';
 import { AddCategoryComponent } from './components/category/components/add-category/add-category.component';
 import { CategoryDataComponent } from './components/category/components/category-data/category-data.component';
+import { UsersComponent } from './components/users/users.component';
+import { UserDetailsComponent } from './components/users/components/user-details/user-details.component';
+import { UserOrderitemsComponent } from './components/users/components/user-orderitems/user-orderitems.component';
 
 
 
@@ -19,6 +22,9 @@ import { CategoryDataComponent } from './components/category/components/category
     CategoryComponent,
     AddCategoryComponent,
     CategoryDataComponent,
+    UsersComponent,
+    UserDetailsComponent,
+    UserOrderitemsComponent,
   ],
   imports: [
     CommonModule,

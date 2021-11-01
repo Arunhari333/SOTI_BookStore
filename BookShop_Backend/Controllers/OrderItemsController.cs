@@ -66,6 +66,25 @@ namespace BookShop_Backend.Controllers
             return orderItems;
         }
 
+        // GET: api/OrderItems/GetByOrder/5
+        [Route("GetByOrder/{oid:int}")]
+        [ResponseType(typeof(OrderItem))]
+        public IEnumerable<OrderItem> GetOrderItemsByOrder(int oid)
+        {
+            Order order = db.Orders.Find(oid);
+
+            if (order == null)
+            {
+                return null;
+            }
+
+            var orderItems = (from item in db.OrderItem
+                              where item.orderId == order.id
+                              select item).ToList();
+
+            return orderItems;
+        }
+
         //PUT: api/OrderItems
         [Route("")]
         [HttpPut]
