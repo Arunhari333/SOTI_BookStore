@@ -65,12 +65,12 @@
             <hr>
             <div class="cart-row" *ngFor="let item of orders">
                 <div style="flex:2"><img class="row-image" src="/assets/images/{{item.url}}"></div>
-                <div style="flex:2"><p>{{item.name}}</p></div>
-                <div style="flex:1"><p>{{item.price}}</p></div>
+                <div style="flex:2"><p>{{item.Book.bookTitle}}</p></div>
+                <div style="flex:1"><p>{{item.Book.bookPrice}}</p></div>
                 <div style="flex:1"><p>x{{item.qty}}</p></div>
             </div>
-            <h5>Items:   {{totalOrders}}</h5>
-            <h5>Total:   {{totalCost}}</h5>
+            <h5>Items:   {{orders.length}}</h5>
+            <h5>Total:   {{total}}</h5>
         </div>
     </div>
 </div>

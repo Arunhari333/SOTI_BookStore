@@ -29,6 +29,10 @@ export class CartComponent implements OnInit {
   constructor(private shoppingService: ShoppingService) {}
 
   ngOnInit() {
+   this.getOrdersI();
+  }
+  
+  getOrdersI():any{
     this.shoppingService.getOrderItems()
       .subscribe((res: any) => {
         console.log(res);
@@ -36,10 +40,12 @@ export class CartComponent implements OnInit {
         this.calculateTotal();
       });
   }
-  
+
+
   calculateTotal() {
     this.total = 0;
     for(let i=0; i< this.orders.length;i++){
+      console.log(this.orders[i].Book.bookPrice);
       this.total = this.total + (this.orders[i].Book.bookPrice * this.orders[i].qty)
     }
   }
@@ -60,12 +66,15 @@ export class CartComponent implements OnInit {
       })
   }
 
-  deleteitem(orderItem: any[]) {
-    this.shoppingService.deleteOrderItem()
-        .subscribe((res: any) => {
-          console.log(res);
-        });
+  DeleteById(did:any):void
+  {
+    this.shoppingService.deleteOrderItem(did)
+          .subscribe((res: any) => {
+            console.log(res);
+            this.getOrdersI();
+          });
   }
+  
 }
 
 

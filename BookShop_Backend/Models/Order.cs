@@ -27,7 +27,7 @@ namespace BookShop_Backend.Models
            public int shippingAddressId { get; set; }
         public Order()
         {
-            userId = 5;
+            userId = 1;
         }
 
         public Order(int uId)

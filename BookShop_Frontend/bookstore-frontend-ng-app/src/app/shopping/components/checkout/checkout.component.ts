@@ -10,22 +10,23 @@ import { ShoppingService } from '../../services/shopping.service';
 })
 export class CheckoutComponent implements OnInit {
 
-  orders :any = [
-    {
-      "name": "maths",
-      "url": "images.jfif",
-      "price": 250,
-      "qty": 2,
-      "id": 4
-    },
-    {
-      "name": "Science",
-      "url": "images.jfif",
-      "price": 400,
-      "qty": 1,
-      "id": 5
+  orders :any = [];
+    getOrdersI():any{
+      this.shoppingService.getOrderItems()
+        .subscribe((res: any) => {
+          console.log(res);
+          this.orders = res;
+          this.calculateTotal();
+        });
     }
-  ]
+    total!: number;
+    calculateTotal() {
+      this.total = 0;
+      for(let i=0; i< this.orders.length;i++){
+        console.log(this.orders[i].Book.bookPrice);
+        this.total = this.total + (this.orders[i].Book.bookPrice * this.orders[i].qty)
+      }
+    }
 
   addAddressForm = new FormGroup({
     address: new FormControl(''),
@@ -35,7 +36,7 @@ export class CheckoutComponent implements OnInit {
   });
 
   totalOrders=this.orders.length;
-  totalCost=0;
+  
   isSaved: boolean = false;
   isPresent: boolean = false;
   isnewAddress : boolean = false;
@@ -47,10 +48,8 @@ export class CheckoutComponent implements OnInit {
   constructor(private shoppingService: ShoppingService) { }
 
   ngOnInit(): void {
-    for(let i=0;i<this.orders.length;i++)
-    {
-      this.totalCost +=(this.orders[i].qty * this.orders[i].price) 
-    }
+
+    this.getOrdersI();
 
     this.shoppingService.getOrderItems()
       .subscribe((res: any) => {
@@ -79,7 +78,7 @@ export class CheckoutComponent implements OnInit {
     console.log(this.addAddressForm.value)
     this.shoppingService.createShippingAddress(this.addAddressForm.value)
       .subscribe((res: any) => {
-        this.shoppingService.createOrder(res.id,this.totalCost)
+        this.shoppingService.createOrder(res.id,this.total)
         .subscribe((res1:any)=>{
           console.log(res1);
         });
@@ -93,7 +92,7 @@ export class CheckoutComponent implements OnInit {
 
   GetId(id:any):void{
     console.log(id);
-    this.shoppingService.createOrder(id,this.totalCost)
+    this.shoppingService.createOrder(id,this.total)
     .subscribe((res:any)=>{
       console.log(res);
     })
