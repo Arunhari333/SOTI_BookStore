@@ -10,7 +10,7 @@ export class ShoppingService {
   constructor(private http: HttpClient) { }
 
   getOrderItems(){
-    let userId: number = 2;
+    let userId: number = 1;
     let url: string = `https://localhost:44374/api/OrderItems/GetByUser/${userId}`;
     return this.http.get(url)
       .pipe(map((res: any) => {
@@ -29,10 +29,10 @@ export class ShoppingService {
   }
 
   //To delete an item from cart
-  deleteOrderItem() {
-    let userId: number = 4;
-    let url: string = `https://jsonplaceholder.typicode.com/users/${userId}`;
-    return this.http.post(url, userId)
+  deleteOrderItem(id:any) {
+    let userId: number = 1;
+    let url: string = `https://localhost:44374/api/OrderItems/${id}`;
+    return this.http.delete(url)
       .pipe(map((res: any) => {
         console.log(res);
         return res;
