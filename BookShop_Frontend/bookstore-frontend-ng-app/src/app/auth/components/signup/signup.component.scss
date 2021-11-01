@@ -9,14 +9,25 @@
 }
 
 .box {
-  width: 500px;
-  padding: 40px;
+
+  padding: 50px;
   background: #191919;
   text-align: center;
   transition: 0.25s;
   margin: auto;
   margin-top: 50px;
   margin-bottom: 50px;
+}
+@media only screen and (max-width: 425px){
+  .box {
+    padding: 22px;
+    background: #191919;
+    text-align: center;
+    transition: 0.25s;
+    margin: auto;
+    margin-top: 90px;
+    margin-bottom: 50px;
+  }
 }
 
 .box input[type="text"],
