@@ -10,6 +10,7 @@ import { AddCategoryComponent } from './components/category/components/add-categ
 import { UsersComponent } from './components/users/users.component';
 import { UserDetailsComponent } from './components/users/components/user-details/user-details.component';
 import { UserOrderitemsComponent } from './components/users/components/user-orderitems/user-orderitems.component';
+import { CouponsComponent } from './components/dicountCounpons/coupons/coupons.component';
 
 //configuring routes
 const adminRoutes = [
@@ -23,6 +24,7 @@ const adminRoutes = [
   { path: 'users', component: UsersComponent },
   { path: 'users/:id', component: UserDetailsComponent },
   { path: 'users/orders/:id', component: UserOrderitemsComponent },
+  { path: 'coupons', component: CouponsComponent }
 ]
 //register routes
 @NgModule({
