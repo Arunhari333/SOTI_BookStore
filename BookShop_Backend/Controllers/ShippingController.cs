@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using BookShop_Backend.Models;
+using WebApi.Jwt;
 
 namespace BookShop_Backend.Controllers
 {
@@ -39,11 +40,11 @@ namespace BookShop_Backend.Controllers
             return Ok(shippingAddress);
         }
 
-        [Route("SearchByUserId/{userId}")]
-        public IEnumerable<ShippingAddress> GetBookByCategoryId(int userId)
+        [Route("SearchByUserId")]
+        public IEnumerable<ShippingAddress> GetAddressesByUserId()
         {
             List<ShippingAddress> books = (from shipAdd in db.ShippingAddress
-                                where shipAdd.userId == userId
+                                where shipAdd.userId == CurrentUser.id
                                 select shipAdd).ToList();
             return books;
         }
@@ -59,6 +60,7 @@ namespace BookShop_Backend.Controllers
                 return BadRequest(ModelState);
             }
 
+            shippingAddress.userId = CurrentUser.id;
             db.ShippingAddress.Add(shippingAddress);
             db.SaveChanges();
 

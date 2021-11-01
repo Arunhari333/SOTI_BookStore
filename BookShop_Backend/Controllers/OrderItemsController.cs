@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using BookShop_Backend.Models;
+using WebApi.Jwt;
 
 namespace BookShop_Backend.Controllers
 {
@@ -46,12 +47,12 @@ namespace BookShop_Backend.Controllers
         }
 
         // GET: api/OrderItems/GetByUser/5
-        [Route("GetByUser/{uid:int}")]
+        [Route("GetByUser")]
         [ResponseType(typeof(OrderItem))]
-        public IEnumerable<OrderItem> GetOrderItemsByUser(int uid)
+        public IEnumerable<OrderItem> GetOrderItemsByUser()
         {
             Order order = (from item in db.Orders
-                           where item.userId == uid && item.complete == false
+                           where item.userId == CurrentUser.id && item.complete == false
                            select item).SingleOrDefault();
 
             if (order == null)

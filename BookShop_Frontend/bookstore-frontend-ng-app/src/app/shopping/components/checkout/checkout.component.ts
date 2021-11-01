@@ -74,11 +74,10 @@ export class CheckoutComponent implements OnInit {
   }
 
   handleAddAddress(): void {
-    console.log('Submitting');
     console.log(this.addAddressForm.value)
     this.shoppingService.createShippingAddress(this.addAddressForm.value)
       .subscribe((res: any) => {
-        this.shoppingService.createOrder(res.id,this.total)
+        this.shoppingService.createOrder(res.id, this.total)
         .subscribe((res1:any)=>{
           console.log(res1);
         });
@@ -92,7 +91,7 @@ export class CheckoutComponent implements OnInit {
 
   GetId(id:any):void{
     console.log(id);
-    this.shoppingService.createOrder(id,this.total)
+    this.shoppingService.createOrder(id, this.total)
     .subscribe((res:any)=>{
       console.log(res);
     })

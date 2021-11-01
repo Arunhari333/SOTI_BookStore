@@ -9,6 +9,10 @@ namespace WebApi.Jwt
     {
         public string token { get; set; }
     }
+    public class CurrentUser
+    {
+        public static int id;
+    }
     public static class JwtManager
     {
         /// <summary>

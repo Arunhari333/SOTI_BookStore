@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
@@ -43,6 +44,26 @@ namespace BookShop_Backend.Controllers
                 return NotFound();
             }
             return Ok(user);
+        }
+
+        [Route("GetByUserName/{username}")]
+        [ResponseType(typeof(User))]
+        public int GetUserIdByUsername(string username)
+        {
+            User user = (from u in db.Users
+                         where u.username == username
+                         select u).SingleOrDefault();
+            if (user == null)
+            {
+                return 0;
+            }
+            return user.id;
+        }
+
+        [Route("GetCurrentUser")]
+        public int GetCurrentUserId()
+        {
+            return CurrentUser.id;
         }
 
         // PUT: api/Users/5
@@ -161,6 +182,7 @@ namespace BookShop_Backend.Controllers
         {
             if (CheckUser(credentials.username, credentials.password))
             {
+                CurrentUser.id = GetUserIdByUsername(credentials.username);
                 return JwtManager.GenerateToken(credentials.username);
             }
 

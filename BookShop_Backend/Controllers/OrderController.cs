@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using WebApi.Jwt;
 
 namespace BookShop_Backend.Controllers
 {
@@ -26,10 +27,11 @@ namespace BookShop_Backend.Controllers
         }
 
         // PUT: api/Order/PlaceOrder/5
-        [Route("PlaceOrder/{userId:int}/{shipId:int}/{totalPrice:int}")]
+        [Route("PlaceOrder/{shipId:int}/{totalPrice:int}")]
         [HttpPut]
-        public IHttpActionResult PlaceOrder(int userId, int shipId, int totalPrice)
+        public IHttpActionResult PlaceOrder(int shipId, int totalPrice)
         {
+            int userId = CurrentUser.id;
             //find order object using userId
             Order order = (from item in db.Orders
                          where item.userId == userId && item.complete == false
@@ -43,8 +45,14 @@ namespace BookShop_Backend.Controllers
             order.transactionId = "TR" + DateTime.Now;
             order.shippingAddressId = shipId;
             order.totalPrice = totalPrice;
+            order.complete = true;
             //save to db -> LINQ
             db.Entry(order).State = EntityState.Modified;
+
+            //Creating a new order instance for the user
+            Order newOrder = new Order(userId);
+            db.Orders.Add(newOrder);
+
             db.SaveChanges();
             return Ok(order);
         }
