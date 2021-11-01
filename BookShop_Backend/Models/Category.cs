@@ -19,6 +19,9 @@ namespace BookShop_Backend.Models
         public int catPosition { get; set; }
         public DateTime catCreateAt { get; set; }
 
-
+        public Category()
+        {
+            catCreateAt = DateTime.Now;
+        }
     }
 }

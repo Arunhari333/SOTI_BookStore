@@ -7,6 +7,9 @@ import { BookDataComponent } from './components/books/components/book-data/book-
 import { CategoryComponent } from './components/category/category.component';
 import { CategoryDataComponent } from './components/category/components/category-data/category-data.component';
 import { AddCategoryComponent } from './components/category/components/add-category/add-category.component';
+import { UsersComponent } from './components/users/users.component';
+import { UserDetailsComponent } from './components/users/components/user-details/user-details.component';
+import { UserOrderitemsComponent } from './components/users/components/user-orderitems/user-orderitems.component';
 
 //configuring routes
 const adminRoutes = [
@@ -17,6 +20,9 @@ const adminRoutes = [
   { path: 'category', component: CategoryComponent },
   { path: 'category/add-category', component: AddCategoryComponent },
   { path: 'category/:id', component: CategoryDataComponent },
+  { path: 'users', component: UsersComponent },
+  { path: 'users/:id', component: UserDetailsComponent },
+  { path: 'users/orders/:id', component: UserOrderitemsComponent },
 ]
 //register routes
 @NgModule({

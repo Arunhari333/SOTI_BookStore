@@ -1,13 +1,9 @@
 <section class="py-5">
-    <div class="container px-4 px-lg-5 my-5" *ngIf="isPresent">
+    <div class="container px-4 px-lg-5 my-5" *ngIf="CategoryData">
       <div class="row gx-4 gx-lg-5 align-items-center">
         <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" routerLink={{CategoryData.catImage}} alt="..." /></div>
         <div class="col-md-6">
-  
           <h1 class="display-5 fw-bolder">{{CategoryData.catName}}</h1>
-         
-          <div class="small mb-1">Author: {{CategoryData.bookAuthor}}</div>
-
           <p class="lead">Description: {{CategoryData.catdescripation}}</p>
           <p class="lead">Status: {{CategoryData.catStatus}}</p>
           <p class="lead">Position: {{CategoryData.catPosition}}</p>
@@ -43,6 +39,7 @@
             <input type="radio" id="status" name="catStatus" value="true" [ngModel]="CategoryData.catStatus"> True
             <input type="radio" id="status" name="catStatus" value="false" ngModel> False
             <input type="text" id="image" name="catImage" placeholder="ImageURL" class="form-control" [ngModel]="CategoryData.catImage">
+            <input type="datetime" id="createAt" name="catCreateAt" placeholder="ImageURL" class="form-control" [ngModel]="CategoryData.catCreateAt" readonly>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Save changes</button>

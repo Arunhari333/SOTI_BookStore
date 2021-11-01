@@ -1,0 +1,11 @@
+<div class="container" style="margin-top: 70px; margin-bottom: 40px;">
+    <div class="row">
+        <h1 class="display-5 fw-bold">User Manager App!</h1>
+        <div class="card col-sm-3" *ngFor="let user of users">
+            <div class="card-body">
+                <h5 class="card-title">{{user.username}}</h5>
+                <a routerLink="/admin/users/{{user.id}}" class="card-link">View Details</a>
+            </div>
+        </div>
+    </div>
+</div>

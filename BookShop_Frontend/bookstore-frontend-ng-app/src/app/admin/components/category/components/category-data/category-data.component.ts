@@ -9,7 +9,6 @@ import { CategoryService } from '../../services/category.service';
 })
 export class CategoryDataComponent implements OnInit {
   CategoryData:any;
-  isPresent: boolean = false;
   isSaved: boolean = false;
 
 
@@ -17,7 +16,6 @@ export class CategoryDataComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCategoryData();
-    
   }
 
   getCategoryData(){
