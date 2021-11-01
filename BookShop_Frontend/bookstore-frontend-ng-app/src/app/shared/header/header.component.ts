@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/auth/services/auth.service';
 import { HeaderService } from '../services/header.service';
 
 @Component({
@@ -18,5 +19,15 @@ export class HeaderComponent implements OnInit {
         this.categories = res;
       });
   }
+
+  logout(){
+    localStorage.removeItem('authtoken');
+  }
+  // login(){
+  //   localStorage.getItem('authtoken');
+  // }
+  // signup(){
+  //   localStorage.getItem('authtoken');
+  // }
 
 }
