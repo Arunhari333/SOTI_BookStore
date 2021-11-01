@@ -12,7 +12,7 @@ export class AddCategoryComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  handleAddBook(formData:any):any{
+  handleAddcategory(formData:any):any{
     console.log(formData.value);
     this.categoryService.createCategory(formData.value)
     .subscribe((res:any)=>{
