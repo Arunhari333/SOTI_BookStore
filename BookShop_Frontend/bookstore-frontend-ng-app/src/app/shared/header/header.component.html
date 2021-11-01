@@ -1,7 +1,7 @@
 <!-- ======= Header ======= -->
 
 <header>
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" routerLink="/">SOTI Book Store</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,8 +21,10 @@
                 <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
               </svg>
             </a>
-            <ul *ngFor="let category of categories">
-              <li><a routerLink="/Categories/{{category.catName}}"> </a></li>
+            <ul>
+              <li *ngFor="let category of categories">
+                <a routerLink="/Categories/{{category.id}}">{{category.catName}}</a>
+              </li>
             </ul>
           </li>
 

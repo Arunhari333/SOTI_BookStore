@@ -1,0 +1,23 @@
+<div class="container" style="margin-bottom: 30px;">
+    <div class="row">
+      <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+          <h1 class="display-5 fw-bold">Category Management</h1>
+          <a class="btn btn-primary btn-lg" routerLink="/admin/category/add-category" role="button">Add category</a>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+        <div class="col-lg-4" *ngFor="let cat of category">
+            <a routerLink="/admin/category/{{cat.id}}">
+                
+                <div class="box-element product">
+                    <h4><strong> {{cat.catName}}</strong></h4>
+                   
+                </div>
+            </a>
+        </div>
+      </div>
+</div>
+  
