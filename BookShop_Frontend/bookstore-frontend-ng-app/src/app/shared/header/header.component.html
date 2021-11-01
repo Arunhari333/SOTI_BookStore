@@ -21,25 +21,8 @@
                 <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
               </svg>
             </a>
-            <ul>
-              <li><a href="#">Maths</a></li>
-              <li class="dropdown">
-                <a href="#">
-                  <span>Science</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-                  </svg>
-                </a>
-                <ul>
-                  <li><a href="#">Chemistry</a></li>
-                  <li><a href="#">Biology</a></li>
-                  <li><a href="#">Zoology</a></li>
-                  <li><a href="#">Physics</a></li>
-                </ul>
-              </li>
-              <li><a href="#">English Grammar</a></li>
-              <li><a href="#">Fiction</a></li>
-              <li><a href="#">Non-Fiction</a></li>
+            <ul *ngFor="let category of categories">
+              <li><a routerLink="/Categories/{{category.catName}}"> </a></li>
             </ul>
           </li>
 
