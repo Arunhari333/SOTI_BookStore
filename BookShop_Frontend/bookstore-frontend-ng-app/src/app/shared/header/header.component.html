@@ -27,10 +27,10 @@
               </li>
             </ul>
           </li>
-
-          <li class="nav-item"><a class="nav-link" routerLink="/login" *ngIf="logout">Login</a></li>
-          <li class="nav-item"><a class="nav-link" routerLink="/signup" *ngIf="logout">>Signup</a></li>
-          <li class="nav-item"><a class="nav-link" routerLink="/" (click)="logout()" *ngIf="!logout">Logout</a></li>
+          
+          <li class="nav-item"><a class="nav-link" routerLink="/login" *ngIf="!isloggedIn">Login</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/signup" *ngIf="!isloggedIn">Signup</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/" (click)="logout()" *ngIf="isloggedIn">Logout</a></li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/wishlist">
               Wishlist

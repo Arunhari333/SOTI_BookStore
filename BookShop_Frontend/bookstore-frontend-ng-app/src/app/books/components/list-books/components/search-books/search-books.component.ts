@@ -53,8 +53,8 @@ export class SearchBooksComponent implements OnInit {
   }
 
   searchBookByCategory() {
-    let bookCategory: number;
-    bookCategory = +(<HTMLInputElement>document.getElementById(`bookcategory`)).value;
+    let bookCategory: string;
+    bookCategory = (<HTMLInputElement>document.getElementById(`bookcategory`)).value;
     this.bookService.getBookByCategory(bookCategory)
       .subscribe((res: any) => {
         console.log(res);

@@ -48,11 +48,11 @@ namespace BookShop_Backend.Controllers
 
         // GET: api/OrderItems/GetByUser/5
         [Route("GetByUser")]
-        [ResponseType(typeof(OrderItem))]
         public IEnumerable<OrderItem> GetOrderItemsByUser()
         {
+            int userId = CurrentUser.id;
             Order order = (from item in db.Orders
-                           where item.userId == CurrentUser.id && item.complete == false
+                           where item.userId == userId && item.complete == false
                            select item).SingleOrDefault();
 
             if (order == null)
@@ -69,7 +69,6 @@ namespace BookShop_Backend.Controllers
 
         // GET: api/OrderItems/GetByOrder/5
         [Route("GetByOrder/{oid:int}")]
-        [ResponseType(typeof(OrderItem))]
         public IEnumerable<OrderItem> GetOrderItemsByOrder(int oid)
         {
             Order order = db.Orders.Find(oid);
