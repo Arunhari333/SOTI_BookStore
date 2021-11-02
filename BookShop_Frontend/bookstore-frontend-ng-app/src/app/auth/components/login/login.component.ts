@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DataStoreService } from 'src/app/shared/services/data-store.service';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService:AuthService, private router:Router, private activatedRoute:ActivatedRoute) { }
+  constructor(private authService:AuthService, private router:Router, 
+    private activatedRoute:ActivatedRoute, private dataStore:DataStoreService) { }
 
   ngOnInit(): void {
   }
@@ -20,12 +22,15 @@ export class LoginComponent implements OnInit {
     this.authService.login(formData.value)
     .subscribe((res:any)=>{
       console.log(res);
-      if(res&&res.token)
+      if(res && res.token)
       {
         console.log(res.token);
+        if(formData.value.username == 'Arun'){
+          this.dataStore.toggleIsAdmin();
+        }
         localStorage.setItem('authToken', res.token);
         this.router.navigateByUrl(this.activatedRoute.snapshot.queryParams['returnURL']);
-        window.location.reload();
+        //setTimeout(function(){ window.location.reload(); }, 1000);
       }
     });
 

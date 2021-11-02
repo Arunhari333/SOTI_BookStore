@@ -12,6 +12,7 @@ import { UsersComponent } from './components/users/users.component';
 import { UserDetailsComponent } from './components/users/components/user-details/user-details.component';
 import { UserOrderitemsComponent } from './components/users/components/user-orderitems/user-orderitems.component';
 import { CouponsComponent } from './components/dicountCounpons/coupons/coupons.component';
+import { AdminComponent } from './admin.component';
 
 
 
@@ -27,6 +28,7 @@ import { CouponsComponent } from './components/dicountCounpons/coupons/coupons.c
     UserDetailsComponent,
     UserOrderitemsComponent,
     CouponsComponent,
+    AdminComponent,
   ],
   imports: [
     CommonModule,

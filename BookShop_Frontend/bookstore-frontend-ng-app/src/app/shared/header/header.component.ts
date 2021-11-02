@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { DataStoreService } from '../services/data-store.service';
 import { HeaderService } from '../services/header.service';
 
 @Component({
@@ -12,10 +13,15 @@ export class HeaderComponent implements OnInit {
   categories: any[]=[];
 
   isloggedIn: any;
+  isAdmin: any;
 
-  constructor(private headerService: HeaderService, private router: Router) { }
+  constructor(private headerService: HeaderService, private router: Router, private dataStore:DataStoreService) { }
 
   ngOnInit(): void {
+    this.dataStore.isAdmin.subscribe(isAdmin => {
+      console.log(isAdmin);
+      this.isAdmin = isAdmin;
+    });
     this.headerService.getCategories()
       .subscribe((res: any) => {
         console.log(res);
@@ -27,13 +33,7 @@ export class HeaderComponent implements OnInit {
   logout(){
     localStorage.removeItem('authToken');
     this.router.navigate(['login']);
-    window.location.reload();
+    //setTimeout(function(){ window.location.reload(); }, 1000);
   }
-  // login(){
-  //   localStorage.getItem('authtoken');
-  // }
-  // signup(){
-  //   localStorage.getItem('authtoken');
-  // }
 
 }

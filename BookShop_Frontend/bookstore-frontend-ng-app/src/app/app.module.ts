@@ -21,6 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './shared/footer/footer.component';
 import { WishlistComponent } from './shopping/components/wishlist/wishlist.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AdminModule } from './admin/admin.module';
 //import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 
 
@@ -50,7 +51,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     NgbModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AdminModule
   ],
   providers: [
   //   {

@@ -11,20 +11,22 @@ import { UsersComponent } from './components/users/users.component';
 import { UserDetailsComponent } from './components/users/components/user-details/user-details.component';
 import { UserOrderitemsComponent } from './components/users/components/user-orderitems/user-orderitems.component';
 import { CouponsComponent } from './components/dicountCounpons/coupons/coupons.component';
+import { AdminComponent } from './admin.component';
+import { AdminGuard } from '../shared/guards/admin.guard';
 
 //configuring routes
 const adminRoutes = [
-  //{ path: '', component:  },
-  { path: 'books', component: BooksComponent }, // admin/books
-  { path: 'books/add-book', component: AddBookComponent },
-  { path: 'books/:id', component: BookDataComponent },
-  { path: 'category', component: CategoryComponent },
-  { path: 'category/add-category', component: AddCategoryComponent },
-  { path: 'category/:id', component: CategoryDataComponent },
-  { path: 'users', component: UsersComponent },
-  { path: 'users/:id', component: UserDetailsComponent },
-  { path: 'users/orders/:id', component: UserOrderitemsComponent },
-  { path: 'coupons', component: CouponsComponent }
+  { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
+  { path: 'admin/books', component: BooksComponent, canActivate: [AdminGuard] },
+  { path: 'admin/books/add-book', component: AddBookComponent, canActivate: [AdminGuard] },
+  { path: 'admin/books/:id', component: BookDataComponent, canActivate: [AdminGuard] },
+  { path: 'admin/category', component: CategoryComponent, canActivate: [AdminGuard] },
+  { path: 'admin/category/add-category', component: AddCategoryComponent, canActivate: [AdminGuard] },
+  { path: 'admin/category/:id', component: CategoryDataComponent, canActivate: [AdminGuard] },
+  { path: 'admin/users', component: UsersComponent, canActivate: [AdminGuard] },
+  { path: 'admin/users/:id', component: UserDetailsComponent, canActivate: [AdminGuard] },
+  { path: 'admin/users/orders/:id', component: UserOrderitemsComponent, canActivate: [AdminGuard] },
+  { path: 'admin/coupons', component: CouponsComponent, canActivate: [AdminGuard] }
 ]
 //register routes
 @NgModule({

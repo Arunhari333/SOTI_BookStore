@@ -9,6 +9,10 @@ import { ListBooksComponent } from './books/components/list-books/list-books.com
 import { CheckoutComponent } from './shopping/components/checkout/checkout.component';
 import { WishlistComponent } from './shopping/components/wishlist/wishlist.component';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { AdminGuard } from './shared/guards/admin.guard';
+import { BooksComponent } from './admin/components/books/books.component';
+import { UsersComponent } from './admin/components/users/users.component';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -33,15 +37,15 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   //Lazy loading
-  {
-    path: 'admin',
-    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
-    canActivate: [AuthGuard]
-  }
+  // {
+  //   path: 'admin',
+  //   component: AdminComponent,
+  //   //canActivate: [AdminGuard]
+  // }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
