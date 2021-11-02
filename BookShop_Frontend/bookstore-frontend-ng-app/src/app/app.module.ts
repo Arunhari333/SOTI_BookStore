@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
 
-import { MenuComponent } from './shared/menu/menu.component';
 import { HomeComponent } from './home/home.component';
 import { BookDetailsComponent } from './books/components/book-details/book-details.component';
 import { LoginComponent } from './auth/components/login/login.component';
@@ -31,7 +30,6 @@ import { AdminModule } from './admin/admin.module';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    MenuComponent,
     HomeComponent,
     BookDetailsComponent,
     LoginComponent,
