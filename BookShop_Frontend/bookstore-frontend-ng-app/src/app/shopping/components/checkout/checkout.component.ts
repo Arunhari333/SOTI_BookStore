@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { ShoppingService } from '../../services/shopping.service';
 
@@ -9,7 +10,7 @@ import { ShoppingService } from '../../services/shopping.service';
   styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent implements OnInit {
-
+  tempTotal:any;
   orders :any = [];
     getOrdersI():any{
       this.shoppingService.getOrderItems()
@@ -24,7 +25,8 @@ export class CheckoutComponent implements OnInit {
       this.total = 0;
       for(let i=0; i< this.orders.length;i++){
         console.log(this.orders[i].Book.bookPrice);
-        this.total = this.total + (this.orders[i].Book.bookPrice * this.orders[i].qty)
+        this.total = this.total + (this.orders[i].Book.bookPrice * this.orders[i].qty);
+        this.tempTotal=this.total;
       }
     }
 
@@ -45,7 +47,7 @@ export class CheckoutComponent implements OnInit {
   shippingAddresses : any[] =[];
 
 
-  constructor(private shoppingService: ShoppingService) { }
+  constructor(private shoppingService: ShoppingService,private route:Router) { }
 
   ngOnInit(): void {
 
@@ -86,6 +88,8 @@ export class CheckoutComponent implements OnInit {
           this.isSaved = true;
           this.addAddressForm.reset();
         }
+        alert('Order is Successfully Places');
+      this.route.navigate(['']);
       });
   }
 
@@ -100,5 +104,26 @@ export class CheckoutComponent implements OnInit {
   DisplayNewAddressForm() : any{
     this.isnewAddress = true;
     this.isPresent=false;
+  }
+  isDiscount:boolean=false;
+  coupon : any = "";
+  caldiscount()
+  {
+    console.log(this.coupon);
+    console.log("Calculating..");
+    this.shoppingService.checkCoupon(this.coupon)
+    .subscribe((res:any)=>{
+      console.log(res);
+      if(res==null)
+      {
+        alert("Coupon Invalid!!");
+      }
+      else{
+        this.total = this.total-((this.total/100)*res.discount);
+        console.log(this.total);
+        this.isDiscount=true;
+      }
+      
+    })
   }
 }

@@ -18,6 +18,7 @@ namespace BookShop_Backend.Controllers
         private ApplicationDBContext db = new ApplicationDBContext();
 
         // GET: api/DiscountCoupons
+        [AllowAnonymous]
         [Route("")]
         public IQueryable<DiscountCoupon> GetDiscountCoupons()
         {
@@ -30,6 +31,23 @@ namespace BookShop_Backend.Controllers
         public IHttpActionResult GetDiscountCoupon(int id)
         {
             DiscountCoupon discountCoupon = db.DiscountCoupons.Find(id);
+            if (discountCoupon == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(discountCoupon);
+        }
+
+        // GET: api/DiscountCoupons/GetCouponBy/FEST50
+       
+        [Route("ByName/{coupon1}")]
+        [ResponseType(typeof(DiscountCoupon))]
+        public IHttpActionResult GetDiscountCouponByName(string coupon1)
+        {
+            DiscountCoupon discountCoupon = (from coupon in db.DiscountCoupons
+                                             where coupon.couponCode.Contains(coupon1)
+                                             select coupon).SingleOrDefault();
             if (discountCoupon == null)
             {
                 return NotFound();

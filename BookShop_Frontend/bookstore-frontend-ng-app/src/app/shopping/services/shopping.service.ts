@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { map } from 'rxjs/operators'
+import { map, retry } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
@@ -73,6 +73,14 @@ export class ShoppingService {
       console.log(res);
       return res;
     }));
+  }
+
+  checkCoupon(coupon:any):any{
+    let url:string = `https://localhost:44374/api/DiscountCoupons/ByName/${coupon}`;
+    return this.http.get(url)
+    .pipe(map((res:any)=>{
+      return res;
+    }))
   }
 }
 
