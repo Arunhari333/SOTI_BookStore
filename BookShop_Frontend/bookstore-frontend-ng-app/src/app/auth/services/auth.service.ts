@@ -8,8 +8,17 @@ import { map } from 'rxjs/operators';
 export class AuthService {
 
   constructor(private http:HttpClient) { }
+
   login(formData:any):any{
     return this.http.post('https://localhost:44374/api/Users/login',formData)
+    .pipe(map((res:any)=>{
+      console.log(res);
+      return res;
+    }));
+  }
+
+  getUserAdminStatus():any{
+    return this.http.get('https://localhost:44374/api/Users/GetCurrentUser')
     .pipe(map((res:any)=>{
       console.log(res);
       return res;

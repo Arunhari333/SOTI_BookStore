@@ -46,6 +46,25 @@ namespace BookShop_Backend.Controllers
             return Ok(user);
         }
 
+        // GET: api/Users/GetCurrentUser
+        [Route("GetCurrentUser")]
+        [ResponseType(typeof(User))]
+        public IHttpActionResult GetCurrentUser()
+        {
+            User user = db.Users.Find(CurrentUser.id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return Ok(user);
+        }
+
+        [Route("GetCurrentUserId")]
+        public int GetCurrentUserId()
+        {
+            return CurrentUser.id;
+        }
+
         [Route("GetByUserName/{username}")]
         [ResponseType(typeof(User))]
         public int GetUserIdByUsername(string username)
@@ -58,12 +77,6 @@ namespace BookShop_Backend.Controllers
                 return 0;
             }
             return user.id;
-        }
-
-        [Route("GetCurrentUser")]
-        public int GetCurrentUserId()
-        {
-            return CurrentUser.id;
         }
 
         // PUT: api/Users/5

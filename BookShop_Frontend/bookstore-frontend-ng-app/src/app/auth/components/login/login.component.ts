@@ -29,8 +29,13 @@ export class LoginComponent implements OnInit {
           this.dataStore.toggleIsAdmin();
         }
         localStorage.setItem('authToken', res.token);
-        this.router.navigateByUrl(this.activatedRoute.snapshot.queryParams['returnURL']);
-        //setTimeout(function(){ window.location.reload(); }, 1000);
+        if(this.activatedRoute.snapshot.queryParams['returnURL'] == undefined){
+          this.router.navigate(['/']);
+        }
+        else{
+          this.router.navigateByUrl(this.activatedRoute.snapshot.queryParams['returnURL']);
+        }
+        //setTimeout(function(){ window.location.reload() }, 1000);
       }
     });
 
