@@ -137,7 +137,20 @@ namespace BookShop_Backend.Controllers
             {
                 return BadRequest(ModelState);
             }
-  
+            Order order = (from item in db.Orders
+                           where item.userId == CurrentUser.id && item.complete == false
+                           select item).SingleOrDefault();
+
+            if (order == null)
+            {
+                return null;
+            }
+
+            var orderItems = (from item in db.OrderItem
+                              where item.orderId == order.id
+                              select item).ToList();
+            orderItem.orderId = order.id;
+
             db.OrderItem.Add(orderItem);
             db.SaveChanges();
 

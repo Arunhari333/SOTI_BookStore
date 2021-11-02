@@ -39,7 +39,7 @@ export class BookDetailsComponent implements OnInit {
 
   handleAddToWishlist(bookId: number): void {
     let item = {
-      "userId": 2,
+      //"userId": 2,
       "bookId": bookId
     };
     console.log('Submitting');

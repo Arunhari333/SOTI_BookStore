@@ -22,10 +22,7 @@ namespace BookShop_Backend.Models
         [ForeignKey("orderId")]
         public virtual Order Order { get; set; }
 
-        public OrderItem()
-        {
-            orderId = 1;
-        }
+        
    
     }
 }
