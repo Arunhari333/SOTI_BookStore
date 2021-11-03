@@ -45,7 +45,7 @@ namespace BookShop_Backend.Controllers
         // PUT: api/Categories/5
         [Route("{id:int}")]
         [HttpPut]
-        [JwtAuthentication]
+        [AdminAuthentication]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutCategory(int id, Category category)
         {
@@ -83,7 +83,7 @@ namespace BookShop_Backend.Controllers
         // POST: api/Categories
         [Route("")]
         [HttpPost]
-        [JwtAuthentication]
+        [AdminAuthentication]
         [ResponseType(typeof(Category))]
         public IHttpActionResult PostCategory(Category category)
         {
@@ -100,7 +100,7 @@ namespace BookShop_Backend.Controllers
         // DELETE: api/Categories/5
         [Route("{id:int}")]
         [HttpDelete]
-        [JwtAuthentication]
+        [AdminAuthentication]
         [ResponseType(typeof(Category))]
         public IHttpActionResult DeleteCategory(int id)
         {

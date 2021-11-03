@@ -41,8 +41,8 @@ namespace BookShop_Backend.Controllers
             return Ok(discountCoupon);
         }
 
-        // GET: api/DiscountCoupons/GetCouponBy/FEST50
-       
+        // GET: api/DiscountCoupons/ByName/FEST50
+
         [Route("ByName/{coupon1}")]
         [JwtAuthentication]
         [ResponseType(typeof(DiscountCoupon))]
@@ -61,7 +61,7 @@ namespace BookShop_Backend.Controllers
 
         // PUT: api/DiscountCoupons/5
         [Route("{id:int}")]
-        [JwtAuthentication]
+        [AdminAuthentication]
         [ResponseType(typeof(DiscountCoupon))]
         public IHttpActionResult PutDiscountCoupon(int id, DiscountCoupon discountCoupon)
         {
@@ -98,7 +98,7 @@ namespace BookShop_Backend.Controllers
 
         // POST: api/DiscountCoupons
         [Route("")]
-        [JwtAuthentication]
+        [AdminAuthentication]
         [ResponseType(typeof(DiscountCoupon))]
         public IHttpActionResult PostDiscountCoupon(DiscountCoupon discountCoupon)
         {
@@ -115,7 +115,7 @@ namespace BookShop_Backend.Controllers
 
         // DELETE: api/DiscountCoupons/5
         [Route("{id:int}")]
-        [JwtAuthentication]
+        [AdminAuthentication]
         [ResponseType(typeof(DiscountCoupon))]
         public IHttpActionResult DeleteDiscountCoupon(int id)
         {

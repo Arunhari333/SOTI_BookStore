@@ -29,7 +29,7 @@ namespace BookShop_Backend.Controllers
 
         // GET: api/Users
         [Route("")]
-        [JwtAuthentication]
+        [AdminAuthentication]
         public IQueryable<User> GetUsers()
         {
             return db.Users;
@@ -37,7 +37,7 @@ namespace BookShop_Backend.Controllers
 
         // GET: api/Users/5
         [Route("{id:int}")]
-        [JwtAuthentication]
+        [AdminAuthentication]
         [ResponseType(typeof(User))]
         public IHttpActionResult GetUser(int id)
         {
@@ -71,7 +71,7 @@ namespace BookShop_Backend.Controllers
         }
 
         [Route("GetByUserName/{username}")]
-        [JwtAuthentication]
+        [AdminAuthentication]
         [ResponseType(typeof(User))]
         public int GetUserIdByUsername(string username)
         {
@@ -148,7 +148,7 @@ namespace BookShop_Backend.Controllers
         // PUT: api/Users/ToggleStatus/5
         [Route("ToggleStatus/{id:int}")]
         [HttpPut]
-        [JwtAuthentication]
+        [AdminAuthentication]
         [ResponseType(typeof(void))]
         public IHttpActionResult ToggleUserStatus(int id)
         {

@@ -19,7 +19,7 @@ namespace BookShop_Backend.Controllers
 
         // GET: api/Order/UserOrders/5
         [Route("UserOrders/{userId:int}")]
-        [JwtAuthentication]
+        [AdminAuthentication]
         public IEnumerable<Order> GetOrdersByUser(int userId)
         {
             var orders = (from item in db.Orders

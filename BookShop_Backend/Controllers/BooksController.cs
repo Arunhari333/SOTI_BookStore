@@ -101,7 +101,7 @@ namespace BookShop_Backend.Controllers
         // PUT: api/Books/5
         [Route("{id:int}")]
         [HttpPut]
-        [JwtAuthentication]
+        [AdminAuthentication]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutBook(int id, Book book)
         {
@@ -139,7 +139,7 @@ namespace BookShop_Backend.Controllers
         // POST: api/Books
         [Route("")]
         [HttpPost]
-        [JwtAuthentication]
+        [AdminAuthentication]
         [ResponseType(typeof(Book))]
         public IHttpActionResult PostBook(Book book)
         {
@@ -157,7 +157,7 @@ namespace BookShop_Backend.Controllers
         // DELETE: api/Books/5
         [Route("{id:int}")]
         [HttpDelete]
-        [JwtAuthentication]
+        [AdminAuthentication]
         [ResponseType(typeof(Book))]
         public IHttpActionResult DeleteBook(int id)
         {

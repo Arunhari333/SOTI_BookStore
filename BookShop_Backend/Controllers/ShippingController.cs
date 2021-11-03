@@ -22,15 +22,15 @@ namespace BookShop_Backend.Controllers
 
         // GET: api/Shipping
         [Route("")]
-        [JwtAuthentication]
-        public IQueryable<ShippingAddress> GetShippingAddress()
+        [AdminAuthentication]
+        public IQueryable<ShippingAddress> GetShippingAddresses()
         {
             return db.ShippingAddress;
         }
 
         // GET: api/Shipping/5
         [Route("{id:int}")]
-        [JwtAuthentication]
+        [AdminAuthentication]
         [ResponseType(typeof(ShippingAddress))]
         public IHttpActionResult GetShippingAddress(int id)
         {

@@ -29,7 +29,7 @@ namespace BookShop_Backend.Controllers
         // GET: api/OrderItems
         [Route("")]
         [JwtAuthentication]
-        public IQueryable<OrderItem> GetOrderItem()
+        public IQueryable<OrderItem> GetOrderItems()
         {
             return db.OrderItem;
         }
