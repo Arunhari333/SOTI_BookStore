@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
@@ -15,7 +16,12 @@ export class HeaderComponent implements OnInit {
   isloggedIn: any;
   isAdmin: any;
 
-  constructor(private headerService: HeaderService, private router: Router, private dataStore:DataStoreService) { }
+  constructor(private headerService: HeaderService, private router: Router, 
+    private dataStore:DataStoreService, private location:Location) {
+      location.onUrlChange(url => {
+        this.isloggedIn = localStorage.getItem('authToken');
+      });
+     }
 
   ngOnInit(): void {
     this.dataStore.isAdmin.subscribe(isAdmin => {
