@@ -18,4 +18,12 @@ export class HeaderService {
       }));
   }
 
+  logoutUser(){
+    return this.http.put('https://localhost:44374/api/Users/logout', null)
+      .pipe(map((res: any) => {
+        console.log(res);
+        return res;
+      }));
+  }
+
 }

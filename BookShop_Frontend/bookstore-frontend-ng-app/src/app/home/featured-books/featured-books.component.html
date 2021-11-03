@@ -10,7 +10,7 @@
     </div>
 
     <div class="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
-      <div class="row">
+      <div class="row" *ngIf="books">
         <div class="col-lg-4" *ngFor="let book of books.slice(0, 3);">
             <a routerLink="/books/{{book.id}}">
                 <img class="thumbnail" src="{{book.bookImage}}">

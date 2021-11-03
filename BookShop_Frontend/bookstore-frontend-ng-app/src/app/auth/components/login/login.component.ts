@@ -35,7 +35,6 @@ export class LoginComponent implements OnInit {
         else{
           this.router.navigateByUrl(this.activatedRoute.snapshot.queryParams['returnURL']);
         }
-        //setTimeout(function(){ window.location.reload() }, 1000);
       }
     });
 

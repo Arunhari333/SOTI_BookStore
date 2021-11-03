@@ -7,32 +7,17 @@ import { ShoppingService } from '../../services/shopping.service';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  // orders :any = [
-  //   {
-  //     "bookname": "maths",
-  //     "url": "images.jfif",
-  //     "price": 250,
-  //     "qty": 2,
-  //     "id": 4
-  //   },
-  //   {
-  //     "bookname": "Science",
-  //     "url": "images.jfif",
-  //     "price": 400,
-  //     "qty": 1,
-  //     "id": 5
-  //   }
-  // ]
+  
   orders: any[] = []
 
   total!: number;
   constructor(private shoppingService: ShoppingService) {}
 
   ngOnInit() {
-   this.getOrdersI();
+   this.getOrdersItemsData();
   }
   
-  getOrdersI():any{
+  getOrdersItemsData():any{
     this.shoppingService.getOrderItems()
       .subscribe((res: any) => {
         console.log(res);
@@ -70,7 +55,7 @@ export class CartComponent implements OnInit {
     this.shoppingService.deleteOrderItem(did)
       .subscribe((res: any) => {
         console.log(res);
-        this.getOrdersI();
+        this.getOrdersItemsData();
       });
   }
   

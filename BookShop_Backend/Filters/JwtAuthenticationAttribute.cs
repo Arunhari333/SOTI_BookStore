@@ -68,7 +68,7 @@ namespace WebApi.Jwt.Filters
                          where u.username == uname
                          select u).SingleOrDefault();
 
-            if (user == null)
+            if (user == null || user.id != CurrentUser.id)
                 return false;
 
             return true;

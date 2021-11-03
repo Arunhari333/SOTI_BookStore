@@ -183,8 +183,9 @@ namespace BookShop_Backend.Controllers
             return StatusCode(HttpStatusCode.OK);
         }
 
-        [AllowAnonymous]
+        // POST: api/Users/login
         [Route("login")]
+        [AllowAnonymous]
         [HttpPost]
         public Token Login(LoginData credentials)
         {
@@ -195,6 +196,16 @@ namespace BookShop_Backend.Controllers
             }
 
             throw new HttpResponseException(HttpStatusCode.Unauthorized);
+        }
+
+        // POST: api/Users/logout
+        [Route("logout")]
+        [HttpPut]
+        [JwtAuthentication]
+        public IHttpActionResult Logout()
+        {
+            CurrentUser.id = 0;
+            return StatusCode(HttpStatusCode.OK);
         }
 
         private bool CheckUser(string username, string password)

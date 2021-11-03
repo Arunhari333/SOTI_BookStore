@@ -45,7 +45,7 @@ export class HeaderComponent implements OnInit {
   logout(){
     localStorage.removeItem('authToken');
     this.router.navigate(['login']);
-    //setTimeout(function(){ window.location.reload(); }, 1000);
+    this.headerService.logoutUser();
   }
 
 }

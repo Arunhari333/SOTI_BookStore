@@ -12,7 +12,7 @@ import { ShoppingService } from '../../services/shopping.service';
 export class CheckoutComponent implements OnInit {
   tempTotal:any;
   orders :any = [];
-    getOrdersI():any{
+    getOrdersItemsData():any{
       this.shoppingService.getOrderItems()
         .subscribe((res: any) => {
           console.log(res);
@@ -51,7 +51,7 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.getOrdersI();
+    this.getOrdersItemsData();
 
     this.shoppingService.getOrderItems()
       .subscribe((res: any) => {

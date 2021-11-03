@@ -44,7 +44,7 @@ namespace BookShop_Backend.Controllers
         }
 
         //GET: api/Books/SearchByName/Harry Potter
-        [AllowAnonymous]
+        [JwtAuthentication]
         [Route("SearchByName/{name}")]
         public IEnumerable<Book> GetBookByName(string name)
         {
