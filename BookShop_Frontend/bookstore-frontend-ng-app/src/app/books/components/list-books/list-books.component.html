@@ -1,12 +1,14 @@
 <app-search-books style="margin-top: 70px ;" (searchResult)="handleSearchResult($event)"></app-search-books>
-<div class="row">
-  <div class="col-lg-4" *ngFor="let book of books">
-      <a routerLink="/books/{{book.id}}">
-          <img class="thumbnail" src="{{book.bookImage}}">
-          <div class="box-element product">
-              <h6><strong> {{book.bookTitle}}</strong></h6>
-              <h4 style="display: inline-block;"><strong>{{book.bookPrice}}</strong></h4>
-          </div>
-      </a>
-  </div>
+<div class="container">
+    <div class="row">
+    <div class="col-lg-4" *ngFor="let book of books">
+        <a routerLink="/books/{{book.id}}">
+            <img class="thumbnail" src="{{book.bookImage}}">
+            <div class="box-element product">
+                <h6><strong> {{book.bookTitle}}</strong></h6>
+                <h4 style="display: inline-block;"><strong>Rs {{book.bookPrice}}</strong></h4>
+            </div>
+        </a>
+    </div>
+    </div>
 </div>

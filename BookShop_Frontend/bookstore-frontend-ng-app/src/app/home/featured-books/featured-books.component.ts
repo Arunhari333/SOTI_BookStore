@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BookService } from 'src/app/books/services/book.service';
 
 @Component({
   selector: 'app-featured-books',
@@ -7,31 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FeaturedBooksComponent implements OnInit {
 
-  constructor() { }
+  books: any;
+  
+  constructor(private bookService:BookService) { }
 
   ngOnInit(): void {
+    this.bookService.getBooks()
+    .subscribe((res:any)=>{
+      console.log(res);
+      this.books=res;
+    });
   }
-
-
-  books: any[] = [
-    {
-      "name": "Maths",
-      "price" : 30,
-      "id":4,
-      "url":"images.jfif"
-    },
-    {
-      "name": "Science",
-      "price" : 70,
-      "id":5,
-      "url":"images.jfif"
-    },
-    {
-      "name": "English",
-      "price" : 60,
-      "id":6,
-      "url":"images.jfif"
-    },
-  ];
 
 }
