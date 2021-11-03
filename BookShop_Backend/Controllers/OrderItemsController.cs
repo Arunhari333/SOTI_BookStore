@@ -11,6 +11,7 @@ using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using BookShop_Backend.Models;
 using WebApi.Jwt;
+using WebApi.Jwt.Filters;
 
 namespace BookShop_Backend.Controllers
 {
@@ -27,6 +28,7 @@ namespace BookShop_Backend.Controllers
 
         // GET: api/OrderItems
         [Route("")]
+        [JwtAuthentication]
         public IQueryable<OrderItem> GetOrderItem()
         {
             return db.OrderItem;
@@ -34,6 +36,7 @@ namespace BookShop_Backend.Controllers
 
         // GET: api/OrderItems/5
         [Route("{id:int}")]
+        [JwtAuthentication]
         [ResponseType(typeof(OrderItem))]
         public IHttpActionResult GetOrderItem(int id)
         {
@@ -48,6 +51,7 @@ namespace BookShop_Backend.Controllers
 
         // GET: api/OrderItems/GetByUser/5
         [Route("GetByUser")]
+        [JwtAuthentication]
         public IEnumerable<OrderItem> GetOrderItemsByUser()
         {
             int userId = CurrentUser.id;
@@ -69,6 +73,7 @@ namespace BookShop_Backend.Controllers
 
         // GET: api/OrderItems/GetByOrder/5
         [Route("GetByOrder/{oid:int}")]
+        [JwtAuthentication]
         public IEnumerable<OrderItem> GetOrderItemsByOrder(int oid)
         {
             Order order = db.Orders.Find(oid);
@@ -88,6 +93,7 @@ namespace BookShop_Backend.Controllers
         //PUT: api/OrderItems
         [Route("")]
         [HttpPut]
+        [JwtAuthentication]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutOrderItems(PartialOrders[] items)
         {
@@ -129,6 +135,7 @@ namespace BookShop_Backend.Controllers
         //POST: api/OrderItems
         [Route("")]
         [HttpPost]
+        [JwtAuthentication]
         [ResponseType(typeof(OrderItem))]
         public IHttpActionResult PostOrderItem(OrderItem orderItem)
         {
@@ -159,6 +166,7 @@ namespace BookShop_Backend.Controllers
         // DELETE: api/OrderItems/5
         [Route("{id:int}")]
         [HttpDelete]
+        [JwtAuthentication]
         [ResponseType(typeof(OrderItem))]
         public IHttpActionResult DeleteOrderItem(int id)
         {

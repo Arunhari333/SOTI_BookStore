@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using BookShop_Backend.Models;
+using WebApi.Jwt.Filters;
 
 namespace BookShop_Backend.Controllers
 {
@@ -28,6 +29,7 @@ namespace BookShop_Backend.Controllers
         }
 
         // GET: api/Books/5
+        [AllowAnonymous]
         [Route("{id:int}")]
         [ResponseType(typeof(Book))]
         public IHttpActionResult GetBook(int id)
@@ -42,6 +44,7 @@ namespace BookShop_Backend.Controllers
         }
 
         //GET: api/Books/SearchByName/Harry Potter
+        [AllowAnonymous]
         [Route("SearchByName/{name}")]
         public IEnumerable<Book> GetBookByName(string name)
         {
@@ -52,6 +55,7 @@ namespace BookShop_Backend.Controllers
         }
 
         //GET: api/Books/SearchByAuthor/JK Rowling
+        [AllowAnonymous]
         [Route("SearchByAuthor/{author}")]
         public IEnumerable<Book> GetBookByAuthor(string author)
         {
@@ -62,6 +66,7 @@ namespace BookShop_Backend.Controllers
         }
 
         //GET: api/Books/SearchByISBN/26734682
+        [AllowAnonymous]
         [Route("SearchByISBN/{isbn}")]
         public IEnumerable<Book> GetBookByISBN(long isbn)
         {
@@ -72,6 +77,7 @@ namespace BookShop_Backend.Controllers
         }
 
         //GET: api/Books/SearchByCategoryId/2
+        [AllowAnonymous]
         [Route("SearchByCategoryId/{cid}")]
         public IEnumerable<Book> GetBookByCategoryId(int cid)
         {
@@ -82,6 +88,7 @@ namespace BookShop_Backend.Controllers
         }
 
         //GET: api/Books/SearchByCategory/2
+        [AllowAnonymous]
         [Route("SearchByCategory/{category}")]
         public IEnumerable<Book> GetBookByCategory(string category)
         {
@@ -94,6 +101,7 @@ namespace BookShop_Backend.Controllers
         // PUT: api/Books/5
         [Route("{id:int}")]
         [HttpPut]
+        [JwtAuthentication]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutBook(int id, Book book)
         {
@@ -131,6 +139,7 @@ namespace BookShop_Backend.Controllers
         // POST: api/Books
         [Route("")]
         [HttpPost]
+        [JwtAuthentication]
         [ResponseType(typeof(Book))]
         public IHttpActionResult PostBook(Book book)
         {
@@ -148,6 +157,7 @@ namespace BookShop_Backend.Controllers
         // DELETE: api/Books/5
         [Route("{id:int}")]
         [HttpDelete]
+        [JwtAuthentication]
         [ResponseType(typeof(Book))]
         public IHttpActionResult DeleteBook(int id)
         {

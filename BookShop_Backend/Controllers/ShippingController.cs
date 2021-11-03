@@ -11,6 +11,7 @@ using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using BookShop_Backend.Models;
 using WebApi.Jwt;
+using WebApi.Jwt.Filters;
 
 namespace BookShop_Backend.Controllers
 {
@@ -21,6 +22,7 @@ namespace BookShop_Backend.Controllers
 
         // GET: api/Shipping
         [Route("")]
+        [JwtAuthentication]
         public IQueryable<ShippingAddress> GetShippingAddress()
         {
             return db.ShippingAddress;
@@ -28,6 +30,7 @@ namespace BookShop_Backend.Controllers
 
         // GET: api/Shipping/5
         [Route("{id:int}")]
+        [JwtAuthentication]
         [ResponseType(typeof(ShippingAddress))]
         public IHttpActionResult GetShippingAddress(int id)
         {
@@ -41,6 +44,7 @@ namespace BookShop_Backend.Controllers
         }
 
         [Route("SearchByUserId")]
+        [JwtAuthentication]
         public IEnumerable<ShippingAddress> GetAddressesByUserId()
         {
             List<ShippingAddress> books = (from shipAdd in db.ShippingAddress
@@ -52,6 +56,7 @@ namespace BookShop_Backend.Controllers
         // POST: api/Shipping
         [Route("")]
         [HttpPost]
+        [JwtAuthentication]
         [ResponseType(typeof(ShippingAddress))]
         public IHttpActionResult PostShippingAddress(ShippingAddress shippingAddress)
         {
@@ -70,6 +75,7 @@ namespace BookShop_Backend.Controllers
         // DELETE: api/Shipping/5
         [Route("{id:int}")]
         [HttpDelete]
+        [JwtAuthentication]
         [ResponseType(typeof(ShippingAddress))]
         public IHttpActionResult DeleteShippingAddress(int id)
         {

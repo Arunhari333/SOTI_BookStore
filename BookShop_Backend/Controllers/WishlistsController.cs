@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using BookShop_Backend.Models;
+using WebApi.Jwt.Filters;
 
 namespace BookShop_Backend.Controllers
 {
@@ -19,6 +20,7 @@ namespace BookShop_Backend.Controllers
 
         // GET: api/Wishlist
         [Route("")]
+        [JwtAuthentication]
         public IEnumerable<Wishlist> GetWishlist()
         {
             int userId = 2;
@@ -30,6 +32,7 @@ namespace BookShop_Backend.Controllers
 
         // POST: api/Wishlist
         [Route("")]
+        [JwtAuthentication]
         [ResponseType(typeof(Wishlist))]
         public IHttpActionResult PostWishlist(Wishlist wishlist)
         {
@@ -46,6 +49,7 @@ namespace BookShop_Backend.Controllers
 
         // DELETE: api/Wishlist/5
         [Route("{id:int}")]
+        [JwtAuthentication]
         [ResponseType(typeof(Wishlist))]
         public IHttpActionResult DeleteWishlist(int id)
         {

@@ -22,8 +22,7 @@ import { WishlistComponent } from './shopping/components/wishlist/wishlist.compo
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AdminModule } from './admin/admin.module';
 import { BooksCategoryComponent } from './books/components/books-category/books-category.component';
-//import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
-
+import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 
 
 @NgModule({
@@ -42,8 +41,7 @@ import { BooksCategoryComponent } from './books/components/books-category/books-
     ListBooksComponent,
     SearchBooksComponent,
     WishlistComponent,
-    BooksCategoryComponent
-    // AuthInterceptor
+    BooksCategoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,9 +53,9 @@ import { BooksCategoryComponent } from './books/components/books-category/books-
     AdminModule
   ],
   providers: [
-  //   {
-  //   provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor,multi:true
-  // }
+    {
+      provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor,multi:true
+    }
   ],
   bootstrap: [AppComponent]
 })

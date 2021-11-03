@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using WebApi.Jwt;
+using WebApi.Jwt.Filters;
 
 namespace BookShop_Backend.Controllers
 {
@@ -18,6 +19,7 @@ namespace BookShop_Backend.Controllers
 
         // GET: api/Order/UserOrders/5
         [Route("UserOrders/{userId:int}")]
+        [JwtAuthentication]
         public IEnumerable<Order> GetOrdersByUser(int userId)
         {
             var orders = (from item in db.Orders
@@ -29,6 +31,7 @@ namespace BookShop_Backend.Controllers
         // PUT: api/Order/PlaceOrder/5
         [Route("PlaceOrder/{shipId:int}/{totalPrice:int}")]
         [HttpPut]
+        [JwtAuthentication]
         public IHttpActionResult PlaceOrder(int shipId, int totalPrice)
         {
             int userId = CurrentUser.id;

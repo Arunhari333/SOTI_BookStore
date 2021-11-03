@@ -12,6 +12,7 @@ using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using BookShop_Backend.Models;
 using WebApi.Jwt;
+using WebApi.Jwt.Filters;
 
 namespace BookShop_Backend.Controllers
 {
@@ -28,6 +29,7 @@ namespace BookShop_Backend.Controllers
 
         // GET: api/Users
         [Route("")]
+        [JwtAuthentication]
         public IQueryable<User> GetUsers()
         {
             return db.Users;
@@ -35,6 +37,7 @@ namespace BookShop_Backend.Controllers
 
         // GET: api/Users/5
         [Route("{id:int}")]
+        [JwtAuthentication]
         [ResponseType(typeof(User))]
         public IHttpActionResult GetUser(int id)
         {
@@ -48,6 +51,7 @@ namespace BookShop_Backend.Controllers
 
         // GET: api/Users/GetCurrentUser
         [Route("GetCurrentUser")]
+        [JwtAuthentication]
         [ResponseType(typeof(User))]
         public IHttpActionResult GetCurrentUser()
         {
@@ -60,12 +64,14 @@ namespace BookShop_Backend.Controllers
         }
 
         [Route("GetCurrentUserId")]
+        [JwtAuthentication]
         public int GetCurrentUserId()
         {
             return CurrentUser.id;
         }
 
         [Route("GetByUserName/{username}")]
+        [JwtAuthentication]
         [ResponseType(typeof(User))]
         public int GetUserIdByUsername(string username)
         {
@@ -82,6 +88,7 @@ namespace BookShop_Backend.Controllers
         // PUT: api/Users/5
         [Route("{id:int}")]
         [HttpPut]
+        [JwtAuthentication]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutUser(int id, User user)
         {
@@ -119,6 +126,7 @@ namespace BookShop_Backend.Controllers
         // POST: api/Users
         [Route("")]
         [HttpPost]
+        [JwtAuthentication]
         [ResponseType(typeof(User))]
         public IHttpActionResult PostUser(User user)
         {
@@ -140,6 +148,7 @@ namespace BookShop_Backend.Controllers
         // PUT: api/Users/ToggleStatus/5
         [Route("ToggleStatus/{id:int}")]
         [HttpPut]
+        [JwtAuthentication]
         [ResponseType(typeof(void))]
         public IHttpActionResult ToggleUserStatus(int id)
         {
@@ -174,20 +183,6 @@ namespace BookShop_Backend.Controllers
             return StatusCode(HttpStatusCode.OK);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool UserExists(int id)
-        {
-            return db.Users.Count(e => e.id == id) > 0;
-        }
-
         [AllowAnonymous]
         [Route("login")]
         [HttpPost]
@@ -212,6 +207,20 @@ namespace BookShop_Backend.Controllers
                 return false;
             }
             return true;
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        private bool UserExists(int id)
+        {
+            return db.Users.Count(e => e.id == id) > 0;
         }
     }
 }

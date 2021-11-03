@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using BookShop_Backend.Models;
+using WebApi.Jwt.Filters;
 
 namespace BookShop_Backend.Controllers
 {
@@ -18,8 +19,8 @@ namespace BookShop_Backend.Controllers
         private ApplicationDBContext db = new ApplicationDBContext();
 
         // GET: api/DiscountCoupons
-        [AllowAnonymous]
         [Route("")]
+        [JwtAuthentication]
         public IQueryable<DiscountCoupon> GetDiscountCoupons()
         {
             return db.DiscountCoupons;
@@ -27,6 +28,7 @@ namespace BookShop_Backend.Controllers
 
         // GET: api/DiscountCoupons/5
         [Route("{id:int}")]
+        [JwtAuthentication]
         [ResponseType(typeof(DiscountCoupon))]
         public IHttpActionResult GetDiscountCoupon(int id)
         {
@@ -42,6 +44,7 @@ namespace BookShop_Backend.Controllers
         // GET: api/DiscountCoupons/GetCouponBy/FEST50
        
         [Route("ByName/{coupon1}")]
+        [JwtAuthentication]
         [ResponseType(typeof(DiscountCoupon))]
         public IHttpActionResult GetDiscountCouponByName(string coupon1)
         {
@@ -58,6 +61,7 @@ namespace BookShop_Backend.Controllers
 
         // PUT: api/DiscountCoupons/5
         [Route("{id:int}")]
+        [JwtAuthentication]
         [ResponseType(typeof(DiscountCoupon))]
         public IHttpActionResult PutDiscountCoupon(int id, DiscountCoupon discountCoupon)
         {
@@ -94,6 +98,7 @@ namespace BookShop_Backend.Controllers
 
         // POST: api/DiscountCoupons
         [Route("")]
+        [JwtAuthentication]
         [ResponseType(typeof(DiscountCoupon))]
         public IHttpActionResult PostDiscountCoupon(DiscountCoupon discountCoupon)
         {
@@ -110,6 +115,7 @@ namespace BookShop_Backend.Controllers
 
         // DELETE: api/DiscountCoupons/5
         [Route("{id:int}")]
+        [JwtAuthentication]
         [ResponseType(typeof(DiscountCoupon))]
         public IHttpActionResult DeleteDiscountCoupon(int id)
         {

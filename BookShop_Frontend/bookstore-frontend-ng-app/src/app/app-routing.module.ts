@@ -9,10 +9,6 @@ import { ListBooksComponent } from './books/components/list-books/list-books.com
 import { CheckoutComponent } from './shopping/components/checkout/checkout.component';
 import { WishlistComponent } from './shopping/components/wishlist/wishlist.component';
 import { AuthGuard } from './shared/guards/auth.guard';
-import { AdminGuard } from './shared/guards/admin.guard';
-import { BooksComponent } from './admin/components/books/books.component';
-import { UsersComponent } from './admin/components/users/users.component';
-import { AdminComponent } from './admin/admin.component';
 import { BooksCategoryComponent } from './books/components/books-category/books-category.component';
 
 const routes: Routes = [

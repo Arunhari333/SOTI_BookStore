@@ -12,7 +12,7 @@ namespace BookShop_Backend
         {
             // Web API configuration and services
 
-            //config.Filters.Add(new AuthorizeAttribute());
+            config.Filters.Add(new AuthorizeAttribute());
 
             // config.EnableCors();
             // Web API routes

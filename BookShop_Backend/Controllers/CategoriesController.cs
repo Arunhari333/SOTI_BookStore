@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using BookShop_Backend.Models;
+using WebApi.Jwt.Filters;
 
 namespace BookShop_Backend.Controllers
 {
@@ -19,6 +20,7 @@ namespace BookShop_Backend.Controllers
         private ApplicationDBContext db = new ApplicationDBContext();
 
         // GET: api/Categories
+        [AllowAnonymous]
         [Route("")]
         public IQueryable<Category> GetCategories()
         {
@@ -26,6 +28,7 @@ namespace BookShop_Backend.Controllers
         }
 
         // GET: api/Categories/5
+        [AllowAnonymous]
         [Route("{id:int}")]
         [ResponseType(typeof(Category))]
         public IHttpActionResult GetCategory(int id)
@@ -42,6 +45,7 @@ namespace BookShop_Backend.Controllers
         // PUT: api/Categories/5
         [Route("{id:int}")]
         [HttpPut]
+        [JwtAuthentication]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutCategory(int id, Category category)
         {
@@ -79,6 +83,7 @@ namespace BookShop_Backend.Controllers
         // POST: api/Categories
         [Route("")]
         [HttpPost]
+        [JwtAuthentication]
         [ResponseType(typeof(Category))]
         public IHttpActionResult PostCategory(Category category)
         {
@@ -95,6 +100,7 @@ namespace BookShop_Backend.Controllers
         // DELETE: api/Categories/5
         [Route("{id:int}")]
         [HttpDelete]
+        [JwtAuthentication]
         [ResponseType(typeof(Category))]
         public IHttpActionResult DeleteCategory(int id)
         {
