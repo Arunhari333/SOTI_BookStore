@@ -13,14 +13,14 @@ import { AdminGuard } from './shared/guards/admin.guard';
 import { BooksComponent } from './admin/components/books/books.component';
 import { UsersComponent } from './admin/components/users/users.component';
 import { AdminComponent } from './admin/admin.component';
+import { BooksCategoryComponent } from './books/components/books-category/books-category.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent},
-  { path: 'signup' ,component:SignupComponent},
-  { 
-    path: 'books', component: ListBooksComponent,
-   },
+  { path: 'signup' ,component: SignupComponent},
+  { path: 'books', component: ListBooksComponent},
+  { path: 'books/categories/:id', component: BooksCategoryComponent},
   { 
     path: 'books/:id' ,component:BookDetailsComponent,
     canActivate: [AuthGuard]

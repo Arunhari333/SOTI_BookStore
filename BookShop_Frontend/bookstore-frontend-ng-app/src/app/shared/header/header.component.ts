@@ -28,6 +28,11 @@ export class HeaderComponent implements OnInit {
         this.categories = res;
       });
       this.isloggedIn = localStorage.getItem('authToken');
+      this.dataStore.categoryId.subscribe(id => console.log(id));
+  }
+
+  handleCategoryClick(id: string){
+    this.dataStore.changeCategoryId(id);
   }
 
   logout(){

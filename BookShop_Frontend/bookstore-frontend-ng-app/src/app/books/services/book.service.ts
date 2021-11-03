@@ -60,9 +60,19 @@ export class BookService {
       }));
   }
 
-  getBookByCategory(BookCategory: string | null): any {
-    console.log(BookCategory);
-    let bookCategoryURL = `https://localhost:44374/api/Books/SearchByCategory/${BookCategory}`;
+  getBookByCategory(bookCategory: string | null): any {
+    console.log(bookCategory);
+    let bookCategoryURL = `https://localhost:44374/api/Books/SearchByCategory/${bookCategory}`;
+    return this.http.get(bookCategoryURL)
+      .pipe(map((res: any) => {
+        console.log(res);
+        return res;
+      }));
+  }
+
+  getBooksByCategoryId(categoryId: string | null): any {
+    console.log(categoryId);
+    let bookCategoryURL = `https://localhost:44374/api/Books/SearchByCategoryId/${categoryId}`;
     return this.http.get(bookCategoryURL)
       .pipe(map((res: any) => {
         console.log(res);

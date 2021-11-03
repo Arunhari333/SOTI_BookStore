@@ -86,7 +86,7 @@ namespace BookShop_Backend.Controllers
         public IEnumerable<Book> GetBookByCategory(string category)
         {
             List<Book> books = (from book in db.Books
-                                where book.Category.catName.Contains(category)
+                                where book.Category.catName == category
                                 select book).ToList();
             return books;
         }

@@ -21,6 +21,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { WishlistComponent } from './shopping/components/wishlist/wishlist.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AdminModule } from './admin/admin.module';
+import { BooksCategoryComponent } from './books/components/books-category/books-category.component';
 //import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 
 
@@ -40,7 +41,8 @@ import { AdminModule } from './admin/admin.module';
     FeaturedBooksComponent,
     ListBooksComponent,
     SearchBooksComponent,
-    WishlistComponent
+    WishlistComponent,
+    BooksCategoryComponent
     // AuthInterceptor
   ],
   imports: [
