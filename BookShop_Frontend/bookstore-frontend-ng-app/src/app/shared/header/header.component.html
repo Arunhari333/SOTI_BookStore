@@ -33,7 +33,7 @@
       <a class="nav-link ms-auto" routerLink="/login" *ngIf="!isloggedIn">Login</a>
       <a class="nav-link" routerLink="/signup" *ngIf="!isloggedIn">Sign Up</a>
       <a class="nav-link ms-auto" (click)="logout()" *ngIf="isloggedIn" style="cursor: pointer;">Logout</a>
-      <a class="nav-link" routerLink="/admin">Admin</a>
+      <a class="nav-link" routerLink="/admin" *ngIf="isAdmin">Admin</a>
     </div>
   </div>
 </nav>

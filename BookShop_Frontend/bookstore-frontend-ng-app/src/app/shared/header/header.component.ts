@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit {
     private dataStore:DataStoreService, private location:Location) {
       location.onUrlChange(url => {
         this.isloggedIn = localStorage.getItem('authToken');
+        this.dataStore.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
       });
      }
 
