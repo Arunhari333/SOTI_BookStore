@@ -22,9 +22,13 @@ namespace BookShop_Backend.Controllers
         // GET: api/Categories
         [AllowAnonymous]
         [Route("")]
-        public IQueryable<Category> GetCategories()
+        public IEnumerable<Category> GetCategories()
         {
-            return db.Categories;
+            List<Category> categories = (from category in db.Categories
+                                         where category.catStatus == true
+                                         orderby category.catPosition
+                                         select category).ToList();
+            return categories;
         }
 
         // GET: api/Categories/5
@@ -34,7 +38,7 @@ namespace BookShop_Backend.Controllers
         public IHttpActionResult GetCategory(int id)
         {
             Category category = db.Categories.Find(id);
-            if (category == null)
+            if (category == null || category.catStatus == false)
             {
                 return NotFound();
             }

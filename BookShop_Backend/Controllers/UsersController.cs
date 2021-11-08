@@ -135,6 +135,13 @@ namespace BookShop_Backend.Controllers
                 return BadRequest(ModelState);
             }
 
+            //int existingUser = GetUserIdByUsername(user.username);
+
+            //if (existingUser == 0)
+            //{
+            //    return BadRequest("Username already taken");
+            //}
+
             db.Users.Add(user);
 
             Order order = new Order(user.id);
@@ -213,7 +220,8 @@ namespace BookShop_Backend.Controllers
             User user = (from u in db.Users
                          where u.username == username && u.password == password
                          select u).SingleOrDefault();
-            if(user == null)
+
+            if(user == null || user.username != username || user.password != password)
             {
                 return false;
             }

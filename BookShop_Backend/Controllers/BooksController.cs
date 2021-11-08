@@ -23,9 +23,13 @@ namespace BookShop_Backend.Controllers
         // GET: api/Books
         [AllowAnonymous]
         [Route("")]
-        public IQueryable<Book> GetBooks()
+        public IEnumerable<Book> GetBooks()
         {
-            return db.Books;
+            List<Book> books = (from book in db.Books
+                                where book.bookStatus == true
+                                orderby book.position
+                                select book).ToList();
+            return books;
         }
 
         // GET: api/Books/5
@@ -35,7 +39,7 @@ namespace BookShop_Backend.Controllers
         public IHttpActionResult GetBook(int id)
         {
             Book book = db.Books.Find(id);
-            if (book == null)
+            if (book == null || book.bookStatus == false)
             {
                 return NotFound();
             }
@@ -49,7 +53,8 @@ namespace BookShop_Backend.Controllers
         public IEnumerable<Book> GetBookByName(string name)
         {
             List<Book> books = (from book in db.Books
-                                where book.bookTitle.Contains(name)
+                                where book.bookTitle.Contains(name) && book.bookStatus == true
+                                orderby book.position
                                 select book).ToList();
             return books;
         }
@@ -60,7 +65,8 @@ namespace BookShop_Backend.Controllers
         public IEnumerable<Book> GetBookByAuthor(string author)
         {
             List<Book> books = (from book in db.Books
-                                where book.bookAuthor.Contains(author)
+                                where book.bookAuthor.Contains(author) && book.bookStatus == true
+                                orderby book.position
                                 select book).ToList();
             return books;
         }
@@ -70,9 +76,10 @@ namespace BookShop_Backend.Controllers
         [Route("SearchByISBN/{isbn}")]
         public IEnumerable<Book> GetBookByISBN(long isbn)
         {
-            List<Book> books = (from b in db.Books
-                                where b.ISBN == isbn
-                                select b).ToList();
+            List<Book> books = (from book in db.Books
+                                where book.ISBN == isbn && book.bookStatus == true
+                                orderby book.position
+                                select book).ToList();
             return books;
         }
 
@@ -82,7 +89,8 @@ namespace BookShop_Backend.Controllers
         public IEnumerable<Book> GetBookByCategoryId(int cid)
         {
             List<Book> books = (from book in db.Books
-                                where book.CategoryId == cid
+                                where book.CategoryId == cid && book.bookStatus == true
+                                orderby book.position
                                 select book).ToList();
             return books;
         }
@@ -93,7 +101,8 @@ namespace BookShop_Backend.Controllers
         public IEnumerable<Book> GetBookByCategory(string category)
         {
             List<Book> books = (from book in db.Books
-                                where book.Category.catName == category
+                                where book.Category.catName == category && book.bookStatus == true
+                                orderby book.position
                                 select book).ToList();
             return books;
         }
