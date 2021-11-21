@@ -87,11 +87,10 @@ section {
 #cart-icon{
 	width:25px;
 	display: inline-block;
-	margin-left: 15px;
 }
 
 #cart-total{
-	display: block;
+	display: inline-block;
 	text-align: center;
 	color:#fff;
 	background-color: red;
@@ -99,6 +98,10 @@ section {
 	height: 25px;
 	border-radius: 50%;
 	font-size: 14px;
+  position: relative;
+  bottom: 15px;
+  left: -5px;
+  // margin-bottom: 10px;
 }
 
 .col-lg-4, .col-lg-6, .col-lg-8, .col-lg-12{

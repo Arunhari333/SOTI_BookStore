@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataStoreService } from 'src/app/shared/services/data-store.service';
 import { ShoppingService } from '../../services/shopping.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class CartComponent implements OnInit {
   orders: any[] = []
 
   total!: number;
-  constructor(private shoppingService: ShoppingService) {}
+  constructor(private shoppingService: ShoppingService, private dataStore: DataStoreService) {}
 
   ngOnInit() {
    this.getOrdersItemsData();
@@ -51,11 +52,12 @@ export class CartComponent implements OnInit {
       })
   }
 
-  DeleteById(did:any):void{
-    this.shoppingService.deleteOrderItem(did)
+  deleteById(id:any):void{
+    this.shoppingService.deleteOrderItem(id)
       .subscribe((res: any) => {
         console.log(res);
         this.getOrdersItemsData();
+        this.dataStore.removeOrderItem(parseInt(id));
       });
   }
   

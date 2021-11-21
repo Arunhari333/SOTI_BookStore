@@ -81,14 +81,14 @@ export class BookService {
   }
 
   createWishlistItems(item: any) {
-   
     let wishlistURL = `https://localhost:44374/api/Wishlist`;
-    return this.http.get(wishlistURL, item)
+    return this.http.post(wishlistURL, item)
       .pipe(map((res: any) => {
         console.log(res);
         return res;
       }));
     }
+    
   addToCart(qty :any,bookId:any):any{
     //console.log(formData);
     return this.http.post('https://localhost:44374/api/OrderItems',{'bookId':bookId,'qty':qty})

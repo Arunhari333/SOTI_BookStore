@@ -59,7 +59,7 @@ export class ShoppingService {
   }
   //url change to wishlist
   getWishlistItems() {
-    return this.http.get('https://localhost:44374/api/Books')
+    return this.http.get('https://localhost:44374/api/Wishlist')
       .pipe(map((res: any) => {
         console.log(res);
         return res;

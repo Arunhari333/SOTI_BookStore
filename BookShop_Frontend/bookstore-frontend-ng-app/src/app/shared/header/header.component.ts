@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
 
   isloggedIn: any;
   isAdmin: any;
+  totalOrderItems: number = 0;
 
   constructor(private headerService: HeaderService, private router: Router, 
     private dataStore:DataStoreService, private location:Location) {
@@ -34,8 +35,12 @@ export class HeaderComponent implements OnInit {
         console.log(res);
         this.categories = res;
       });
-      this.isloggedIn = localStorage.getItem('authToken');
-      this.dataStore.categoryId.subscribe(id => console.log(id));
+    this.isloggedIn = localStorage.getItem('authToken');
+    this.dataStore.categoryId.subscribe(id => console.log(id));
+
+    this.dataStore.orderItems.subscribe((oItems) => {
+      this.totalOrderItems = oItems.length;
+    });
   }
 
   handleCategoryClick(id: string){
@@ -44,8 +49,10 @@ export class HeaderComponent implements OnInit {
 
   logout(){
     localStorage.removeItem('authToken');
+    this.dataStore.setIsAdminToFalse();
     this.router.navigate(['login']);
     this.headerService.logoutUser();
+    this.dataStore.addOrderItems([]);
   }
 
 }

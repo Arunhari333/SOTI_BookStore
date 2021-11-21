@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using BookShop_Backend.Models;
+using WebApi.Jwt;
 using WebApi.Jwt.Filters;
 
 namespace BookShop_Backend.Controllers
@@ -23,10 +24,9 @@ namespace BookShop_Backend.Controllers
         [JwtAuthentication]
         public IEnumerable<Wishlist> GetWishlist()
         {
-            int userId = 2;
             var wishlist = (from item in db.Wishlist
-                              where item.userId == userId
-                              select item).ToList();
+                            where item.userId == CurrentUser.id
+                            select item).ToList();
             return wishlist;
         }
 
@@ -36,6 +36,7 @@ namespace BookShop_Backend.Controllers
         [ResponseType(typeof(Wishlist))]
         public IHttpActionResult PostWishlist(Wishlist wishlist)
         {
+            wishlist.userId = CurrentUser.id;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

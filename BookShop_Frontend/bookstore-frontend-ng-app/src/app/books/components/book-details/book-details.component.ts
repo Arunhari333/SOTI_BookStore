@@ -2,6 +2,7 @@ import { identifierModuleUrl } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DataStoreService } from 'src/app/shared/services/data-store.service';
 import { BookService } from '../../services/book.service';
 
 @Component({
@@ -11,15 +12,14 @@ import { BookService } from '../../services/book.service';
 })
 export class BookDetailsComponent implements OnInit {
  
+  constructor(private bookService:BookService, private route:ActivatedRoute, private router:Router, 
+    private dataStore: DataStoreService) { }
 
-  constructor(private bookService:BookService, private route:ActivatedRoute, private router:Router) { }
   bookData:any;
-  
   id:any;
- 
   qty:any = 1;
-  
   num:any;
+
   ngOnInit(): void {
     this.id=this.route.snapshot.paramMap.get('id');
 
@@ -32,7 +32,6 @@ export class BookDetailsComponent implements OnInit {
 
   handleAddToWishlist(bookId: number): void {
     let item = {
-      //"userId": 2,
       "bookId": bookId
     };
     console.log(item);
@@ -44,12 +43,13 @@ export class BookDetailsComponent implements OnInit {
         }
       })
   }
+
   addToCartSubmit():void{
     console.log(this.qty);
     this.bookService.addToCart(this.qty,this.id)
     .subscribe((res:any)=>{
       console.log(res);
-      this.router.navigate(['cart']);
+      this.dataStore.updateOrderItems(res);
     });
   }
 
