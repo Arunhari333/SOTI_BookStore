@@ -36,7 +36,7 @@
 
       <div class="cart-row" *ngFor="let order of orders">
         <div style="flex:2">
-          <a routerLink="/books/{{order.id}}">
+          <a routerLink="/books/{{order.bookId}}">
             <img class="row-image" src="{{order.Book.bookImage}}">
           </a>
         </div>
