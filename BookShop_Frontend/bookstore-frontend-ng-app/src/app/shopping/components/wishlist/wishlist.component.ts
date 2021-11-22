@@ -12,10 +12,23 @@ export class WishlistComponent implements OnInit {
   constructor(private shoppingService: ShoppingService) { }
 
   ngOnInit(): void {
+    this.getWishlistItems();
+  }
+
+  getWishlistItems(): void {
     this.shoppingService.getWishlistItems()
       .subscribe((res: any) => {
         console.log(res);
         this.items = res;
+      });
+  }
+
+  deleteById(id:any):void{
+    this.shoppingService.deleteWishlistItem(id)
+      .subscribe((res: any) => {
+        console.log(res);
+        this.getWishlistItems();
+        //this.dataStore.removeOrderItem(parseInt(id));
       });
   }
 

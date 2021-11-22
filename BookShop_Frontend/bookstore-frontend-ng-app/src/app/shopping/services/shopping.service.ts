@@ -29,7 +29,6 @@ export class ShoppingService {
 
   //To delete an item from cart
   deleteOrderItem(id:any) {
-    let userId: number = 1;
     let url: string = `https://localhost:44374/api/OrderItems/${id}`;
     return this.http.delete(url)
       .pipe(map((res: any) => {
@@ -38,6 +37,14 @@ export class ShoppingService {
       }));
   }
 
+  deleteWishlistItem(id:any) {
+    let url: string = `https://localhost:44374/api/Wishlist/${id}`;
+    return this.http.delete(url)
+      .pipe(map((res: any) => {
+        console.log(res);
+        return res;
+      }));
+  }
 
   createShippingAddress(formData: any) {
     let url: string = 'https://localhost:44374/api/Shipping';
